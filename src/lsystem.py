@@ -4,6 +4,8 @@
 
 from maya import cmds
 
+import os,sys,inspect
+
 class Lsystem:
     '''
         Info: The basic class for Lsystem. 
