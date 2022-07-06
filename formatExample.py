@@ -1,3 +1,9 @@
+'''
+赋值 = 两边都要有一个空格
+
+判断语句两边也要 == 一个空格 != 3
+逗号后面一个空格
+'''
 import sys
 import maya.OpenMaya as OpenMaya
 import maya.OpenMayaMPx as OpenMayaMPx
@@ -109,6 +115,12 @@ def nodeCreator():
     return OpenMayaMPx.asMPxPtr(LocatorNode())
 
 def nodeInitializer():
+    '''
+        Info: 初始化,和maya pluginCommand是一样的
+        Param:
+            mObject: ...
+            ParamName: ...
+    '''
     pass
     
 def initializePlugin(mobject):
