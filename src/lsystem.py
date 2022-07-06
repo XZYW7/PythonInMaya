@@ -2,6 +2,8 @@
     Info: This file is used to generate a plant with L-system
 '''
 
+from maya import cmds
+
 class Lsystem:
     '''
         Info: The basic class for Lsystem. 
