@@ -15,14 +15,17 @@ def landScapeSystem():
     '''
         Info: 程序入口
     '''
-    
+    cmds.polyCube()
     # Create a plant
     ls.Lsystem()
 
 if __name__ == "__main__":
+    
+    # Using the path of lsystem to find the working directorys
     dir = os.path.dirname(os.path.abspath(ls.__file__))
     print(dir)
     if not dir in sys.path:
         sys.path.append(dir)
         print("Adding the working path to sys.path")
+        
     landScapeSystem()
