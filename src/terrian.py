@@ -1,5 +1,11 @@
 '''
     This is Xu Zhehao's working space
+    已完成：
+    树木根据01点矩阵在区域范围内随机排列在曲面上
+    树木y轴随机旋转，垂直向上或指向曲面法线方向
+    树木木星放置交集检测，打开后防止树木模型相交
+    未完成：
+    代码封装成函数
 '''
 
 import maya.cmds as cmds
@@ -15,6 +21,7 @@ z=66
 x-=1    #把开始下标从1改为0
 z-=1
 isAngle=True      #是否按角度倾斜，为输入的�?
+isAvoidBounding=True    #防止交集碰撞盒选项
 
 for i in range(len(treeNames)):     #把树的名称和数量合成字典
     treeData[treeNames[i]]=treeNumbers[i]
@@ -34,6 +41,7 @@ for i in range(numVertex):
 #selectedVertices = rand.sample(range(numVertex), numVertex)     #随机生成一个定点序号range随机排列的列�??
 
 currentIndex = 0        #现在种到第几棵树
+boundBox=[]   #用来记录每棵树的位置和边界尺寸，检测是否会相交
 
 for pair in treeData.items():       #遍历各个树模�??
   i=0
@@ -76,8 +84,11 @@ for pair in treeData.items():       #遍历各个树模�??
       posX=((pos2[0]-pos1[0])*(currentX-int(currentX))+pos1[0])*(1-currentZ+int(currentZ))+((pos4[0]-pos3[0])*(currentX-int(currentX))+pos3[0])*(currentZ-int(currentZ))
       posZ=((pos3[2]-pos1[2])*(currentZ-int(currentZ))+pos1[2])*(1-currentX+int(currentX))+((pos4[2]-pos2[2])*(currentZ-int(currentZ))+pos2[2])*(currentX-int(currentX))
       #posZ=posFirst[2]+(posLast[2]-posFirst[2])*(currentZ/z)
-      cmds.move(posX,posY,posZ,newobj)        #将模型移动到顶点位置
       
+      cmds.move(posX,posY,posZ,newobj)        #将模型移动到顶点位置
+
+      
+
       if not isAngle:
         cmds.rotate(0, rand.randint(0,360),0,newobj)      #y轴随机旋�?
       else:
@@ -96,6 +107,24 @@ for pair in treeData.items():       #遍历各个树模�??
         ang.append((ang1[2]+ang2[2]+ang3[2]+ang4[2])/4)
         cmds.rotate(math.asin(ang[2])/math.pi*180, 0,-math.asin(ang[0])/math.pi*180,newobj, os = True)
         cmds.rotate(rand.randint(0,360),newobj,y=True,relative = True, os = True)
+
+      #判断是否和其他树相交
+      if isAvoidBounding:
+        posSize=cmds.exactWorldBoundingBox(newobj,ce=True)    #检测当前树模型的xyz尺寸
+        isBounding=False
+        if boundBox!=[]:
+          for tree in boundBox:
+            if tree[0]<=posSize[3] and tree[1]>=posSize[0]:   #如果xmin<xmax且xmax>xmin，说明x轴有相交
+              if tree[2]<=posSize[5] and tree[3]>=posSize[2]:   #z轴相交
+                isBounding=True
+                break
+        if isBounding:
+          cmds.select(newobj)
+          cmds.delete()
+          print('ddd')
+          continue
+        else:
+          boundBox.append([posSize[0],posSize[3],posSize[2],posSize[5]])
 
       currentIndex+=1
       i+=1
