@@ -12,24 +12,27 @@ import math
 
 
 #高度图生成地形，高度图要求是像素小于256*256的正方形图,可以是彩色图
-def HeightMapTerrain(imageFile):
+def HeightMapTerrain(HeightMapImageFile):
     '''
     This is the function method that imports the height map to generate the terrain
     
-    imageFile: path to the height map
+    HeightMapImageFile: path to the height map
     '''
-    if not os.path.isfile(imageFile):
+    if not os.path.isfile(HeightMapImageFile):
         print("image doesn't exist")
         exit()
 
-    img = Image.open(imageFile)  # 读取图片
+    img = Image.open(HeightMapImageFile)  # 读取图片
     img = img.convert('L')  # 灰度化
     pixels = img.load()
+    width, height = img.size  # 图像大小
+    
+    if width>255 or height>255 or width!=height:
+        print("the image does not meet the requirements")
+        exit()
     
     cmds.select(all=True)
     cmds.delete()
-    
-    width, height = img.size  # 图像大小
     
     terrain = cmds.polyPlane( axis=[0,1,0], w=50, h=50, sx=width-1, sy=height-1, ch=False)
 
@@ -57,7 +60,7 @@ def Elevation(terrain, width, height, sharpness):
 		for x in range(width):
 			pointy = noiseMap3[x/4][y/4] + 0.4* noiseMap2[x/2][y/2] + 0.2* noiseMap1[x][y]
 			pointy = math.pow(pointy, sharpness)
-			cmds.move(0, pointy*0.5, 0, terrain+".vtx["+str(y*width+x)+"]", r=True)
+			cmds.move(0, pointy*0.08, 0, terrain+".vtx["+str(y*width+x)+"]", r=True)
 		cmds.refresh(f = True)
         
 def NoiseMapTerrain():
@@ -79,3 +82,37 @@ def NoiseMapTerrain():
 
 
 #遮罩选区
+    #若地形采用高度图生成，遮罩图要求像素和高度图相同,可以是彩色图
+    #若地形采用噪波图生成，遮罩图要求像素为200*200，可以是彩色图
+def AreaSelection(MaskImageFile, f, w=200, h=200):
+    '''
+    This is the function method that imports the mask to select area
+    
+    MaskImageFile: path to the mask
+    f: The way terrain is generated
+        "0" means using the height map to generate
+        "1" means using the noise map to generate
+    w: width of height map
+    h: height of height map
+    '''
+    if not os.path.isfile(MaskImageFile):
+        print("image doesn't exist")
+        exit()
+    
+    img = Image.open(MaskImageFile)  # 读取图片
+    img = img.convert('1')  # 黑白化
+    pixels = img.load()
+    width, height = img.size  # 图像大小
+    
+    if f==0 and (w!=width or h!=height):
+        print("the image does not meet the requirements")
+        exit()
+    
+    chooseArea=[]
+    for i in range(height):
+        for j in range(width):
+            if pixels[j,i]==0:
+                chooseArea.append(1)
+            else:
+                chooseArea.append(0)
+    return chooseArea
