@@ -175,20 +175,21 @@ def boundingCheck(boundBox,posSize,*others):
           break
   return isBounding
 
-terrainShape ='terrain'
-treeNames = ["cow", "wolf"]     #输入的值，各个树的名称
-treeNumbers=[50,20]     #输入的值，各个树的数量
-isAngle=True      #是否按角度倾斜，为输入的�?
-isAvoidBounding=True    #防止交集碰撞盒选项
-x=60
-z=66
-numVertex = cmds.polyEvaluate(terrainShape, vertex=True)        #计算地面定点数量
-chooseArea=[]       #记录选中区域的列表，选中�??1，不选中�??0，是输入，要改到前面�??
-for i in range(numVertex):
-    if 800<i<2000:
-      t=1
-    else:
-      t=0
-    chooseArea.append(t)     #随机生成01，后面要删掉
+def generate():
+  terrainShape ='terrain'
+  treeNames = ["cow", "wolf"]     #输入的值，各个树的名称
+  treeNumbers=[50,20]     #输入的值，各个树的数量
+  isAngle=True      #是否按角度倾斜，为输入的�?
+  isAvoidBounding=True    #防止交集碰撞盒选项
+  x=60
+  z=66
+  numVertex = cmds.polyEvaluate(terrainShape, vertex=True)        #计算地面定点数量
+  chooseArea=[]       #记录选中区域的列表，选中�??1，不选中�??0，是输入，要改到前面�??
+  for i in range(numVertex):
+      if 800<i<2000:
+        t=1
+      else:
+        t=0
+      chooseArea.append(t)     #随机生成01，后面要删掉
 
-setTree(terrainShape,treeNames,treeNumbers,x,z,isAngle,isAvoidBounding,chooseArea)
+  setTree(terrainShape,treeNames,treeNumbers,x,z,isAngle,isAvoidBounding,chooseArea)
