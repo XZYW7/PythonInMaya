@@ -32,8 +32,10 @@ WORKINGDIR = workingDir()
 try:
     import lsystem as ls
     import terrain
+    import TerrainGeneration as tg
     reload(ls)
     reload(terrain)
+    reload(tg)
 except:
     print('The working directory is wrong')
 
@@ -58,7 +60,7 @@ class LandscapeSystem(QtWidgets.QWidget):
     '''
         Info: The GUI system, we create our gui and connect them with our functions.
     '''
-    def __init__(self, dock = True):
+    def __init__(self, dock = False):
         '''
             Info: Constructor.
                 1. point our GUI into parent Qtwidgets.
@@ -88,7 +90,8 @@ class LandscapeSystem(QtWidgets.QWidget):
         if not dock:
             parent.show()
 
-        self.ocean = cmds.polyCube(d = 50, w=50, h=1)
+        self.ocean = cmds.polyCube(d = 50, w=50, h=0.01)
+        self.terrain = []
         cmds.setAttr(self.ocean[0] + '.translateY', 1/2)
     def buildUI(self):
         '''
@@ -113,7 +116,7 @@ class LandscapeSystem(QtWidgets.QWidget):
         # Choose absolute Height of the terrain
         self.absHeight = QtWidgets.QSlider(QtCore.Qt.Horizontal)
         self.absHeight.setMinimum(0)
-        self.absHeight.setMaximum(100)
+        self.absHeight.setMaximum(25)
         self.absHeight.setValue(1)
         self.absHeight.sliderReleased.connect(self.generateTerrain)
         layout.addWidget(self.absHeight, 1, 0, 1, 2)
@@ -134,18 +137,30 @@ class LandscapeSystem(QtWidgets.QWidget):
         layout.addWidget(chooseMaskBtn, 3, 0, 1, 2)
 
 
-    def chooseNoise(self):
-        print('chooseNoise')
 
+    def chooseNoise(self):
+        self.flag = 0
+        self.generateTerrain()
 
     def chooseHeightMap(self):
+        self.flag = 1
         self.heightMap = QtWidgets.QFileDialog.getOpenFileName(None, 
-            "Choose the Height Map",WORKINGDIR, "Image Files(*.jpg *.png)")
+            "Choose the Height Map",WORKINGDIR, "Image Files(*.jpg *.png)")[0]
         print(self.heightMap)
-    
+        self.generateTerrain()
+
     def generateTerrain(self):
-        print('absHeight:', self.absHeight.value())
+        if self.terrain:
+            cmds.delete(self.terrain[0])
+    
         print('generate Terrain')
+        print(self.absHeight.value())
+        if self.flag == 0:
+            self.terrain = tg.NoiseMapTerrain(self.absHeight.value())
+        else:
+            
+            self.terrain = tg.HeightMapTerrain(self.heightMap, self.absHeight.value())
+            #print("There is something wrong with the image")
 
     def createOcean(self):
         cmds.setAttr(self.ocean[1]+'.h',self.oceanHeight.value())
@@ -157,6 +172,8 @@ class LandscapeSystem(QtWidgets.QWidget):
         self.mask = QtWidgets.QFileDialog.getOpenFileName(None, 
             "Choose the Height Map",WORKINGDIR, "Image Files(*.jpg *.png)")
         print(self.mask[0])
+        self.region = tg.AreaSelection(self.mask[0], self.flag, w=200, h=200)
+        print(self.region)
 
 
 
