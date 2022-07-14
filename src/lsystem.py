@@ -12,6 +12,7 @@ class status:
         self.pos = pos
         self.rotation = OpenMaya.MQuaternion(0.0,0.0,0.0,1.0)
         self.dir = vec(0.0,1.0,0.0)
+        self.length = 1.0
     def getFront(self):
         defaultFront = vec(0.0,0.0,1.0)
         return defaultFront.rotateBy(self.rotation)
@@ -28,10 +29,10 @@ class Lsystem:
         You should instantiate the class when you create a plant
     '''
     ruleSet = {}
-    iterations = 4
+    iterations = 3
     axiom = ""
     lstring = ""
-    stepLength = 1
+    stepLength = 0.1
     rotateAngle = 30
     Tree = ""
     def __init__(self, *args):
@@ -39,17 +40,14 @@ class Lsystem:
             Info: Run the constructor, Initialize variebles, Iterate rules, create models
         '''
         print("Lsystem Initialization")
-
-        cmds.select(all=True)
-        cmds.delete()
         # Initialize
         self.axiom = "FFFA"
-        self.addRule('A', '[&FFFA]++++[&FFFA]++++[&FFFA]')
-        #self.addRule('F', 'F[F\\F][F/F][F&F][F^F]F')
-        #self.addRule('F', 'FF')
-        #self.addRule('F', 'F[\\F]F[/F]F')
-        #self.addRule('F', 'F[\\F]F')
-        #self.addRule('F', 'F[/F]F')
+        self.addRule('A', '"[&FFFA]++++[&FFFA]++++[&FFFA]')
+        # self.addRule('F', 'F[F\\F][F/F][F&F][F^F]F')
+        # self.addRule('F', 'FF')
+        # self.addRule('F', '"F[\\F]F[/F]F')
+        self.addRule('F', 'F[\\FA]F')
+        self.addRule('F', 'F[/FA]F')
 
         # Rule Iterate, get full Rule
         self.lstring = self.ruleIter()
@@ -95,7 +93,8 @@ class Lsystem:
                 
                 # update the status
                 currentStatus.pos = currentStatus.pos + dir * self.stepLength
-                
+            elif i == '"':
+                self.stepLength *= 0.8
             elif i == "+":
                 radians = self.rotateAngle * math.pi /180.0
                 # rotations = OpenMaya.MEulerRotation(0.0,0.0,radians)
@@ -135,9 +134,11 @@ class Lsystem:
                 tmp = status(currentStatus.pos) # we cant add currentStatus directly to the stack, it's a pointer, the operations on currentStatus will change the value in stack
                 tmp.rotation = currentStatus.rotation
                 tmp.dir = currentStatus.dir
+                tmp.length = self.stepLength
                 statusStack.append(tmp)
             elif i == "]":
                 currentStatus = statusStack.pop()
+                self.stepLength = currentStatus.length
+            #cmds.refresh(f = True)
         groupName = cmds.group(branchList, n = "tree")
         return groupName
-a = Lsystem()
