@@ -1,14 +1,14 @@
 '''
     This is Xu Zhehao's working space
-    已完成：
-    树木根据01点矩阵在区域范围内随机排列在曲面上
-    树木y轴随机旋转,垂直向上或指向曲面法线方向
-    树木木星放置交集检测，打开后防止树木模型相交
-    代码封装成函数
+    Completed
+    The trees are randomly arranged on the surface according to the 01 point matrix within the region
+    The y axis of the tree rotates randomly, either vertically up or pointing in the normal direction of the surface
+    Tree models placed intersection detection, turned on to prevent tree models from intersecting
+    Code is packaged into functions
 '''
 
 import maya.cmds as cmds
-import random as rand
+import random
 import math 
 
 def setTree(terrainShape,treeNames,treeNumbers,x,z,isAngle,isAvoidBounding,chooseArea,*others):
@@ -26,20 +26,20 @@ def setTree(terrainShape,treeNames,treeNumbers,x,z,isAngle,isAvoidBounding,choos
   '''
 
   treeData = {} 
-  x-=1    #把开始下标从1改为0
+  x-=1    # Change the starting subscript from 1 to 0
   z-=1
-  currentIndex = 0        #现在种到第几棵树
-  boundBox=[]   #用来记录每棵树的位置和边界尺寸，检测是否会相交
+  currentIndex = 0        # How many trees are planted now
+  boundBox=[]   # It is used to record the position and boundary size of each tree and detect whether it will intersect
 
-  for i in range(len(treeNames)):     #把树的名称和数量合成字典
+  for i in range(len(treeNames)):     # Combine the names and numbers of trees into a dictionary
     treeData[treeNames[i]]=treeNumbers[i]
-  numVertex = cmds.polyEvaluate(terrainShape, vertex=True)        #计算地面定点数量
+  numVertex = cmds.polyEvaluate(terrainShape, vertex=True)        # Calculate the number of ground points
 
-  for pair in treeData.items():       #遍历各个树模�??
+  for pair in treeData.items():       # Walk through each tree model
     i=0
     while i < pair[1]:
-        currentX=rand.random()*x    #在平面上随机选取一个点的x、z坐标
-        currentZ=rand.random()*z
+        currentX=random.random()*x    # Pick the x and z coordinates of a random point on the plane
+        currentZ=random.random()*z
 
         l1,l2,l3,l4=find4Point(currentX,currentZ,x)
 
@@ -49,7 +49,7 @@ def setTree(terrainShape,treeNames,treeNumbers,x,z,isAngle,isAvoidBounding,choos
         if not isInArea:
           continue
 
-        #判断完在区域内后，开始放置树木
+        # After judging the area, start placing trees
         pos1 = cmds.pointPosition (terrainShape+".vtx["+str(l1)+"]", world=True)       #获取该顶点世界坐�??
         pos2 = cmds.pointPosition (terrainShape+".vtx["+str(l2)+"]", world=True)
         pos3 = cmds.pointPosition (terrainShape+".vtx["+str(l3)+"]", world=True)
@@ -59,18 +59,18 @@ def setTree(terrainShape,treeNames,treeNumbers,x,z,isAngle,isAvoidBounding,choos
         posZ=((pos3[2]-pos1[2])*(currentZ-int(currentZ))+pos1[2])*(1-currentX+int(currentX))+((pos4[2]-pos2[2])*(currentZ-int(currentZ))+pos2[2])*(currentX-int(currentX))
         
         newobj = cmds.instance(pair[0])
-        cmds.move(posX,posY,posZ,newobj)        #将模型移动到顶点位置
+        cmds.move(posX,posY,posZ,newobj)        # Move the model to the vertex position
 
         if not isAngle:
-          cmds.rotate(0, rand.randint(0,360),0,newobj)      #y轴随机旋�?
+          cmds.rotate(0, random.randint(0,360),0,newobj)      # The y axis rotates randomly
         else:
           ang=noraml4Point(l1,l2,l3,l4,terrainShape)
           cmds.rotate(math.asin(ang[2])/math.pi*180, 0,-math.asin(ang[0])/math.pi*180,newobj, os = True)
-          cmds.rotate(rand.randint(0,360),newobj,y=True,relative = True, os = True)
+          cmds.rotate(random.randint(0,360),newobj,y=True,relative = True, os = True)
 
-        #判断是否和其他树相交
+        # Determine whether it intersects other trees
         if isAvoidBounding:
-          posSize=cmds.exactWorldBoundingBox(newobj,ce=True)    #检测当前树模型的xyz尺寸
+          posSize=cmds.exactWorldBoundingBox(newobj,ce=True)    # Checks the xyz size of the current tree model
           isBounding=boundingCheck(boundBox,posSize)
           if isBounding:
             cmds.select(newobj)
@@ -91,10 +91,10 @@ def  find4Point(currentX,currentZ,x,*others):
   currentZ: the z coordinate fo the point
   x: the number of vertexs of the ground on the x-axis
   '''
-  p1=int(currentZ)*(x+1)+int(currentX)    #左上
-  p2=int(currentZ)*(x+1)+int(currentX)+1    #右上
-  p3=int(currentZ+1)*(x+1)+int(currentX)    #左下
-  p4=int(currentZ+1)*(x+1)+int(currentX)+1    #右下
+  p1=int(currentZ)*(x+1)+int(currentX)    # Upper left
+  p2=int(currentZ)*(x+1)+int(currentX)+1    # Upper right
+  p3=int(currentZ+1)*(x+1)+int(currentX)    # Lower left
+  p4=int(currentZ+1)*(x+1)+int(currentX)+1    # Lower right
   return p1,p2,p3,p4
 
 
@@ -108,16 +108,16 @@ def checkArea(l1,l2,l3,l4,chooseArea,d1,d2,d3,d4,*others):
   '''
   flag=True
   k=0
-  point=-1    #如果是3个点被选中，用于记录那个未被选中的点是哪个
+  point=-1    # If three points are selected, it is used to record which point is not selected
   for t in [l1,l2,l3,l4]:
     if chooseArea[t]==1:
       k+=1
     else:
       point=t
   
-  if k<=2:    #两个点及以下，不在框内，跳过
+  if k<=2:    # Two points or less, not in the box, skip
     flag=False
-  elif k==3:    #需要计算和四个点的距离，判断是否在三角内
+  elif k==3:    # to calculate the distance from the four points, and see if you're in the triangle
     if (point==l1 and d1<d4) or (point==l4 and d1>d4) or (point==l2 and d2<d3) or (point==l3 and d2>d3):
       flag=False
   return flag
@@ -169,26 +169,26 @@ def boundingCheck(boundBox,posSize,*others):
   isBounding=False
   if boundBox!=[]:
     for tree in boundBox:
-      if tree[0]<=posSize[3] and tree[1]>=posSize[0]:   #如果xmin<xmax且xmax>xmin，说明x轴有相交
-        if tree[2]<=posSize[5] and tree[3]>=posSize[2]:   #z轴相交
+      if tree[0]<=posSize[3] and tree[1]>=posSize[0]:   # if xmin<xmax and xmax>xmin，the X-axis intersects
+        if tree[2]<=posSize[5] and tree[3]>=posSize[2]:   # the Z-axis intersects
           isBounding=True
           break
   return isBounding
 
 terrainShape ='terrain'
-treeNames = ["cow", "wolf"]     #输入的值，各个树的名称
-treeNumbers=[50,20]     #输入的值，各个树的数量
-isAngle=True      #是否按角度倾斜，为输入的�?
-isAvoidBounding=True    #防止交集碰撞盒选项
+treeNames = ["cow", "wolf"]     # the name of each tree
+treeNumbers=[50,20]     # the number of trees
+isAngle=True      # Whether to tilt at an Angle
+isAvoidBounding=True    # Prevent intersection collision box option
 x=60
 z=66
-numVertex = cmds.polyEvaluate(terrainShape, vertex=True)        #计算地面定点数量
-chooseArea=[]       #记录选中区域的列表，选中�??1，不选中�??0，是输入，要改到前面�??
+numVertex = cmds.polyEvaluate(terrainShape, vertex=True)        # Calculate the number of ground points
+chooseArea=[]       # Records a list of selected regions
 for i in range(numVertex):
     if 800<i<2000:
       t=1
     else:
       t=0
-    chooseArea.append(t)     #随机生成01，后面要删掉
+    chooseArea.append(t)     # to randomly generate 01, and I'm going to delete that
 
 setTree(terrainShape,treeNames,treeNumbers,x,z,isAngle,isAvoidBounding,chooseArea)
