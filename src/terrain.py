@@ -1,14 +1,13 @@
 '''
     This is Xu Zhehao's working space
-    已完成：
-    树木根据01点矩阵在区域范围内随机排列在曲面上
-    树木y轴随机旋转,垂直向上或指向曲面法线方向
-    树木木星放置交集检测，打开后防止树木模型相交
-    代码封装成函数
+    Completed:
+      Trees range on the surface in chosen region according to the 01 Matrix,
+      The y axis of trees rotates randomly, they are perpendicular with ground or surface.
+      Collision Detection of the models of trees. If launched, prevent trees from intersection. 
 '''
 
 import maya.cmds as cmds
-import random as rand
+import random
 import math 
 
 def setTree(terrainShape,treeNames,treeNumbers,x,z,isAngle,isAvoidBounding,chooseArea,*others):
@@ -38,8 +37,8 @@ def setTree(terrainShape,treeNames,treeNumbers,x,z,isAngle,isAvoidBounding,choos
   for pair in treeData.items():       #遍历各个树模�??
     i=0
     while i < pair[1]:
-        currentX=rand.random()*x    #在平面上随机选取一个点的x、z坐标
-        currentZ=rand.random()*z
+        currentX=random.random()*x    #在平面上随机选取一个点的x、z坐标
+        currentZ=random.random()*z
 
         l1,l2,l3,l4=find4Point(currentX,currentZ,x)
 
@@ -62,11 +61,11 @@ def setTree(terrainShape,treeNames,treeNumbers,x,z,isAngle,isAvoidBounding,choos
         cmds.move(posX,posY,posZ,newobj)        #将模型移动到顶点位置
 
         if not isAngle:
-          cmds.rotate(0, rand.randint(0,360),0,newobj)      #y轴随机旋�?
+          cmds.rotate(0, random.randint(0,360),0,newobj)      #y轴随机旋�?
         else:
           ang=noraml4Point(l1,l2,l3,l4,terrainShape)
           cmds.rotate(math.asin(ang[2])/math.pi*180, 0,-math.asin(ang[0])/math.pi*180,newobj, os = True)
-          cmds.rotate(rand.randint(0,360),newobj,y=True,relative = True, os = True)
+          cmds.rotate(random.randint(0,360),newobj,y=True,relative = True, os = True)
 
         #判断是否和其他树相交
         if isAvoidBounding:

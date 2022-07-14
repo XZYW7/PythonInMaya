@@ -84,9 +84,12 @@ class LandscapeSystem(QtWidgets.QWidget):
 
         super().__init__(parent = parent)
         self.buildUI()
-        self.parent().layout().addWidget(self)
+        self.parent().layout().addWidget(self)# self.parent - QtWidgets.QtWidget Ptr - LandsystemDock
         if not dock:
             parent.show()
+
+        self.ocean = cmds.polyCube(d = 50, w=50, h=1)
+        cmds.setAttr(self.ocean[0] + '.translateY', 1/2)
     def buildUI(self):
         '''
             Create the UI system
@@ -94,6 +97,8 @@ class LandscapeSystem(QtWidgets.QWidget):
         '''
         # Main Layout
         layout = QtWidgets.QGridLayout(self)
+
+        # 1.Create Terrain
 
         # Choose Noise Type
         chooseNoiseBtn = QtWidgets.QPushButton('Choose Noise')
@@ -106,18 +111,27 @@ class LandscapeSystem(QtWidgets.QWidget):
         layout.addWidget(choosePicBtn, 0, 1, 1, 1)
         
         # Choose absolute Height of the terrain
-        absHeight = QtWidgets.QSlider(QtCore.Qt.Horizontal)
-        absHeight.setMinimum(0)
-        absHeight.setMaximum(1000)
-        absHeight.setValue(1)
-        # absHeight.valueChanged.connect(self.generateTerrain)
-        layout.addWidget(absHeight, 1, 0, 1, 2)
-        print(absHeight.value())
+        self.absHeight = QtWidgets.QSlider(QtCore.Qt.Horizontal)
+        self.absHeight.setMinimum(0)
+        self.absHeight.setMaximum(100)
+        self.absHeight.setValue(1)
+        self.absHeight.sliderReleased.connect(self.generateTerrain)
+        layout.addWidget(self.absHeight, 1, 0, 1, 2)
 
-        # Choose Mask
+
+        # 2.Create Ocean
+        self.oceanHeight = QtWidgets.QSlider(QtCore.Qt.Horizontal)
+        self.oceanHeight.setMinimum(0)
+        self.oceanHeight.setMaximum(100)
+        self.oceanHeight.setValue(0)
+        self.oceanHeight.valueChanged.connect(self.createOcean)
+        layout.addWidget(self.oceanHeight, 2, 0, 1, 2)
+        
+
+        # 3.Choose region by mask
         chooseMaskBtn = QtWidgets.QPushButton('Choose Mask')
         chooseMaskBtn.clicked.connect(self.chooseMask)
-        layout.addWidget(chooseMaskBtn, 2, 0, 1, 2)
+        layout.addWidget(chooseMaskBtn, 3, 0, 1, 2)
 
 
     def chooseNoise(self):
@@ -130,7 +144,15 @@ class LandscapeSystem(QtWidgets.QWidget):
         print(self.heightMap)
     
     def generateTerrain(self):
+        print('absHeight:', self.absHeight.value())
         print('generate Terrain')
+
+    def createOcean(self):
+        cmds.setAttr(self.ocean[1]+'.h',self.oceanHeight.value())
+        cmds.setAttr(self.ocean[0] + '.translateY', self.oceanHeight.value()/2)
+        print("ocean:", self.oceanHeight.value())
+        print('create Ocean')
+
     def chooseMask(self):
         self.mask = QtWidgets.QFileDialog.getOpenFileName(None, 
             "Choose the Height Map",WORKINGDIR, "Image Files(*.jpg *.png)")
