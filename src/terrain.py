@@ -1,5 +1,4 @@
 '''
-    This is Xu Zhehao's working space
     Completed
     The trees are randomly arranged on the surface according to the 01 point matrix within the region
     The y axis of the tree rotates randomly, either vertically up or pointing in the normal direction of the surface
@@ -13,16 +12,16 @@ import math
 
 def setTree(terrainShape,treeNames,treeNumbers,x,z,isAngle,isAvoidBounding,chooseArea,*others):
   '''
-  this is the function to set the trees to the ground
-
-  terrainShape: the name of the gournd
-  treeNames: a list of the names of trees
-  treeNumbers: a list of the numbers of trees
-  x: the number of vertexs of the ground on the x-axis
-  z: the number of vertexs of the ground on the z-axis
-  isAngle: judge whether it is inclined according to the normal of the ground
-  isAvoidBounding: judge whether to avoid tree intersection while setting
-  chooseArea: a list that uses 0 and 1 to record whether each vertex of the ground is chosen to plant trees or not
+    Info: this is the function to set the trees to the ground
+    Param:
+      terrainShape: the name of the gournd
+      treeNames: a list of the names of trees
+      treeNumbers: a list of the numbers of trees
+      x: the number of vertexs of the ground on the x-axis
+      z: the number of vertexs of the ground on the z-axis
+      isAngle: judge whether it is inclined according to the normal of the ground
+      isAvoidBounding: judge whether to avoid tree intersection while setting
+      chooseArea: a list that uses 0 and 1 to record whether each vertex of the ground is chosen to plant trees or not
   '''
   print('set Trees')
   treeData = {} 
@@ -94,13 +93,14 @@ def setTree(terrainShape,treeNames,treeNumbers,x,z,isAngle,isAvoidBounding,choos
   amount = 100
   cmds.progressWindow( edit=True, progress=amount, status=('Sleeping: {} %'.format(amount) ) )
   cmds.progressWindow(endProgress=1)
+
 def  find4Point(currentX,currentZ,x,*others):
   '''
-  this is the function to find the number of the 4 vertexs on the ground around the point
-
-  currentX: the x coordinate of the point
-  currentZ: the z coordinate fo the point
-  x: the number of vertexs of the ground on the x-axis
+    Info:this is the function to find the number of the 4 vertexs on the ground around the point
+    Param:
+      currentX: the x coordinate of the point
+      currentZ: the z coordinate fo the point
+      x: the number of vertexs of the ground on the x-axis
   '''
   p1=int(currentZ)*(x+1)+int(currentX)    # Upper left
   p2=int(currentZ)*(x+1)+int(currentX)+1    # Upper right
@@ -111,11 +111,11 @@ def  find4Point(currentX,currentZ,x,*others):
 
 def checkArea(l1,l2,l3,l4,chooseArea,d1,d2,d3,d4,*others):
   '''
-  this is the function to check whether the point is in the chosen area
-
-  l1,l2,l3,l4: the number of the 4 vertexs on the ground around the point
-  chooseArea: a list that uses 0 and 1 to record whether each vertex of the ground is chosen to plant trees or not
-  d1,d2,d3,d4: the distance between the point and 4 vertexs
+    Info:this is the function to check whether the point is in the chosen area
+    Param:
+      l1,l2,l3,l4: the number of the 4 vertexs on the ground around the point
+      chooseArea: a list that uses 0 and 1 to record whether each vertex of the ground is chosen to plant trees or not
+      d1,d2,d3,d4: the distance between the point and 4 vertexs
   '''
   flag=True
   k=0
@@ -136,10 +136,10 @@ def checkArea(l1,l2,l3,l4,chooseArea,d1,d2,d3,d4,*others):
 
 def distance4Point(currentX,currentZ,*others):
   '''
-  this is the function to calculate the distance between the point and 4 vertexs
-
-  currentX: the x coordinate of the point
-  currentZ: the z coordinate fo the point
+    Info:this is the function to calculate the distance between the point and 4 vertexs
+    Param:
+      currentX: the x coordinate of the point
+      currentZ: the z coordinate fo the point
   '''
   dis1=math.sqrt((currentX-int(currentX))**2+(currentZ-int(currentZ))**2)
   dis2=math.sqrt((1-currentX+int(currentX))**2+(currentZ-int(currentZ))**2)
@@ -150,10 +150,10 @@ def distance4Point(currentX,currentZ,*others):
 
 def noraml4Point(l1,l2,l3,l4,terrainShape,*others):
   '''
-  this is the function to calculate the average normal vector of the 4 vertexs
-
-  l1,l2,l3,l4: the number of the 4 vertexs on the ground around the point
-  terrainShape: the name of the gournd
+    Info:this is the function to calculate the average normal vector of the 4 vertexs
+    Param:
+      l1,l2,l3,l4: the number of the 4 vertexs on the ground around the point
+      terrainShape: the name of the gournd
   '''
   cmds.select(terrainShape+".vtx["+str(l1)+"]",r=True)
   ang1=cmds.polyNormalPerVertex( query=True, xyz=True )
@@ -172,10 +172,10 @@ def noraml4Point(l1,l2,l3,l4,terrainShape,*others):
 
 def boundingCheck(boundBox,posSize,*others):
   '''
-  this is the funciton to check the tree intersection
-
-  boundBox: a list that contains the xyz size positions of the trees
-  posSize: the xyz size position of the current tree
+    Info:this is the funciton to check the tree intersection
+    Param:
+      boundBox: a list that contains the xyz size positions of the trees
+      posSize: the xyz size position of the current tree
   '''
   isBounding=False
   if boundBox!=[]:
@@ -187,6 +187,14 @@ def boundingCheck(boundBox,posSize,*others):
   return isBounding
 
 def generate(terrain, treeList, treeNumbers, chooseArea):
+  '''
+    Info:Give a interface of Running the distribution function
+    Param:
+      terrain: the terrain name
+      treeList: the list of trees
+      treeNumbers: a list of numbers of different trees
+      chooseArea: a list of choosen Area, represented by 01
+  '''
   terrainShape = terrain
   treeNames = treeList    # the name of each tree
   treeNumbers=treeNumbers     # the number of trees

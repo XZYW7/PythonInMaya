@@ -41,11 +41,17 @@ except:
 
 # make the mayaWindow parent of our GUI
 def getMayaMainWindow():
+    '''
+        Info: get a ptr of the Mainwindow of Maya
+    '''
     win = omui.MQtUtil_mainWindow()
     ptr = shiboken2.wrapInstance(int(win),QtWidgets.QMainWindow)
     return ptr
 
 def getDock(name = 'LandscapeSystemDock'):
+    '''
+        Info: get the dock ptr of the window
+    '''
     deleteDock(name)
     ctrl = cmds.workspaceControl(name, dockToMainWindow = ('right',1), label = "LandscapeSystem")
     qtCtrl = omui.MQtUtil_findControl(ctrl)
@@ -53,6 +59,9 @@ def getDock(name = 'LandscapeSystemDock'):
     return ptr
 
 def deleteDock(name = 'LandscapeSystemDock'):
+    '''
+        Info: delete the dock ptr
+    '''
     if cmds.workspaceControl(name, query = True, exists = True):
         cmds.deleteUI(name)
 
@@ -96,17 +105,22 @@ class LandscapeSystem(QtWidgets.QWidget):
         if not dock:
             parent.show()
 
+        # Initialization of some varieble
+        
+        # Create an ocean
         self.ocean = cmds.polyCube(d = 100, w=100, h=0.1)
         cmds.setAttr(self.ocean[0] + '.translateY', 1/2)
-        # set Ocean Material
 
+        # Create Ocean Material
         self.oceanColorNode = cmds.createNode('lambert',name = "oceanColor")
         cmds.setAttr( self.oceanColorNode+'.color',0, 0.3, 0.84)
         cmds.setAttr( self.oceanColorNode+'.transparency', 0.7,0.7,0.7)
 
+        # Set Ocean Material
         oceanShape = pm.PyNode(self.ocean[0]).getShape()
         cmds.defaultNavigation(connectToExisting=True, destination=oceanShape+'.instObjGroups[0]', source='oceanColor')
 
+        # Create Other Materials
         self.terrainColorNode = cmds.createNode('lambert',name = "terrainColor")
         cmds.setAttr( self.terrainColorNode+'.color', 0.24, 0.17, 0.14)
 
@@ -118,7 +132,7 @@ class LandscapeSystem(QtWidgets.QWidget):
 
     def buildUI(self):
         '''
-            Create the UI system
+            Create the GUI system, and create drawback of the GUI
 
         '''
         # Main Layout
@@ -142,9 +156,13 @@ class LandscapeSystem(QtWidgets.QWidget):
         layout.addWidget(choosePicBtn, 1, 3, 1, 3)
         
         # Choose absolute Height of the terrain
+
+        # label of terrain
         labelTerrain = QtWidgets.QLabel('Adjust the Height of the terrain' )
         self.labelTerrainNum = QtWidgets.QLabel('7')
         layout.addWidget(self.labelTerrainNum, 3, 5, 1, 1)
+
+        # heightBar
         self.absHeight = QtWidgets.QSlider(QtCore.Qt.Horizontal)
         self.absHeight.setMinimum(0)
         self.absHeight.setMaximum(25)
@@ -166,7 +184,7 @@ class LandscapeSystem(QtWidgets.QWidget):
         layout.addWidget(self.labelOceanNum, 5, 5, 1, 1)
         self.oceanHeight = QtWidgets.QSlider(QtCore.Qt.Horizontal)
         self.oceanHeight.setMinimum(0)
-        self.oceanHeight.setMaximum(100)
+        self.oceanHeight.setMaximum(25)
         self.oceanHeight.setValue(0)
         self.oceanHeight.valueChanged.connect(self.createOcean)
         layout.addWidget(labelOcean, 4, 0, 1, 6)
@@ -189,7 +207,7 @@ class LandscapeSystem(QtWidgets.QWidget):
         buildTreeBtn.clicked.connect(self.buildTree)
         layout.addWidget(buildTreeBtn, 7,0,1,6)
 
-
+        # 4.Choose the number of trees and leave color
         labelTree = QtWidgets.QLabel('Adjust the Number of 3 Kinds of Trees' )
         layout.addWidget(labelTree, 8, 0, 1, 5)
 
@@ -218,18 +236,18 @@ class LandscapeSystem(QtWidgets.QWidget):
         self.treeNumbers[2].setValue(8)
         layout.addWidget(self.treeNumbers[2], 9, 4, 1, 2)
 
-
+        # 5.Distribute the trees on the terrain, you can't run this without creating the terrain and tree models
         distributeBtn = QtWidgets.QPushButton('Distribute')
         distributeBtn.clicked.connect(self.distribute)
         layout.addWidget(distributeBtn, 10, 0, 1, 6)
 
 
-        # Clear
+        # 6.Clear all models but ocean in the scene
         clearBtn = QtWidgets.QPushButton('Clear')
         clearBtn.clicked.connect(self.clear)
         layout.addWidget(clearBtn,11,0,1,6)
 
-
+    # These functions are all drawback function of GUI
     def setLeaveColor(self):
         color = pm.colorEditor(rgbValue = self.leaveColor)
         r,g,b,a = [float(c) for c in color.split()]
@@ -370,6 +388,3 @@ if __name__ == "__main__":
     cmds.delete()
     ui = LandscapeSystem()
     ui.show()
-    # Create a plant
-    #ls.Lsystem()
-    # a = ls.Lsystem()

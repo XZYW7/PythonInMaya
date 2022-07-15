@@ -8,6 +8,9 @@ from maya.api.OpenMaya import MVector as vec
 import pymel.core as pm
 import random
 class leave:
+    '''
+        Info: Generate the model of leaves
+    '''
     leaveType = []
     def __init__(self):
         self.leaveType.append( [(-0.0375116, 0, -5.956661), (-0.0375116,0,-5.956661), (0.635531,0,-4.745183), (0.097097,0,-3.937532), ( -0.441337,0,-3.12988),
@@ -35,6 +38,11 @@ class leave:
         (-0.206531, 0, 7.036819),(-0.206531, 0, 7.036819),( -0.177027, 0, 2.994705),( -0.177027, 0, 2.994705),( -0.177027, 0, 2.994705)])
 
     def drawLeave(self, chooseType = 0):
+        '''
+            Info: create the model of leave
+            Param:
+                chooseType: input the type of leaves, there are 2 kinds of leaves, default value is 0
+        '''
         curve = cmds.curve( p= self.leaveType[chooseType])
         self.leave = cmds.planarSrf(curve)
 
@@ -44,6 +52,9 @@ class leave:
         cmds.delete(curve)
         cmds.setAttr(self.leave[0]+'.scale', 0.05,1.0,0.05)
 class status:
+    '''
+        Info: Record the status of L-system, including transform status and size scale status
+    '''
     def __init__(self, pos = vec(0.0,0.0,0.0)):
         self.pos = pos
         self.rotation = OpenMaya.MQuaternion(0.0,0.0,0.0,1.0)
@@ -51,12 +62,22 @@ class status:
         self.length = 1.0
         self.width = 1.0
     def getFront(self):
+        '''
+            Info: The front direction of the local orientation of the L-system
+        '''
         defaultFront = vec(0.0,0.0,1.0)
         return defaultFront.rotateBy(self.rotation)
     def getUp(self):
+        '''
+            Info: The up direction of the local orientation of the L-system
+        '''
         defaultUp = vec(0.0,1.0,0.0)
         return defaultUp.rotateBy(self.rotation)
     def getRight(self):
+        '''
+            Info: The right direction of the local orientation of the L-system
+
+        '''
         defaultRight= vec(-1.0,0.0,0.0)
         return defaultRight.rotateBy(self.rotation)
 
@@ -78,30 +99,26 @@ class Lsystem:
     def __init__(self, name):
         '''
             Info: Run the constructor, Initialize variebles, Iterate rules, create models
+            Param:
+                name: user give a name to distinguish the tree
         '''
         print("Lsystem Initialization")
         # Initialize
         self.axiom = "BBBA"
-        # self.addRule('F', 'F[F\\F][F/F][F&F][F^F]F')
-        # self.addRule('F', 'FF')
-        #self.addRule('F', '"F[\\F][/F]')
-        #self.addRule('F', 'F[\\FA]')
-        #self.addRule('F', 'F[/FA]')
-
-        # Rule Iterate, get full Rule
-        #self.lstring = self.ruleIter()
-
-        # Draw Model according to Full Rule
-        #self.Tree = self.drawModel()
         self.name = name
 
     def addRule(self, replaceStr, newStr):
+        '''
+            Info: add a rule into the RuleSet
+        '''
         if replaceStr not in self.ruleSet:
             self.ruleSet[replaceStr] = []
         self.ruleSet[replaceStr].append(newStr)# uniform sampling
-        
 
     def ruleIter(self):
+        '''
+            Info: Generate a full Rule Grammer
+        '''
         root = self.axiom
         for i in range(self.iterations):
             temp = ""
@@ -113,6 +130,9 @@ class Lsystem:
         self.lstring = root
     
     def createBranch(self, pos, dir):
+        '''
+            Info: create a brach of the tree
+        '''
         branch = cmds.polyCylinder(axis=dir, r=self.width, height=self.stepLength)
 
         branchShape = pm.PyNode(branch[0]).getShape()
@@ -123,6 +143,9 @@ class Lsystem:
         return branch[0]
 
     def drawModel(self,leaveType = 0):
+        '''
+            Info: Use the iterated Rule Grammer to build a tree model with leaves
+        '''
         statusStack = []
         branchList = []
         currentStatus = status(vec(0.0, 0.0, 0.0))
@@ -141,10 +164,6 @@ class Lsystem:
                 l = leave()#cmds.polySphere(r = self.stepLength)
                 l.drawLeave(leaveType)
                 v = vec(0.0,0.0,0.32)
-                #axis = vec(0.0,0.0,1.0)
-                #radians = random.random() * math.pi / 2.0 
-                #rotations = OpenMaya.MQuaternion(math.sin(radians/2)* axis[0], math.sin(radians/2)* axis[1] , math.sin(radians/2) * axis[2], math.cos(radians/2))
-                
                 cmds.rotate( 90*random.random(), 90*random.random(), 90*random.random(), l.leave[0], pivot=(0, 0, 0.32) )
                 cmds.move(currentStatus.pos[0] - v[0], currentStatus.pos[1] - v[1], currentStatus.pos[2]-v[2])
 
@@ -198,14 +217,6 @@ class Lsystem:
                 currentStatus = statusStack.pop()
                 self.stepLength = currentStatus.length
                 self.width = currentStatus.width
-
-        print(branchList)
-        print('group')
-        print('group2')
-
-        print(self.Tree)
         groupName = cmds.group(branchList, n = self.name)
         self.Tree = groupName
-        print(self.Tree)
-        print(self.Tree)
-        
+        print(self.Tree + 'Generated')
