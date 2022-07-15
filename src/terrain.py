@@ -31,9 +31,16 @@ def setTree(terrainShape,treeNames,treeNumbers,x,z,isAngle,isAvoidBounding,choos
   currentIndex = 0        # How many trees are planted now
   boundBox=[]   # It is used to record the position and boundary size of each tree and detect whether it will intersect
 
+  treeNum = 0
   for i in range(len(treeNames)):     # Combine the names and numbers of trees into a dictionary
     treeData[treeNames[i]]=treeNumbers[i]
+    treeNum += treeNumbers[i]
   numVertex = cmds.polyEvaluate(terrainShape, vertex=True)        # Calculate the number of ground points
+  amount = 0
+  cmds.progressWindow(title='Distribute Trees on the Terrian', progress=amount, status='Distributing: 0%', isInterruptable=True )
+
+
+
 
   for pair in treeData.items():       # Walk through each tree model
     i=0
@@ -81,8 +88,12 @@ def setTree(terrainShape,treeNames,treeNumbers,x,z,isAngle,isAvoidBounding,choos
       cmds.refresh()
       currentIndex+=1
       i+=1
+      amount += 100/treeNum
+      cmds.progressWindow( edit=True, progress=amount, status=('Sleeping: {} %'.format(amount) ) )
 
-
+  amount = 100
+  cmds.progressWindow( edit=True, progress=amount, status=('Sleeping: {} %'.format(amount) ) )
+  cmds.progressWindow(endProgress=1)
 def  find4Point(currentX,currentZ,x,*others):
   '''
   this is the function to find the number of the 4 vertexs on the ground around the point

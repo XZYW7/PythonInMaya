@@ -4,18 +4,14 @@
     We create GUI controller there, and call different functions.
 ''' 
 # prepare packages for GUI
-from distutils.command.build import build
+#from distutils.command.build import build
 from PySide2 import QtWidgets, QtCore, QtGui
 import pymel.core as pm
-from functools import partial
 from maya import OpenMayaUI as omui
-from maya import OpenMaya
 import shiboken2
-from PySide2.QtCore import Signal
-
 from maya import cmds
 from importlib import reload
-import os,sys
+import sys
 
 # confirm the working dir.
 def workingDir():
@@ -24,11 +20,13 @@ def workingDir():
         prepare the working dir for the next steps like importing files.
     '''
     dir = QtWidgets.QFileDialog.getExistingDirectory(None,"Please Choose the File folder","C:/")
+    projectdir = dir
     dir += '/src'
     if not dir in sys.path:
         sys.path.append(dir)
         print("Adding the working path to sys.path")
-WORKINGDIR = workingDir()
+    return dir, projectdir
+WORKINGDIR,PROJECTDIR = workingDir()
 
 # import other module based on adding working dir into sys.path
 try:
@@ -125,106 +123,111 @@ class LandscapeSystem(QtWidgets.QWidget):
         '''
         # Main Layout
         layout = QtWidgets.QGridLayout(self)
+        backImgLabel = QtWidgets.QLabel()
+        backImgLabel.resize(500, 100)
+        pix = QtGui.QPixmap(QtGui.QImage(PROJECTDIR + '/artefacts/Picture/backgroundImg.jpg')).scaled(backImgLabel.size())
+        backImgLabel.setPixmap(pix)
 
+        layout.addWidget(backImgLabel,0,0,1,6)
         # 1.Create Terrain
 
         # Choose Noise Type
         chooseNoiseBtn = QtWidgets.QPushButton('Choose Noise')
         chooseNoiseBtn.clicked.connect(self.chooseNoise)
-        layout.addWidget(chooseNoiseBtn, 0, 0, 1, 3)
+        layout.addWidget(chooseNoiseBtn, 1, 0, 1, 3)
         
         # Choose Height Map
         choosePicBtn = QtWidgets.QPushButton('Choose HeightMap')
         choosePicBtn.clicked.connect(self.chooseHeightMap)
-        layout.addWidget(choosePicBtn, 0, 3, 1, 3)
+        layout.addWidget(choosePicBtn, 1, 3, 1, 3)
         
         # Choose absolute Height of the terrain
         labelTerrain = QtWidgets.QLabel('Adjust the Height of the terrain' )
         self.labelTerrainNum = QtWidgets.QLabel('7')
-        layout.addWidget(self.labelTerrainNum, 2, 5, 1, 1)
+        layout.addWidget(self.labelTerrainNum, 3, 5, 1, 1)
         self.absHeight = QtWidgets.QSlider(QtCore.Qt.Horizontal)
         self.absHeight.setMinimum(0)
         self.absHeight.setMaximum(25)
         self.absHeight.setValue(7)
         self.absHeight.sliderReleased.connect(self.generateTerrain)
-        layout.addWidget(labelTerrain, 1, 0, 1, 6)
-        layout.addWidget(self.absHeight, 2, 0, 1, 5)
+        layout.addWidget(labelTerrain, 2, 0, 1, 6)
+        layout.addWidget(self.absHeight, 3, 0, 1, 5)
 
         self.terrainColorBtn = QtWidgets.QPushButton()
         self.terrainColorBtn.setMaximumWidth(20)
         self.terrainColorBtn.setMaximumHeight(20)
         self.setButtonColor(self.terrainColorBtn, self.terrainColor)
         self.terrainColorBtn.clicked.connect(self.setTerrainColor)
-        layout.addWidget(self.terrainColorBtn, 2, 5)
+        layout.addWidget(self.terrainColorBtn, 3, 5)
 
         # 2.Create Ocean
         labelOcean = QtWidgets.QLabel('Adjust the Height of the Ocean' )
         self.labelOceanNum = QtWidgets.QLabel('0.1')
-        layout.addWidget(self.labelOceanNum, 4, 5, 1, 1)
+        layout.addWidget(self.labelOceanNum, 5, 5, 1, 1)
         self.oceanHeight = QtWidgets.QSlider(QtCore.Qt.Horizontal)
         self.oceanHeight.setMinimum(0)
         self.oceanHeight.setMaximum(100)
         self.oceanHeight.setValue(0)
         self.oceanHeight.valueChanged.connect(self.createOcean)
-        layout.addWidget(labelOcean, 3, 0, 1, 6)
-        layout.addWidget(self.oceanHeight, 4, 0, 1, 5)
+        layout.addWidget(labelOcean, 4, 0, 1, 6)
+        layout.addWidget(self.oceanHeight, 5, 0, 1, 5)
         
         self.oceanColorBtn = QtWidgets.QPushButton()
         self.oceanColorBtn.setMaximumWidth(20)
         self.oceanColorBtn.setMaximumHeight(20)
         self.setButtonColor(self.oceanColorBtn, self.oceanColor)
         self.oceanColorBtn.clicked.connect(self.setOceanColor)
-        layout.addWidget(self.oceanColorBtn, 4, 5)
+        layout.addWidget(self.oceanColorBtn, 5, 5)
 
         # 3.Choose region by mask
         chooseMaskBtn = QtWidgets.QPushButton('Choose Mask')
         chooseMaskBtn.clicked.connect(self.chooseMask)
-        layout.addWidget(chooseMaskBtn, 5, 0, 1, 6)
+        layout.addWidget(chooseMaskBtn, 6, 0, 1, 6)
 
 
         buildTreeBtn = QtWidgets.QPushButton('Build Tree')
         buildTreeBtn.clicked.connect(self.buildTree)
-        layout.addWidget(buildTreeBtn, 6,0,1,6)
+        layout.addWidget(buildTreeBtn, 7,0,1,6)
 
 
         labelTree = QtWidgets.QLabel('Adjust the Number of 3 Kinds of Trees' )
-        layout.addWidget(labelTree, 7, 0, 1, 5)
+        layout.addWidget(labelTree, 8, 0, 1, 5)
 
         self.leaveColorBtn = QtWidgets.QPushButton()
         self.leaveColorBtn.setMaximumWidth(20)
         self.leaveColorBtn.setMaximumHeight(20)
         self.setButtonColor(self.leaveColorBtn, self.leaveColor)
         self.leaveColorBtn.clicked.connect(self.setLeaveColor)
-        layout.addWidget(self.leaveColorBtn, 7, 5)
+        layout.addWidget(self.leaveColorBtn, 8, 5)
 
         self.treeNumbers[0] = QtWidgets.QSlider(QtCore.Qt.Horizontal)
         self.treeNumbers[0].setMinimum(0)
         self.treeNumbers[0].setMaximum(15)
         self.treeNumbers[0].setValue(8)
-        layout.addWidget(self.treeNumbers[0], 8, 0, 1, 2)
+        layout.addWidget(self.treeNumbers[0], 9, 0, 1, 2)
 
         self.treeNumbers[1] = QtWidgets.QSlider(QtCore.Qt.Horizontal)
         self.treeNumbers[1].setMinimum(0)
         self.treeNumbers[1].setMaximum(15)
         self.treeNumbers[1].setValue(8)
-        layout.addWidget(self.treeNumbers[1], 8, 2, 1, 2)
+        layout.addWidget(self.treeNumbers[1], 9, 2, 1, 2)
 
         self.treeNumbers[2] = QtWidgets.QSlider(QtCore.Qt.Horizontal)
         self.treeNumbers[2].setMinimum(0)
         self.treeNumbers[2].setMaximum(15)
         self.treeNumbers[2].setValue(8)
-        layout.addWidget(self.treeNumbers[2], 8, 4, 1, 2)
+        layout.addWidget(self.treeNumbers[2], 9, 4, 1, 2)
 
 
         distributeBtn = QtWidgets.QPushButton('Distribute')
         distributeBtn.clicked.connect(self.distribute)
-        layout.addWidget(distributeBtn, 9, 0, 1, 6)
+        layout.addWidget(distributeBtn, 10, 0, 1, 6)
 
 
         # Clear
         clearBtn = QtWidgets.QPushButton('Clear')
         clearBtn.clicked.connect(self.clear)
-        layout.addWidget(clearBtn,10,0,1,6)
+        layout.addWidget(clearBtn,11,0,1,6)
 
 
     def setLeaveColor(self):
@@ -324,7 +327,8 @@ class LandscapeSystem(QtWidgets.QWidget):
         self.tree3.addRule('A', '[&FL"A]/////^[&FL"A]///////^[&FL"A]')
         self.tree3.addRule('F', 'S/////F')
         self.tree3.addRule('S', 'FL')
-        self.tree2.drawModel()
+        self.tree3.ruleIter()
+        self.tree3.drawModel()
         self.treeList.append(self.tree3.Tree)
 
         print(self.terrain)
@@ -359,6 +363,8 @@ class LandscapeSystem(QtWidgets.QWidget):
         self.trunkColorNode = cmds.createNode('lambert',name = "trunkColor")
         cmds.setAttr( self.trunkColorNode+'.color', 0.15, 0.05, 0.0)
         self.terrain = ''
+        self.treeNumbers = [0,0,0]
+        self.flag = -1
 if __name__ == "__main__":
     cmds.select(all=True)
     cmds.delete()
