@@ -4,6 +4,7 @@
     We create GUI controller there, and call different functions.
 ''' 
 # prepare packages for GUI
+from distutils.command.build import build
 from PySide2 import QtWidgets, QtCore, QtGui
 # import pymel.core as pm
 from functools import partial
@@ -137,6 +138,13 @@ class LandscapeSystem(QtWidgets.QWidget):
         layout.addWidget(chooseMaskBtn, 3, 0, 1, 2)
 
 
+        buildTreeBtn = QtWidgets.QPushButton('Build Tree')
+        buildTreeBtn.clicked.connect(self.buildTree)
+        layout.addWidget(buildTreeBtn, 4,0,1,1)
+
+        distributeBtn = QtWidgets.QPushButton('Distribute')
+        distributeBtn.clicked.connect(self.distribute)
+        layout.addWidget(distributeBtn, 4, 1, 1, 1)
 
     def chooseNoise(self):
         self.flag = 0
@@ -175,7 +183,34 @@ class LandscapeSystem(QtWidgets.QWidget):
         self.region = tg.AreaSelection(self.mask[0], self.flag, w=200, h=200)
         print(self.region)
 
+    def buildTree(self):
+        tree1 = ls.Lsystem('tree1')
+        tree1.ruleSet = {}
+        tree1.addRule('A', '"[&FFFA]++++[&FFFA]++++[&FFFA]')
+        tree1.ruleIter()
+        tree1.drawModel()
+        print(tree1.Tree)
 
+        self.treeList = []
+        self.treeList.append(tree1.Tree)
+        print(self.treeList)
+
+        tree2 = ls.Lsystem('tree2') 
+        tree2.ruleSet = {}
+        tree2.addRule('A', '"[&FFFA]++++[&FFFA]')
+        #tree2.addRule('F', '"F[\\F][/F]')
+        #tree2.addRule('F', 'F[\\FA]')
+        #tree2.addRule('F', 'F[/FA]')  
+        tree2.ruleIter()
+        tree2.drawModel()
+
+        self.treeList.append(tree2.Tree)
+        print(self.terrain)
+        print(self.treeList)
+    def distribute(self):
+        print("distributing")
+        print('wocaonima')
+        terrain.generate(self.terrain[0], self.treeList, self.region)
 
 
 if __name__ == "__main__":

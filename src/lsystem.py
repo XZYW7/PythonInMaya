@@ -35,26 +35,25 @@ class Lsystem:
     stepLength = 0.5
     rotateAngle = 30
     Tree = ""
-    def __init__(self, *args):
+    def __init__(self, name):
         '''
             Info: Run the constructor, Initialize variebles, Iterate rules, create models
         '''
         print("Lsystem Initialization")
         # Initialize
         self.axiom = "FFFA"
-        self.addRule('A', '"[&FFFA]++++[&FFFA]++++[&FFFA]')
         # self.addRule('F', 'F[F\\F][F/F][F&F][F^F]F')
         # self.addRule('F', 'FF')
-        self.addRule('F', '"F[\\F][/F]')
-        self.addRule('F', 'F[\\FA]')
-        self.addRule('F', 'F[/FA]')
+        #self.addRule('F', '"F[\\F][/F]')
+        #self.addRule('F', 'F[\\FA]')
+        #self.addRule('F', 'F[/FA]')
 
         # Rule Iterate, get full Rule
-        self.lstring = self.ruleIter()
+        #self.lstring = self.ruleIter()
 
         # Draw Model according to Full Rule
-        self.Tree = self.drawModel()
-
+        #self.Tree = self.drawModel()
+        self.name = name
 
     def addRule(self, replaceStr, newStr):
         if replaceStr not in self.ruleSet:
@@ -71,7 +70,7 @@ class Lsystem:
             root = temp
 
         print('lstring', root)
-        return root
+        self.lstring = root
     
     def createBranch(self, pos, dir):
         branch = cmds.polyCylinder(axis=dir, r=self.stepLength/5.0, height=self.stepLength)
@@ -139,6 +138,13 @@ class Lsystem:
             elif i == "]":
                 currentStatus = statusStack.pop()
                 self.stepLength = currentStatus.length
-            #cmds.refresh(f = True)
-        groupName = cmds.group(branchList, n = "tree")
-        return groupName
+        print(branchList)
+        print('group')
+        print('group2')
+
+        print(self.Tree)
+        groupName = cmds.group(branchList, n = self.name)
+        self.Tree = groupName
+        print(self.Tree)
+        print(self.Tree)
+        

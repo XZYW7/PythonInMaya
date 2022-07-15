@@ -24,7 +24,7 @@ def setTree(terrainShape,treeNames,treeNumbers,x,z,isAngle,isAvoidBounding,choos
   isAvoidBounding: judge whether to avoid tree intersection while setting
   chooseArea: a list that uses 0 and 1 to record whether each vertex of the ground is chosen to plant trees or not
   '''
-
+  print('set Trees')
   treeData = {} 
   x-=1    # Change the starting subscript from 1 to 0
   z-=1
@@ -38,49 +38,49 @@ def setTree(terrainShape,treeNames,treeNumbers,x,z,isAngle,isAvoidBounding,choos
   for pair in treeData.items():       # Walk through each tree model
     i=0
     while i < pair[1]:
-        currentX=random.random()*x    # Pick the x and z coordinates of a random point on the plane
-        currentZ=random.random()*z
+      currentX=random.random()*x    # Pick the x and z coordinates of a random point on the plane
+      currentZ=random.random()*z
 
-        l1,l2,l3,l4=find4Point(currentX,currentZ,x)
+      l1,l2,l3,l4=find4Point(currentX,currentZ,x)
 
-        d1,d2,d3,d4=distance4Point(currentX,currentZ)
-        
-        isInArea=checkArea(l1,l2,l3,l4,chooseArea,d1,d2,d3,d4)
-        if not isInArea:
+      d1,d2,d3,d4=distance4Point(currentX,currentZ)
+      
+      isInArea=checkArea(l1,l2,l3,l4,chooseArea,d1,d2,d3,d4)
+      if not isInArea:
+        continue
+
+      # After judging the area, start placing trees
+      pos1 = cmds.pointPosition (terrainShape+".vtx["+str(l1)+"]", world=True)       #获取该顶点世界坐�??
+      pos2 = cmds.pointPosition (terrainShape+".vtx["+str(l2)+"]", world=True)
+      pos3 = cmds.pointPosition (terrainShape+".vtx["+str(l3)+"]", world=True)
+      pos4 = cmds.pointPosition (terrainShape+".vtx["+str(l4)+"]", world=True)
+      posY=pos1[1]*d4/(d1+d4)+pos4[1]*d1/(d1+d4)
+      posX=((pos2[0]-pos1[0])*(currentX-int(currentX))+pos1[0])*(1-currentZ+int(currentZ))+((pos4[0]-pos3[0])*(currentX-int(currentX))+pos3[0])*(currentZ-int(currentZ))
+      posZ=((pos3[2]-pos1[2])*(currentZ-int(currentZ))+pos1[2])*(1-currentX+int(currentX))+((pos4[2]-pos2[2])*(currentZ-int(currentZ))+pos2[2])*(currentX-int(currentX))
+      
+      newobj = cmds.instance(pair[0])
+      cmds.move(posX,posY,posZ,newobj)        # Move the model to the vertex position
+
+      if not isAngle:
+        cmds.rotate(0, random.randint(0,360),0,newobj)      # The y axis rotates randomly
+      else:
+        ang=noraml4Point(l1,l2,l3,l4,terrainShape)
+        cmds.rotate(math.asin(ang[2])/math.pi*180, 0,-math.asin(ang[0])/math.pi*180,newobj, os = True)
+        cmds.rotate(random.randint(0,360),newobj,y=True,relative = True, os = True)
+
+      # Determine whether it intersects other trees
+      if isAvoidBounding:
+        posSize=cmds.exactWorldBoundingBox(newobj,ce=True)    # Checks the xyz size of the current tree model
+        isBounding=boundingCheck(boundBox,posSize)
+        if isBounding:
+          cmds.select(newobj)
+          cmds.delete()
           continue
-
-        # After judging the area, start placing trees
-        pos1 = cmds.pointPosition (terrainShape+".vtx["+str(l1)+"]", world=True)       #获取该顶点世界坐�??
-        pos2 = cmds.pointPosition (terrainShape+".vtx["+str(l2)+"]", world=True)
-        pos3 = cmds.pointPosition (terrainShape+".vtx["+str(l3)+"]", world=True)
-        pos4 = cmds.pointPosition (terrainShape+".vtx["+str(l4)+"]", world=True)
-        posY=pos1[1]*d4/(d1+d4)+pos4[1]*d1/(d1+d4)
-        posX=((pos2[0]-pos1[0])*(currentX-int(currentX))+pos1[0])*(1-currentZ+int(currentZ))+((pos4[0]-pos3[0])*(currentX-int(currentX))+pos3[0])*(currentZ-int(currentZ))
-        posZ=((pos3[2]-pos1[2])*(currentZ-int(currentZ))+pos1[2])*(1-currentX+int(currentX))+((pos4[2]-pos2[2])*(currentZ-int(currentZ))+pos2[2])*(currentX-int(currentX))
-        
-        newobj = cmds.instance(pair[0])
-        cmds.move(posX,posY,posZ,newobj)        # Move the model to the vertex position
-
-        if not isAngle:
-          cmds.rotate(0, random.randint(0,360),0,newobj)      # The y axis rotates randomly
         else:
-          ang=noraml4Point(l1,l2,l3,l4,terrainShape)
-          cmds.rotate(math.asin(ang[2])/math.pi*180, 0,-math.asin(ang[0])/math.pi*180,newobj, os = True)
-          cmds.rotate(random.randint(0,360),newobj,y=True,relative = True, os = True)
+          boundBox.append([posSize[0],posSize[3],posSize[2],posSize[5]])
 
-        # Determine whether it intersects other trees
-        if isAvoidBounding:
-          posSize=cmds.exactWorldBoundingBox(newobj,ce=True)    # Checks the xyz size of the current tree model
-          isBounding=boundingCheck(boundBox,posSize)
-          if isBounding:
-            cmds.select(newobj)
-            cmds.delete()
-            continue
-          else:
-            boundBox.append([posSize[0],posSize[3],posSize[2],posSize[5]])
-
-        currentIndex+=1
-        i+=1
+      currentIndex+=1
+      i+=1
 
 
 def  find4Point(currentX,currentZ,x,*others):
@@ -175,21 +175,13 @@ def boundingCheck(boundBox,posSize,*others):
           break
   return isBounding
 
-def generate(terrain, treeList):
+def generate(terrain, treeList, chooseArea):
   terrainShape = terrain
   treeNames = treeList    # the name of each tree
-  treeNumbers=[50,20]     # the number of trees
-  isAngle=True      # Whether to tilt at an Angle
-  isAvoidBounding=True    # Prevent intersection collision box option
+  treeNumbers=[5,5]     # the number of trees
+  isAngle=False    # Whether to tilt at an Angle
+  isAvoidBounding=False   # Prevent intersection collision box option
   x=60
   z=66
-  numVertex = cmds.polyEvaluate(terrainShape, vertex=True)        # Calculate the number of ground points
-  chooseArea=[]       # Records a list of selected regions
-  for i in range(numVertex):
-      if 800<i<2000:
-        t=1
-      else:
-        t=0
-      chooseArea.append(t)     # to randomly generate 01, and I'm going to delete that
-
+  print('startGenerate')
   setTree(terrainShape,treeNames,treeNumbers,x,z,isAngle,isAvoidBounding,chooseArea)
