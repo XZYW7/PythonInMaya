@@ -5,14 +5,51 @@ import maya.cmds as cmds
 import math 
 from maya.api import OpenMaya
 from maya.api.OpenMaya import MVector as vec
+import pymel.core as pm
 import random
+class leave:
+    leaveType = []
+    def __init__(self):
+        self.leaveType.append( [(-0.0375116, 0, -5.956661), (-0.0375116,0,-5.956661), (0.635531,0,-4.745183), (0.097097,0,-3.937532), ( -0.441337,0,-3.12988),
+(-3.099857,0,-0.303099), (-3.099857,0,2.18716), (-3.099857,0,4.677419), (-0.00385947,0,6.124462), (0.0297927,0,6.427331),
+(0.0634448, 0, 6.7302), (4.021403, 0, 5.176707), (4.067747, 0, 2.349765), (4.11409,0, -0.477177 ), (2.899479,0, -3.087925),
+(2.313483,0, -3.841881), (1.727488,0, -4.595838), (2.125889,0, -4.173427), (1.172866, 0, -5.175323), (0.219843, 0, -6.177218),
+(-0.0375116,0, -5.956661), (-0.0375116, 0, -5.956661)])
+        self.leaveType.append( [(-0.177027, 0, 2.994705),(-0.177027, 0, 2.994705), (-3.01622, 0, 5.034767),(-3.01622, 0, 5.034767),
+        (-3.01622, 0, 5.034767),(-5.986036, 0, 5.034767),(-5.986036, 0, 5.034767),(-5.986036, 0, 5.034767),(-4.965162, 0, 3.085825),
+        (-4.965162, 0, 3.085825),(-4.965162, 0, 3.085825),(-4.083497, 0, 2.06495),(-4.083497, 0, 2.06495),(-4.083497, 0, 2.06495),
+        (-6.960507, 0, 0.0696051),(-6.960507, 0, 0.0696051),(-6.960507, 0, 0.0696051),( -5.939633, 0, 0.116008),( -5.939633, 0, 0.116008),
+        ( -5.939633, 0, 0.116008),( -6.960507, 0, -1.972144),( -6.960507, 0, -1.972144),( -6.960507, 0, -1.972144),(-4.965162, 0, -0.951269),
+        (-4.965162, 0, -0.951269),(-4.965162, 0, -0.951269),(-4.965162, 0, -1.972144),(-4.965162, 0, -1.972144),(-4.965162, 0, -1.972144),
+        (-3.01622, 0, -0.904866),(-3.01622, 0, -0.904866),(-3.01622, 0, -0.904866),(-2.552186, 0, -3.921086),(-2.552186, 0, -3.921086),
+        (-2.552186, 0, -3.921086),(-1.438505, 0, -3.039421),(-1.438505, 0, -3.039421),(-1.438505, 0, -3.039421),(0, 0, -6.983709),
+        (0, 0, -6.983709),(0, 0, -6.983709),(1.531312, 0, -3.039421),(1.531312, 0, -3.039421),(1.531312, 0, -3.039421),
+        (2.459379, 0, -3.967489),(2.459379, 0, -3.967489),(2.459379, 0, -3.967489),(2.969816, 0, -0.951269),(2.969816, 0, -0.951269),
+        (2.969816, 0, -0.951269),(5.011565, 0, -1.92574),(5.011565, 0, -1.92574),(5.011565, 0, -1.92574),(5.057968, 0, -0.951269),
+        (5.057968, 0, -0.951269),(5.057968, 0, -0.951269),(7.00691, 0, -1.879337),(7.00691, 0, -1.879337),(7.00691, 0, -1.879337),
+        (5.986036, 0, 0.0696051),(5.986036, 0, 0.0696051),(5.986036, 0, 0.0696051),(7.00691, 0, 0.116008),(7.00691, 0, 0.116008),
+        (7.00691, 0, 0.116008),(3.990691, 0, 2.06495),(3.990691, 0, 2.06495),(3.990691, 0, 2.06495),(5.104372, 0, 3.085825),
+        (5.104372, 0, 3.085825),(5.104372, 0, 3.085825),(6.078843, 0, 5.127574),(6.078843, 0, 5.127574),(6.078843, 0, 5.127574),
+        (2.920944, 0, 5.001009),(2.920944, 0, 5.001009),(2.920944, 0, 5.001009),(0.206531, 0, 3.024209),(0.206531, 0, 3.024209),
+        (0.206531, 0, 3.024209),(0.26554, 0, 7.036819),(0.26554, 0, 7.036819),(0.26554, 0, 7.036819),(-0.206531, 0, 7.036819),
+        (-0.206531, 0, 7.036819),(-0.206531, 0, 7.036819),( -0.177027, 0, 2.994705),( -0.177027, 0, 2.994705),( -0.177027, 0, 2.994705)])
 
+    def drawLeave(self, chooseType = 0):
+        curve = cmds.curve( p= self.leaveType[chooseType])
+        self.leave = cmds.planarSrf(curve)
+
+        leaveShape = pm.PyNode(self.leave[0]).getShape()
+        cmds.defaultNavigation(connectToExisting=True, destination=leaveShape+'.instObjGroups[0]', source='leaveColor')
+
+        cmds.delete(curve)
+        cmds.setAttr(self.leave[0]+'.scale', 0.05,1.0,0.05)
 class status:
     def __init__(self, pos = vec(0.0,0.0,0.0)):
         self.pos = pos
         self.rotation = OpenMaya.MQuaternion(0.0,0.0,0.0,1.0)
         self.dir = vec(0.0,1.0,0.0)
         self.length = 1.0
+        self.width = 1.0
     def getFront(self):
         defaultFront = vec(0.0,0.0,1.0)
         return defaultFront.rotateBy(self.rotation)
@@ -33,6 +70,9 @@ class Lsystem:
     axiom = ""
     lstring = ""
     stepLength = 0.5
+    lengthRate = 0.9
+    width = 0.1
+    widthRate = 0.5
     rotateAngle = 30
     Tree = ""
     def __init__(self, name):
@@ -41,7 +81,7 @@ class Lsystem:
         '''
         print("Lsystem Initialization")
         # Initialize
-        self.axiom = "FFFA"
+        self.axiom = "BBBA"
         # self.addRule('F', 'F[F\\F][F/F][F&F][F^F]F')
         # self.addRule('F', 'FF')
         #self.addRule('F', '"F[\\F][/F]')
@@ -73,16 +113,21 @@ class Lsystem:
         self.lstring = root
     
     def createBranch(self, pos, dir):
-        branch = cmds.polyCylinder(axis=dir, r=self.stepLength/5.0, height=self.stepLength)
+        branch = cmds.polyCylinder(axis=dir, r=self.width, height=self.stepLength)
+
+        branchShape = pm.PyNode(branch[0]).getShape()
+        cmds.defaultNavigation(connectToExisting=True, destination=branchShape+'.instObjGroups[0]', source='trunkColor')
+
+
         cmds.move(pos[0] + 0.5 * self.stepLength * dir*vec(1.0,0.0,0.0), pos[1]+ 0.5 * self.stepLength * dir*vec(0.0,1.0,0.0), pos[2]+ 0.5 * self.stepLength * dir*vec(0.0,0.0,1.0))
         return branch[0]
 
-    def drawModel(self):
+    def drawModel(self,leaveType = 0):
         statusStack = []
         branchList = []
         currentStatus = status(vec(0.0, 0.0, 0.0))
         for i in self.lstring:
-            if i == "F":
+            if i == "F" or i == "B":
 
                 # calculate current orientation status by Quaternion
                 dir = currentStatus.dir.rotateBy(currentStatus.rotation)
@@ -92,8 +137,21 @@ class Lsystem:
                 
                 # update the status
                 currentStatus.pos = currentStatus.pos + dir * self.stepLength
+            elif i == "L":
+                l = leave()#cmds.polySphere(r = self.stepLength)
+                l.drawLeave(leaveType)
+                v = vec(0.0,0.0,0.32)
+                #axis = vec(0.0,0.0,1.0)
+                #radians = random.random() * math.pi / 2.0 
+                #rotations = OpenMaya.MQuaternion(math.sin(radians/2)* axis[0], math.sin(radians/2)* axis[1] , math.sin(radians/2) * axis[2], math.cos(radians/2))
+                
+                cmds.rotate( 90*random.random(), 90*random.random(), 90*random.random(), l.leave[0], pivot=(0, 0, 0.32) )
+                cmds.move(currentStatus.pos[0] - v[0], currentStatus.pos[1] - v[1], currentStatus.pos[2]-v[2])
+
+                branchList.append(l.leave[0])
             elif i == '"':
-                self.stepLength *= 0.9
+                self.stepLength *= self.lengthRate
+                self.width *= self.widthRate
             elif i == "+":
                 radians = self.rotateAngle * math.pi /180.0
                 # rotations = OpenMaya.MEulerRotation(0.0,0.0,radians)
@@ -134,10 +192,13 @@ class Lsystem:
                 tmp.rotation = currentStatus.rotation
                 tmp.dir = currentStatus.dir
                 tmp.length = self.stepLength
+                tmp.width = self.width
                 statusStack.append(tmp)
             elif i == "]":
                 currentStatus = statusStack.pop()
                 self.stepLength = currentStatus.length
+                self.width = currentStatus.width
+
         print(branchList)
         print('group')
         print('group2')

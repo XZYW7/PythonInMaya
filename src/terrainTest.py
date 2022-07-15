@@ -36,3 +36,6 @@ for i in range(rows):
 	for j in range(cols):
 		cmds.move(0, value[i][j], 0, terrain[0]+".vtx["+str(i*cols+j)+"]", r=True)
 cmds.polySmooth(kb=False)
+
+
+
