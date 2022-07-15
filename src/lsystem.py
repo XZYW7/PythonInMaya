@@ -32,7 +32,7 @@ class Lsystem:
     iterations = 3
     axiom = ""
     lstring = ""
-    stepLength = 0.1
+    stepLength = 0.5
     rotateAngle = 30
     Tree = ""
     def __init__(self, *args):
@@ -45,9 +45,9 @@ class Lsystem:
         self.addRule('A', '"[&FFFA]++++[&FFFA]++++[&FFFA]')
         # self.addRule('F', 'F[F\\F][F/F][F&F][F^F]F')
         # self.addRule('F', 'FF')
-        # self.addRule('F', '"F[\\F]F[/F]F')
-        self.addRule('F', 'F[\\FA]F')
-        self.addRule('F', 'F[/FA]F')
+        self.addRule('F', '"F[\\F][/F]')
+        self.addRule('F', 'F[\\FA]')
+        self.addRule('F', 'F[/FA]')
 
         # Rule Iterate, get full Rule
         self.lstring = self.ruleIter()
@@ -94,7 +94,7 @@ class Lsystem:
                 # update the status
                 currentStatus.pos = currentStatus.pos + dir * self.stepLength
             elif i == '"':
-                self.stepLength *= 0.8
+                self.stepLength *= 0.9
             elif i == "+":
                 radians = self.rotateAngle * math.pi /180.0
                 # rotations = OpenMaya.MEulerRotation(0.0,0.0,radians)

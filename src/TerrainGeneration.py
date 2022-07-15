@@ -16,12 +16,13 @@ import math
 
 # Generate terrain according to a height map
 # The height map requires a square map with pixels less than 256*256, which can be a color map
-def HeightMapTerrain(HeightMapImageFile):
+def HeightMapTerrain(HeightMapImageFile, maxHeight):
     '''
     This is the function method that imports the height map to generate the terrain
     
     HeightMapImageFile: path to the height map
     '''
+    print(HeightMapImageFile)
     if not os.path.isfile(HeightMapImageFile):
         print("image doesn't exist")
         exit()
@@ -35,17 +36,15 @@ def HeightMapTerrain(HeightMapImageFile):
         print("the image does not meet the requirements")
         exit()
     
-    cmds.select(all=True)
-    cmds.delete()
-    
+
     terrain = cmds.polyPlane( axis=[0,1,0], w=50, h=50, sx=width-1, sy=height-1, ch=False)
 
     # change the vertex position of the plan according tot he terrainData
     for i in range(height):
         for j in range(width):
-            cmds.move(0, pixels[j,i]/255.0, 0, terrain[0]+".vtx["+str(i*width+j)+"]", r=True)
+            cmds.move(0, pixels[j,i]/255.0 * maxHeight, 0, terrain[0]+".vtx["+str(i*width+j)+"]", r=True)
         cmds.refresh(f = True)
-
+    return terrain
 
 # Generate terrain according to noise map
 def noiseMap(width, height, scale):
@@ -53,36 +52,36 @@ def noiseMap(width, height, scale):
 
     for i in range(0,int(height)):
         for j in range(0,int(width)):
-            noise[i][j] = scale * (random.random()*0.8+0.2) # (0.2,1]
+            noise[i][j] = scale * random.random() # (0.2,1]
     return noise
 
-def Elevation(terrain, width, height, sharpness):
-	noiseMap3 = noiseMap(width/4, height/4, 1.4)
-	noiseMap2 = noiseMap(width/2, height/2, 1.2)
-	noiseMap1 = noiseMap(width, height, 1.0)
-	for y in range(height):
-		for x in range(width):
-			pointy = noiseMap3[x/4][y/4] + 0.4* noiseMap2[x/2][y/2] + 0.2* noiseMap1[x][y]
-			pointy = math.pow(pointy, sharpness)
-			cmds.move(0, pointy*0.08, 0, terrain+".vtx["+str(y*width+x)+"]", r=True)
-		cmds.refresh(f = True)
+def Elevation(terrain, width, height, sharpness, maxHeight):
+    noiseMap3 = noiseMap(width/4, height/4, 1.4)
+    noiseMap2 = noiseMap(width/2, height/2, 1.2)
+    noiseMap1 = noiseMap(width, height, 1.0)
+    for y in range(height):
+        for x in range(width):
+            pointy = 1/1.4*noiseMap3[int(x/4)][int(y/4)]  + 1/1.2* noiseMap2[int(x/2)][int(y/2)] * 0.5  + noiseMap1[x][y] * 0.25
+            pointy /= 1.75
+            pointy = math.pow(pointy, sharpness)
+            cmds.move(0, pointy * maxHeight, 0, terrain+".vtx["+str(y*width+x)+"]", r=True)
+        cmds.refresh(f = True)
         
-def NoiseMapTerrain():
-	'''
-    This is the method to generate terrain by using randomly generated noise map
+def NoiseMapTerrain(maxHeight):
     '''
-	cmds.select(all=True)
-	cmds.delete()
+        This is the method to generate terrain by using randomly generated noise map
+    '''
 
-	height=200
-	width=200
-	smoothness = 2
-	sharpness = 6.0
-	terrain=cmds.polyPlane( axis=[0,1,0], w=50, h=50, sx=width-1, sy=height-1)
-	Elevation(terrain[0], width, height, sharpness)    
-	cmds.polyAverageVertex(iterations = smoothness)
-	cmds.select(terrain)
-	cmds.polySmooth()
+    height=200
+    width=200
+    smoothness = 2
+    sharpness = 6.0
+    terrain=cmds.polyPlane( axis=[0,1,0], w=50, h=50, sx=width-1, sy=height-1)
+    Elevation(terrain[0], width, height, sharpness, maxHeight)    
+    cmds.polyAverageVertex(iterations = smoothness)
+    cmds.select(terrain)
+    cmds.polySmooth()
+    return terrain
 
 
 #Select area according to a mask image
@@ -108,9 +107,8 @@ def AreaSelection(MaskImageFile, f, w=200, h=200):
     pixels = img.load()
     width, height = img.size
     
-    if f==0 and (w!=width or h!=height):
+    if f==1 and (w!=width or h!=height):
         print("the image does not meet the requirements")
-        exit()
     
     chooseArea=[]
     for i in range(height):

@@ -175,20 +175,21 @@ def boundingCheck(boundBox,posSize,*others):
           break
   return isBounding
 
-terrainShape ='terrain'
-treeNames = ["cow", "wolf"]     # the name of each tree
-treeNumbers=[50,20]     # the number of trees
-isAngle=True      # Whether to tilt at an Angle
-isAvoidBounding=True    # Prevent intersection collision box option
-x=60
-z=66
-numVertex = cmds.polyEvaluate(terrainShape, vertex=True)        # Calculate the number of ground points
-chooseArea=[]       # Records a list of selected regions
-for i in range(numVertex):
-    if 800<i<2000:
-      t=1
-    else:
-      t=0
-    chooseArea.append(t)     # to randomly generate 01, and I'm going to delete that
+def generate(terrain, treeList):
+  terrainShape = terrain
+  treeNames = treeList    # the name of each tree
+  treeNumbers=[50,20]     # the number of trees
+  isAngle=True      # Whether to tilt at an Angle
+  isAvoidBounding=True    # Prevent intersection collision box option
+  x=60
+  z=66
+  numVertex = cmds.polyEvaluate(terrainShape, vertex=True)        # Calculate the number of ground points
+  chooseArea=[]       # Records a list of selected regions
+  for i in range(numVertex):
+      if 800<i<2000:
+        t=1
+      else:
+        t=0
+      chooseArea.append(t)     # to randomly generate 01, and I'm going to delete that
 
-setTree(terrainShape,treeNames,treeNumbers,x,z,isAngle,isAvoidBounding,chooseArea)
+  setTree(terrainShape,treeNames,treeNumbers,x,z,isAngle,isAvoidBounding,chooseArea)
