@@ -384,7 +384,7 @@ class LandscapeSystem(QtWidgets.QWidget):
         self.treeNumbers = [0,0,0]
         self.flag = -1
 if __name__ == "__main__":
-    pydoc.writedoc('main', 1)
+    pydoc.writedoc('main', 0)
     cmds.select(all=True)
     cmds.delete()
     ui = LandscapeSystem()
