@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module terrain</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>terrain</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cxzyw%5C%E6%96%87%E6%A1%A3%5Cmaya%5C2022%5Czh_cn%5Cscripts%5Cterrain.py">c:\users\xzyw\文档\maya\2022\zh_cn\scripts\terrain.py</a></font></td></tr></table>
+    <p><tt>Completed<br>
+The&nbsp;trees&nbsp;are&nbsp;randomly&nbsp;arranged&nbsp;on&nbsp;the&nbsp;surface&nbsp;according&nbsp;to&nbsp;the&nbsp;01&nbsp;point&nbsp;matrix&nbsp;within&nbsp;the&nbsp;region<br>
+The&nbsp;y&nbsp;axis&nbsp;of&nbsp;the&nbsp;tree&nbsp;rotates&nbsp;randomly,&nbsp;either&nbsp;vertically&nbsp;up&nbsp;or&nbsp;pointing&nbsp;in&nbsp;the&nbsp;normal&nbsp;direction&nbsp;of&nbsp;the&nbsp;surface<br>
+Tree&nbsp;models&nbsp;placed&nbsp;intersection&nbsp;detection,&nbsp;turned&nbsp;on&nbsp;to&nbsp;prevent&nbsp;tree&nbsp;models&nbsp;from&nbsp;intersecting<br>
+Code&nbsp;is&nbsp;packaged&nbsp;into&nbsp;functions</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="maya.cmds.html">maya.cmds</a><br>
+</td><td width="25%" valign=top><a href="math.html">math</a><br>
+</td><td width="25%" valign=top><a href="random.html">random</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-boundingCheck"><strong>boundingCheck</strong></a>(boundBox, posSize, *others)</dt><dd><tt>Info:this&nbsp;is&nbsp;the&nbsp;funciton&nbsp;to&nbsp;check&nbsp;the&nbsp;tree&nbsp;intersection<br>
+Param:<br>
+&nbsp;&nbsp;boundBox:&nbsp;a&nbsp;list&nbsp;that&nbsp;contains&nbsp;the&nbsp;xyz&nbsp;size&nbsp;positions&nbsp;of&nbsp;the&nbsp;trees<br>
+&nbsp;&nbsp;posSize:&nbsp;the&nbsp;xyz&nbsp;size&nbsp;position&nbsp;of&nbsp;the&nbsp;current&nbsp;tree</tt></dd></dl>
+ <dl><dt><a name="-checkArea"><strong>checkArea</strong></a>(l1, l2, l3, l4, chooseArea, d1, d2, d3, d4, *others)</dt><dd><tt>Info:this&nbsp;is&nbsp;the&nbsp;function&nbsp;to&nbsp;check&nbsp;whether&nbsp;the&nbsp;point&nbsp;is&nbsp;in&nbsp;the&nbsp;chosen&nbsp;area<br>
+Param:<br>
+&nbsp;&nbsp;l1,l2,l3,l4:&nbsp;the&nbsp;number&nbsp;of&nbsp;the&nbsp;4&nbsp;vertexs&nbsp;on&nbsp;the&nbsp;ground&nbsp;around&nbsp;the&nbsp;point<br>
+&nbsp;&nbsp;chooseArea:&nbsp;a&nbsp;list&nbsp;that&nbsp;uses&nbsp;0&nbsp;and&nbsp;1&nbsp;to&nbsp;record&nbsp;whether&nbsp;each&nbsp;vertex&nbsp;of&nbsp;the&nbsp;ground&nbsp;is&nbsp;chosen&nbsp;to&nbsp;plant&nbsp;trees&nbsp;or&nbsp;not<br>
+&nbsp;&nbsp;d1,d2,d3,d4:&nbsp;the&nbsp;distance&nbsp;between&nbsp;the&nbsp;point&nbsp;and&nbsp;4&nbsp;vertexs</tt></dd></dl>
+ <dl><dt><a name="-distance4Point"><strong>distance4Point</strong></a>(currentX, currentZ, *others)</dt><dd><tt>Info:this&nbsp;is&nbsp;the&nbsp;function&nbsp;to&nbsp;calculate&nbsp;the&nbsp;distance&nbsp;between&nbsp;the&nbsp;point&nbsp;and&nbsp;4&nbsp;vertexs<br>
+Param:<br>
+&nbsp;&nbsp;currentX:&nbsp;the&nbsp;x&nbsp;coordinate&nbsp;of&nbsp;the&nbsp;point<br>
+&nbsp;&nbsp;currentZ:&nbsp;the&nbsp;z&nbsp;coordinate&nbsp;fo&nbsp;the&nbsp;point</tt></dd></dl>
+ <dl><dt><a name="-find4Point"><strong>find4Point</strong></a>(currentX, currentZ, x, *others)</dt><dd><tt>Info:this&nbsp;is&nbsp;the&nbsp;function&nbsp;to&nbsp;find&nbsp;the&nbsp;number&nbsp;of&nbsp;the&nbsp;4&nbsp;vertexs&nbsp;on&nbsp;the&nbsp;ground&nbsp;around&nbsp;the&nbsp;point<br>
+Param:<br>
+&nbsp;&nbsp;currentX:&nbsp;the&nbsp;x&nbsp;coordinate&nbsp;of&nbsp;the&nbsp;point<br>
+&nbsp;&nbsp;currentZ:&nbsp;the&nbsp;z&nbsp;coordinate&nbsp;fo&nbsp;the&nbsp;point<br>
+&nbsp;&nbsp;x:&nbsp;the&nbsp;number&nbsp;of&nbsp;vertexs&nbsp;of&nbsp;the&nbsp;ground&nbsp;on&nbsp;the&nbsp;x-axis</tt></dd></dl>
+ <dl><dt><a name="-generate"><strong>generate</strong></a>(terrain, treeList, treeNumbers, chooseArea)</dt><dd><tt>Info:Give&nbsp;a&nbsp;interface&nbsp;of&nbsp;Running&nbsp;the&nbsp;distribution&nbsp;function<br>
+Param:<br>
+&nbsp;&nbsp;terrain:&nbsp;the&nbsp;terrain&nbsp;name<br>
+&nbsp;&nbsp;treeList:&nbsp;the&nbsp;list&nbsp;of&nbsp;trees<br>
+&nbsp;&nbsp;treeNumbers:&nbsp;a&nbsp;list&nbsp;of&nbsp;numbers&nbsp;of&nbsp;different&nbsp;trees<br>
+&nbsp;&nbsp;chooseArea:&nbsp;a&nbsp;list&nbsp;of&nbsp;choosen&nbsp;Area,&nbsp;represented&nbsp;by&nbsp;01</tt></dd></dl>
+ <dl><dt><a name="-noraml4Point"><strong>noraml4Point</strong></a>(l1, l2, l3, l4, terrainShape, *others)</dt><dd><tt>Info:this&nbsp;is&nbsp;the&nbsp;function&nbsp;to&nbsp;calculate&nbsp;the&nbsp;average&nbsp;normal&nbsp;vector&nbsp;of&nbsp;the&nbsp;4&nbsp;vertexs<br>
+Param:<br>
+&nbsp;&nbsp;l1,l2,l3,l4:&nbsp;the&nbsp;number&nbsp;of&nbsp;the&nbsp;4&nbsp;vertexs&nbsp;on&nbsp;the&nbsp;ground&nbsp;around&nbsp;the&nbsp;point<br>
+&nbsp;&nbsp;terrainShape:&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;gournd</tt></dd></dl>
+ <dl><dt><a name="-setTree"><strong>setTree</strong></a>(terrainShape, treeNames, treeNumbers, x, z, isAngle, isAvoidBounding, chooseArea, *others)</dt><dd><tt>Info:&nbsp;this&nbsp;is&nbsp;the&nbsp;function&nbsp;to&nbsp;set&nbsp;the&nbsp;trees&nbsp;to&nbsp;the&nbsp;ground<br>
+Param:<br>
+&nbsp;&nbsp;terrainShape:&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;gournd<br>
+&nbsp;&nbsp;treeNames:&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;names&nbsp;of&nbsp;trees<br>
+&nbsp;&nbsp;treeNumbers:&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;numbers&nbsp;of&nbsp;trees<br>
+&nbsp;&nbsp;x:&nbsp;the&nbsp;number&nbsp;of&nbsp;vertexs&nbsp;of&nbsp;the&nbsp;ground&nbsp;on&nbsp;the&nbsp;x-axis<br>
+&nbsp;&nbsp;z:&nbsp;the&nbsp;number&nbsp;of&nbsp;vertexs&nbsp;of&nbsp;the&nbsp;ground&nbsp;on&nbsp;the&nbsp;z-axis<br>
+&nbsp;&nbsp;isAngle:&nbsp;judge&nbsp;whether&nbsp;it&nbsp;is&nbsp;inclined&nbsp;according&nbsp;to&nbsp;the&nbsp;normal&nbsp;of&nbsp;the&nbsp;ground<br>
+&nbsp;&nbsp;isAvoidBounding:&nbsp;judge&nbsp;whether&nbsp;to&nbsp;avoid&nbsp;tree&nbsp;intersection&nbsp;while&nbsp;setting<br>
+&nbsp;&nbsp;chooseArea:&nbsp;a&nbsp;list&nbsp;that&nbsp;uses&nbsp;0&nbsp;and&nbsp;1&nbsp;to&nbsp;record&nbsp;whether&nbsp;each&nbsp;vertex&nbsp;of&nbsp;the&nbsp;ground&nbsp;is&nbsp;chosen&nbsp;to&nbsp;plant&nbsp;trees&nbsp;or&nbsp;not</tt></dd></dl>
+</td></tr></table>
+</body></html>

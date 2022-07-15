@@ -10,9 +10,9 @@ import pymel.core as pm
 from maya import OpenMayaUI as omui
 import shiboken2
 from maya import cmds
-from importlib import reload
+from importlib import reload    
 import sys
-
+import pydoc
 # confirm the working dir.
 def workingDir():
     '''
@@ -384,6 +384,7 @@ class LandscapeSystem(QtWidgets.QWidget):
         self.treeNumbers = [0,0,0]
         self.flag = -1
 if __name__ == "__main__":
+    pydoc.writedoc('main', 1)
     cmds.select(all=True)
     cmds.delete()
     ui = LandscapeSystem()

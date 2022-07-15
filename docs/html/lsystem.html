@@ -1,0 +1,284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module lsystem</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>lsystem</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cxzyw%5C%E6%96%87%E6%A1%A3%5Cmaya%5C2022%5Czh_cn%5Cscripts%5Clsystem.py">c:\users\xzyw\文档\maya\2022\zh_cn\scripts\lsystem.py</a></font></td></tr></table>
+    <p><tt>Info:&nbsp;This&nbsp;file&nbsp;is&nbsp;used&nbsp;to&nbsp;generate&nbsp;a&nbsp;plant&nbsp;with&nbsp;L-system</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="maya.api.OpenMaya.html">maya.api.OpenMaya</a><br>
+<a href="maya.cmds.html">maya.cmds</a><br>
+</td><td width="25%" valign=top><a href="math.html">math</a><br>
+<a href="pymel.core.html">pymel.core</a><br>
+</td><td width="25%" valign=top><a href="random.html">random</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial">OpenMaya.MVector
+</font></dt><dt><font face="helvetica, arial"><a href="lsystem.html#Lsystem">Lsystem</a>
+</font></dt><dt><font face="helvetica, arial"><a href="lsystem.html#leave">leave</a>
+</font></dt><dt><font face="helvetica, arial"><a href="lsystem.html#status">status</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Lsystem">class <strong>Lsystem</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Lsystem">Lsystem</a>(name)<br>
+&nbsp;<br>
+Info:&nbsp;The&nbsp;basic&nbsp;class&nbsp;for&nbsp;<a href="#Lsystem">Lsystem</a>.&nbsp;<br>
+You&nbsp;should&nbsp;instantiate&nbsp;the&nbsp;class&nbsp;when&nbsp;you&nbsp;create&nbsp;a&nbsp;plant<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Lsystem-__init__"><strong>__init__</strong></a>(self, name)</dt><dd><tt>Info:&nbsp;Run&nbsp;the&nbsp;constructor,&nbsp;Initialize&nbsp;variebles,&nbsp;Iterate&nbsp;rules,&nbsp;create&nbsp;models<br>
+Param:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;name:&nbsp;user&nbsp;give&nbsp;a&nbsp;name&nbsp;to&nbsp;distinguish&nbsp;the&nbsp;tree</tt></dd></dl>
+
+<dl><dt><a name="Lsystem-addRule"><strong>addRule</strong></a>(self, replaceStr, newStr)</dt><dd><tt>Info:&nbsp;add&nbsp;a&nbsp;rule&nbsp;into&nbsp;the&nbsp;RuleSet</tt></dd></dl>
+
+<dl><dt><a name="Lsystem-createBranch"><strong>createBranch</strong></a>(self, pos, dir)</dt><dd><tt>Info:&nbsp;create&nbsp;a&nbsp;brach&nbsp;of&nbsp;the&nbsp;tree</tt></dd></dl>
+
+<dl><dt><a name="Lsystem-drawModel"><strong>drawModel</strong></a>(self, leaveType=0)</dt><dd><tt>Info:&nbsp;Use&nbsp;the&nbsp;iterated&nbsp;Rule&nbsp;Grammer&nbsp;to&nbsp;build&nbsp;a&nbsp;tree&nbsp;model&nbsp;with&nbsp;leaves</tt></dd></dl>
+
+<dl><dt><a name="Lsystem-ruleIter"><strong>ruleIter</strong></a>(self)</dt><dd><tt>Info:&nbsp;Generate&nbsp;a&nbsp;full&nbsp;Rule&nbsp;Grammer</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>Tree</strong> = ''</dl>
+
+<dl><dt><strong>axiom</strong> = ''</dl>
+
+<dl><dt><strong>iterations</strong> = 3</dl>
+
+<dl><dt><strong>lengthRate</strong> = 0.9</dl>
+
+<dl><dt><strong>lstring</strong> = ''</dl>
+
+<dl><dt><strong>rotateAngle</strong> = 30</dl>
+
+<dl><dt><strong>ruleSet</strong> = {}</dl>
+
+<dl><dt><strong>stepLength</strong> = 0.5</dl>
+
+<dl><dt><strong>width</strong> = 0.1</dl>
+
+<dl><dt><strong>widthRate</strong> = 0.5</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="leave">class <strong>leave</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Info:&nbsp;Generate&nbsp;the&nbsp;model&nbsp;of&nbsp;leaves<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="leave-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="leave-drawLeave"><strong>drawLeave</strong></a>(self, chooseType=0)</dt><dd><tt>Info:&nbsp;create&nbsp;the&nbsp;model&nbsp;of&nbsp;<a href="#leave">leave</a><br>
+Param:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;chooseType:&nbsp;input&nbsp;the&nbsp;type&nbsp;of&nbsp;leaves,&nbsp;there&nbsp;are&nbsp;2&nbsp;kinds&nbsp;of&nbsp;leaves,&nbsp;default&nbsp;value&nbsp;is&nbsp;0</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>leaveType</strong> = []</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="status">class <strong>status</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#status">status</a>(pos=maya.api.OpenMaya.MVector(0,&nbsp;0,&nbsp;0))<br>
+&nbsp;<br>
+Info:&nbsp;Record&nbsp;the&nbsp;<a href="#status">status</a>&nbsp;of&nbsp;L-system,&nbsp;including&nbsp;transform&nbsp;<a href="#status">status</a>&nbsp;and&nbsp;size&nbsp;scale&nbsp;<a href="#status">status</a><br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="status-__init__"><strong>__init__</strong></a>(self, pos=maya.api.OpenMaya.MVector(0, 0, 0))</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="status-getFront"><strong>getFront</strong></a>(self)</dt><dd><tt>Info:&nbsp;The&nbsp;front&nbsp;direction&nbsp;of&nbsp;the&nbsp;local&nbsp;orientation&nbsp;of&nbsp;the&nbsp;L-system</tt></dd></dl>
+
+<dl><dt><a name="status-getRight"><strong>getRight</strong></a>(self)</dt><dd><tt>Info:&nbsp;The&nbsp;right&nbsp;direction&nbsp;of&nbsp;the&nbsp;local&nbsp;orientation&nbsp;of&nbsp;the&nbsp;L-system</tt></dd></dl>
+
+<dl><dt><a name="status-getUp"><strong>getUp</strong></a>(self)</dt><dd><tt>Info:&nbsp;The&nbsp;up&nbsp;direction&nbsp;of&nbsp;the&nbsp;local&nbsp;orientation&nbsp;of&nbsp;the&nbsp;L-system</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>vec</strong> = <a name="vec">class MVector</a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>3D&nbsp;vector&nbsp;with&nbsp;double-precision&nbsp;coordinates.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="MVector-__add__"><strong>__add__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self+value.</tt></dd></dl>
+
+<dl><dt><a name="MVector-__delitem__"><strong>__delitem__</strong></a>(self, key, /)</dt><dd><tt>Delete&nbsp;self[key].</tt></dd></dl>
+
+<dl><dt><a name="MVector-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="MVector-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="MVector-__getitem__"><strong>__getitem__</strong></a>(self, key, /)</dt><dd><tt>Return&nbsp;self[key].</tt></dd></dl>
+
+<dl><dt><a name="MVector-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="MVector-__iadd__"><strong>__iadd__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self+=value.</tt></dd></dl>
+
+<dl><dt><a name="MVector-__imul__"><strong>__imul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self*=value.</tt></dd></dl>
+
+<dl><dt><a name="MVector-__init__"><strong>__init__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="MVector-__isub__"><strong>__isub__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self-=value.</tt></dd></dl>
+
+<dl><dt><a name="MVector-__itruediv__"><strong>__itruediv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self/=value.</tt></dd></dl>
+
+<dl><dt><a name="MVector-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="MVector-__len__"><strong>__len__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;len(self).</tt></dd></dl>
+
+<dl><dt><a name="MVector-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="MVector-__mul__"><strong>__mul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self*value.</tt></dd></dl>
+
+<dl><dt><a name="MVector-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<dl><dt><a name="MVector-__neg__"><strong>__neg__</strong></a>(self, /)</dt><dd><tt>-self</tt></dd></dl>
+
+<dl><dt><a name="MVector-__radd__"><strong>__radd__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value+self.</tt></dd></dl>
+
+<dl><dt><a name="MVector-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="MVector-__rmul__"><strong>__rmul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value*self.</tt></dd></dl>
+
+<dl><dt><a name="MVector-__rsub__"><strong>__rsub__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value-self.</tt></dd></dl>
+
+<dl><dt><a name="MVector-__rtruediv__"><strong>__rtruediv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value/self.</tt></dd></dl>
+
+<dl><dt><a name="MVector-__rxor__"><strong>__rxor__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value^self.</tt></dd></dl>
+
+<dl><dt><a name="MVector-__setitem__"><strong>__setitem__</strong></a>(self, key, value, /)</dt><dd><tt>Set&nbsp;self[key]&nbsp;to&nbsp;value.</tt></dd></dl>
+
+<dl><dt><a name="MVector-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<dl><dt><a name="MVector-__sub__"><strong>__sub__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self-value.</tt></dd></dl>
+
+<dl><dt><a name="MVector-__truediv__"><strong>__truediv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self/value.</tt></dd></dl>
+
+<dl><dt><a name="MVector-__xor__"><strong>__xor__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self^value.</tt></dd></dl>
+
+<dl><dt><a name="MVector-angle"><strong>angle</strong></a>(...)</dt><dd><tt>Returns&nbsp;the&nbsp;angle,&nbsp;in&nbsp;radians,&nbsp;between&nbsp;this&nbsp;vector&nbsp;and&nbsp;another.</tt></dd></dl>
+
+<dl><dt><a name="MVector-isEquivalent"><strong>isEquivalent</strong></a>(...)</dt><dd><tt>Returns&nbsp;True&nbsp;if&nbsp;this&nbsp;vector&nbsp;and&nbsp;another&nbsp;are&nbsp;within&nbsp;a&nbsp;given&nbsp;tolerance&nbsp;of&nbsp;being&nbsp;equal.</tt></dd></dl>
+
+<dl><dt><a name="MVector-isParallel"><strong>isParallel</strong></a>(...)</dt><dd><tt>Returns&nbsp;True&nbsp;if&nbsp;this&nbsp;vector&nbsp;and&nbsp;another&nbsp;are&nbsp;within&nbsp;the&nbsp;given&nbsp;tolerance&nbsp;of&nbsp;being&nbsp;parallel.</tt></dd></dl>
+
+<dl><dt><a name="MVector-length"><strong>length</strong></a>(...)</dt><dd><tt>Returns&nbsp;the&nbsp;magnitude&nbsp;of&nbsp;this&nbsp;vector.</tt></dd></dl>
+
+<dl><dt><a name="MVector-normal"><strong>normal</strong></a>(...)</dt><dd><tt>Returns&nbsp;a&nbsp;new&nbsp;vector&nbsp;containing&nbsp;the&nbsp;normalized&nbsp;version&nbsp;of&nbsp;this&nbsp;one.</tt></dd></dl>
+
+<dl><dt><a name="MVector-normalize"><strong>normalize</strong></a>(...)</dt><dd><tt>Normalizes&nbsp;this&nbsp;vector&nbsp;in-place&nbsp;and&nbsp;returns&nbsp;a&nbsp;new&nbsp;reference&nbsp;to&nbsp;it.</tt></dd></dl>
+
+<dl><dt><a name="MVector-rotateBy"><strong>rotateBy</strong></a>(...)</dt><dd><tt>Returns&nbsp;the&nbsp;vector&nbsp;resulting&nbsp;from&nbsp;rotating&nbsp;this&nbsp;one&nbsp;by&nbsp;the&nbsp;given&nbsp;amount.</tt></dd></dl>
+
+<dl><dt><a name="MVector-rotateTo"><strong>rotateTo</strong></a>(...)</dt><dd><tt>Returns&nbsp;the&nbsp;quaternion&nbsp;which&nbsp;will&nbsp;rotate&nbsp;this&nbsp;vector&nbsp;into&nbsp;another.</tt></dd></dl>
+
+<dl><dt><a name="MVector-transformAsNormal"><strong>transformAsNormal</strong></a>(...)</dt><dd><tt>Returns&nbsp;a&nbsp;new&nbsp;vector&nbsp;which&nbsp;is&nbsp;calculated&nbsp;by&nbsp;postmultiplying&nbsp;this&nbsp;vector&nbsp;by&nbsp;the&nbsp;transpose&nbsp;of&nbsp;the&nbsp;given&nbsp;matrix's&nbsp;inverse&nbsp;and&nbsp;then&nbsp;normalizing&nbsp;the&nbsp;result.</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="MVector-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>x</strong></dt>
+<dd><tt>X&nbsp;coordinate</tt></dd>
+</dl>
+<dl><dt><strong>y</strong></dt>
+<dd><tt>Y&nbsp;coordinate</tt></dd>
+</dl>
+<dl><dt><strong>z</strong></dt>
+<dd><tt>Z&nbsp;coordinate</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__hash__</strong> = None</dl>
+
+<dl><dt><strong>kOneVector</strong> = maya.api.OpenMaya.MVector(1, 1, 1)</dl>
+
+<dl><dt><strong>kTolerance</strong> = 1e-10</dl>
+
+<dl><dt><strong>kWaxis</strong> = 3</dl>
+
+<dl><dt><strong>kXaxis</strong> = 0</dl>
+
+<dl><dt><strong>kXaxisVector</strong> = maya.api.OpenMaya.MVector(1, 0, 0)</dl>
+
+<dl><dt><strong>kXnegAxisVector</strong> = maya.api.OpenMaya.MVector(-1, 0, 0)</dl>
+
+<dl><dt><strong>kYaxis</strong> = 1</dl>
+
+<dl><dt><strong>kYaxisVector</strong> = maya.api.OpenMaya.MVector(0, 1, 0)</dl>
+
+<dl><dt><strong>kYnegAxisVector</strong> = maya.api.OpenMaya.MVector(0, -1, 0)</dl>
+
+<dl><dt><strong>kZaxis</strong> = 2</dl>
+
+<dl><dt><strong>kZaxisVector</strong> = maya.api.OpenMaya.MVector(0, 0, 1)</dl>
+
+<dl><dt><strong>kZeroVector</strong> = maya.api.OpenMaya.MVector(0, 0, 0)</dl>
+
+<dl><dt><strong>kZnegAxisVector</strong> = maya.api.OpenMaya.MVector(0, 0, -1)</dl>
+
+</td></tr></table></td></tr></table>
+</body></html>

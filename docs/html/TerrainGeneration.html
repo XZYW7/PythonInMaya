@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module TerrainGeneration</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>TerrainGeneration</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cxzyw%5C%E6%96%87%E6%A1%A3%5Cmaya%5C2022%5Czh_cn%5Cscripts%5Cterraingeneration.py">c:\users\xzyw\文档\maya\2022\zh_cn\scripts\terraingeneration.py</a></font></td></tr></table>
+    <p><tt>This&nbsp;is&nbsp;Chen&nbsp;Longxuan's&nbsp;working&nbsp;space<br>
+Completed&nbsp;<br>
+Generate&nbsp;terrain&nbsp;according&nbsp;to&nbsp;a&nbsp;height&nbsp;map<br>
+Generate&nbsp;terrain&nbsp;according&nbsp;to&nbsp;noise&nbsp;map<br>
+Select&nbsp;area&nbsp;according&nbsp;to&nbsp;a&nbsp;mask&nbsp;image<br>
+Code&nbsp;is&nbsp;packaged&nbsp;into&nbsp;functions</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="PIL.Image.html">PIL.Image</a><br>
+<a href="maya.cmds.html">maya.cmds</a><br>
+</td><td width="25%" valign=top><a href="math.html">math</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="random.html">random</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-AreaSelection"><strong>AreaSelection</strong></a>(MaskImageFile, f, w=200, h=200)</dt><dd><tt>This&nbsp;is&nbsp;the&nbsp;function&nbsp;method&nbsp;that&nbsp;imports&nbsp;the&nbsp;mask&nbsp;to&nbsp;select&nbsp;area<br>
+&nbsp;<br>
+MaskImageFile:&nbsp;path&nbsp;to&nbsp;the&nbsp;mask<br>
+f:&nbsp;The&nbsp;way&nbsp;terrain&nbsp;is&nbsp;generated<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"0"&nbsp;means&nbsp;using&nbsp;the&nbsp;height&nbsp;map&nbsp;to&nbsp;generate<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"1"&nbsp;means&nbsp;using&nbsp;the&nbsp;noise&nbsp;map&nbsp;to&nbsp;generate<br>
+w:&nbsp;width&nbsp;of&nbsp;height&nbsp;map<br>
+h:&nbsp;height&nbsp;of&nbsp;height&nbsp;map</tt></dd></dl>
+ <dl><dt><a name="-Elevation"><strong>Elevation</strong></a>(terrain, width, height, sharpness, maxHeight)</dt></dl>
+ <dl><dt><a name="-HeightMapTerrain"><strong>HeightMapTerrain</strong></a>(HeightMapImageFile, maxHeight)</dt><dd><tt>This&nbsp;is&nbsp;the&nbsp;function&nbsp;method&nbsp;that&nbsp;imports&nbsp;the&nbsp;height&nbsp;map&nbsp;to&nbsp;generate&nbsp;the&nbsp;terrain<br>
+&nbsp;<br>
+HeightMapImageFile:&nbsp;path&nbsp;to&nbsp;the&nbsp;height&nbsp;map</tt></dd></dl>
+ <dl><dt><a name="-NoiseMapTerrain"><strong>NoiseMapTerrain</strong></a>(maxHeight)</dt><dd><tt>This&nbsp;is&nbsp;the&nbsp;method&nbsp;to&nbsp;generate&nbsp;terrain&nbsp;by&nbsp;using&nbsp;randomly&nbsp;generated&nbsp;noise&nbsp;map</tt></dd></dl>
+ <dl><dt><a name="-noiseMap"><strong>noiseMap</strong></a>(width, height, scale)</dt><dd><tt>#&nbsp;Generate&nbsp;terrain&nbsp;according&nbsp;to&nbsp;noise&nbsp;map</tt></dd></dl>
+</td></tr></table>
+</body></html>

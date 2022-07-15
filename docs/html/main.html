@@ -1,0 +1,876 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module main</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>main</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:d%3A%5Cautodesk%5Cmaya2022%5Cbin%5Cmain.py">d:\autodesk\maya2022\bin\main.py</a></font></td></tr></table>
+    <p><tt>Info:&nbsp;This&nbsp;is&nbsp;the&nbsp;entrance&nbsp;of&nbsp;our&nbsp;program.&nbsp;Everything&nbsp;begins&nbsp;here.<br>
+We&nbsp;create&nbsp;GUI&nbsp;controller&nbsp;there,&nbsp;and&nbsp;call&nbsp;different&nbsp;functions.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="PySide2.QtCore.html">PySide2.QtCore</a><br>
+<a href="PySide2.QtGui.html">PySide2.QtGui</a><br>
+<a href="PySide2.QtWidgets.html">PySide2.QtWidgets</a><br>
+</td><td width="25%" valign=top><a href="maya.cmds.html">maya.cmds</a><br>
+<a href="lsystem.html">lsystem</a><br>
+<a href="maya.OpenMayaUI.html">maya.OpenMayaUI</a><br>
+</td><td width="25%" valign=top><a href="pymel.core.html">pymel.core</a><br>
+<a href="shiboken2.html">shiboken2</a><br>
+<a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="terrain.html">terrain</a><br>
+<a href="TerrainGeneration.html">TerrainGeneration</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="PySide2.QtWidgets.html#QWidget">PySide2.QtWidgets.QWidget</a>(<a href="PySide2.QtCore.html#QObject">PySide2.QtCore.QObject</a>, <a href="PySide2.QtGui.html#QPaintDevice">PySide2.QtGui.QPaintDevice</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="main.html#LandscapeSystem">LandscapeSystem</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="LandscapeSystem">class <strong>LandscapeSystem</strong></a>(<a href="PySide2.QtWidgets.html#QWidget">PySide2.QtWidgets.QWidget</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#LandscapeSystem">LandscapeSystem</a>(dock=False)<br>
+&nbsp;<br>
+Info:&nbsp;The&nbsp;GUI&nbsp;system,&nbsp;we&nbsp;create&nbsp;our&nbsp;gui&nbsp;and&nbsp;connect&nbsp;them&nbsp;with&nbsp;our&nbsp;functions.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="main.html#LandscapeSystem">LandscapeSystem</a></dd>
+<dd><a href="PySide2.QtWidgets.html#QWidget">PySide2.QtWidgets.QWidget</a></dd>
+<dd><a href="PySide2.QtCore.html#QObject">PySide2.QtCore.QObject</a></dd>
+<dd><a href="PySide2.QtGui.html#QPaintDevice">PySide2.QtGui.QPaintDevice</a></dd>
+<dd>Shiboken.Object</dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="LandscapeSystem-__init__"><strong>__init__</strong></a>(self, dock=False)</dt><dd><tt>Info:&nbsp;Constructor.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;point&nbsp;our&nbsp;GUI&nbsp;into&nbsp;parent&nbsp;Qtwidgets.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;2.&nbsp;build&nbsp;UI&nbsp;system<br>
+Param:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dock:&nbsp;do&nbsp;we&nbsp;need&nbsp;to&nbsp;attach&nbsp;our&nbsp;window&nbsp;into&nbsp;Maya&nbsp;window</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-buildTree"><strong>buildTree</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LandscapeSystem-buildUI"><strong>buildUI</strong></a>(self)</dt><dd><tt>Create&nbsp;the&nbsp;GUI&nbsp;system,&nbsp;and&nbsp;create&nbsp;drawback&nbsp;of&nbsp;the&nbsp;GUI</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-chooseHeightMap"><strong>chooseHeightMap</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LandscapeSystem-chooseMask"><strong>chooseMask</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LandscapeSystem-chooseNoise"><strong>chooseNoise</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LandscapeSystem-clear"><strong>clear</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LandscapeSystem-createOcean"><strong>createOcean</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LandscapeSystem-distribute"><strong>distribute</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LandscapeSystem-generateTerrain"><strong>generateTerrain</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LandscapeSystem-setButtonColor"><strong>setButtonColor</strong></a>(self, Btn, color)</dt></dl>
+
+<dl><dt><a name="LandscapeSystem-setLeaveColor"><strong>setLeaveColor</strong></a>(self)</dt><dd><tt>#&nbsp;These&nbsp;functions&nbsp;are&nbsp;all&nbsp;drawback&nbsp;function&nbsp;of&nbsp;GUI</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setOceanColor"><strong>setOceanColor</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LandscapeSystem-setTerrainColor"><strong>setTerrainColor</strong></a>(self)</dt></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>flag</strong> = -1</dl>
+
+<dl><dt><strong>leaveColor</strong> = [0.05, 0.25, 0.0]</dl>
+
+<dl><dt><strong>oceanColor</strong> = [0, 0.3, 0.84]</dl>
+
+<dl><dt><strong>staticMetaObject</strong> = &lt;PySide2.QtCore.QMetaObject object&gt;</dl>
+
+<dl><dt><strong>terrain</strong> = []</dl>
+
+<dl><dt><strong>terrainColor</strong> = [0.24, 0.17, 0.14]</dl>
+
+<dl><dt><strong>treeNumbers</strong> = [0, 0, 0]</dl>
+
+<hr>
+Methods inherited from <a href="PySide2.QtWidgets.html#QWidget">PySide2.QtWidgets.QWidget</a>:<br>
+<dl><dt><a name="LandscapeSystem-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-acceptDrops"><strong>acceptDrops</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-acceptDrops">acceptDrops</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-accessibleDescription"><strong>accessibleDescription</strong></a>(self) -&gt; str</dt><dd><tt><a href="#LandscapeSystem-accessibleDescription">accessibleDescription</a>(self)&nbsp;-&gt;&nbsp;str</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-accessibleName"><strong>accessibleName</strong></a>(self) -&gt; str</dt><dd><tt><a href="#LandscapeSystem-accessibleName">accessibleName</a>(self)&nbsp;-&gt;&nbsp;str</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-actionEvent"><strong>actionEvent</strong></a>(self, event: PySide2.QtGui.QActionEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-actionEvent">actionEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtGui.QActionEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-actions"><strong>actions</strong></a>(self) -&gt; typing.List[PySide2.QtWidgets.QAction]</dt><dd><tt><a href="#LandscapeSystem-actions">actions</a>(self)&nbsp;-&gt;&nbsp;typing.List[PySide2.QtWidgets.QAction]</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-activateWindow"><strong>activateWindow</strong></a>(self) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-activateWindow">activateWindow</a>(self)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-addAction"><strong>addAction</strong></a>(self, action: PySide2.QtWidgets.QAction) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-addAction">addAction</a>(self,&nbsp;action:&nbsp;PySide2.QtWidgets.QAction)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-addActions"><strong>addActions</strong></a>(self, actions: typing.Sequence[PySide2.QtWidgets.QAction]) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-addActions">addActions</a>(self,&nbsp;actions:&nbsp;typing.Sequence[PySide2.QtWidgets.QAction])&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-adjustSize"><strong>adjustSize</strong></a>(self) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-adjustSize">adjustSize</a>(self)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-autoFillBackground"><strong>autoFillBackground</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-autoFillBackground">autoFillBackground</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-backgroundRole"><strong>backgroundRole</strong></a>(self) -&gt; PySide2.QtGui.QPalette.ColorRole</dt><dd><tt><a href="#LandscapeSystem-backgroundRole">backgroundRole</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtGui.QPalette.ColorRole</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-backingStore"><strong>backingStore</strong></a>(self) -&gt; PySide2.QtGui.QBackingStore</dt><dd><tt><a href="#LandscapeSystem-backingStore">backingStore</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtGui.QBackingStore</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-baseSize"><strong>baseSize</strong></a>(self) -&gt; PySide2.QtCore.QSize</dt><dd><tt><a href="#LandscapeSystem-baseSize">baseSize</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.QSize</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-changeEvent"><strong>changeEvent</strong></a>(self, event: PySide2.QtCore.QEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-changeEvent">changeEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtCore.QEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-childAt"><strong>childAt</strong></a>(...)</dt><dd><tt><a href="#LandscapeSystem-childAt">childAt</a>(self,&nbsp;p:&nbsp;PySide2.QtCore.QPoint)&nbsp;-&gt;&nbsp;PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a><br>
+<a href="#LandscapeSystem-childAt">childAt</a>(self,&nbsp;x:&nbsp;int,&nbsp;y:&nbsp;int)&nbsp;-&gt;&nbsp;PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a></tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-childrenRect"><strong>childrenRect</strong></a>(self) -&gt; PySide2.QtCore.QRect</dt><dd><tt><a href="#LandscapeSystem-childrenRect">childrenRect</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.QRect</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-childrenRegion"><strong>childrenRegion</strong></a>(self) -&gt; PySide2.QtGui.QRegion</dt><dd><tt><a href="#LandscapeSystem-childrenRegion">childrenRegion</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtGui.QRegion</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-clearFocus"><strong>clearFocus</strong></a>(self) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-clearFocus">clearFocus</a>(self)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-clearMask"><strong>clearMask</strong></a>(self) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-clearMask">clearMask</a>(self)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-close"><strong>close</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-close">close</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-closeEvent"><strong>closeEvent</strong></a>(self, event: PySide2.QtGui.QCloseEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-closeEvent">closeEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtGui.QCloseEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-contentsMargins"><strong>contentsMargins</strong></a>(self) -&gt; PySide2.QtCore.QMargins</dt><dd><tt><a href="#LandscapeSystem-contentsMargins">contentsMargins</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.QMargins</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-contentsRect"><strong>contentsRect</strong></a>(self) -&gt; PySide2.QtCore.QRect</dt><dd><tt><a href="#LandscapeSystem-contentsRect">contentsRect</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.QRect</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-contextMenuEvent"><strong>contextMenuEvent</strong></a>(self, event: PySide2.QtGui.QContextMenuEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-contextMenuEvent">contextMenuEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtGui.QContextMenuEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-contextMenuPolicy"><strong>contextMenuPolicy</strong></a>(self) -&gt; PySide2.QtCore.Qt.ContextMenuPolicy</dt><dd><tt><a href="#LandscapeSystem-contextMenuPolicy">contextMenuPolicy</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.Qt.ContextMenuPolicy</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-create"><strong>create</strong></a>(self, arg__1: int = 0, initializeWindow: bool = True, destroyOldWindow: bool = True) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-create">create</a>(self,&nbsp;arg__1:&nbsp;int&nbsp;=&nbsp;0,&nbsp;initializeWindow:&nbsp;bool&nbsp;=&nbsp;True,&nbsp;destroyOldWindow:&nbsp;bool&nbsp;=&nbsp;True)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-createWinId"><strong>createWinId</strong></a>(self) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-createWinId">createWinId</a>(self)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-cursor"><strong>cursor</strong></a>(self) -&gt; PySide2.QtGui.QCursor</dt><dd><tt><a href="#LandscapeSystem-cursor">cursor</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtGui.QCursor</tt></dd></dl>
+
+<strong>customContextMenuRequested</strong> = &lt;PySide2.QtCore.Signal object&gt;
+<dl><dt><a name="LandscapeSystem-destroy"><strong>destroy</strong></a>(self, destroyWindow: bool = True, destroySubWindows: bool = True) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-destroy">destroy</a>(self,&nbsp;destroyWindow:&nbsp;bool&nbsp;=&nbsp;True,&nbsp;destroySubWindows:&nbsp;bool&nbsp;=&nbsp;True)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-devType"><strong>devType</strong></a>(self) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-devType">devType</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-dragEnterEvent"><strong>dragEnterEvent</strong></a>(self, event: PySide2.QtGui.QDragEnterEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-dragEnterEvent">dragEnterEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtGui.QDragEnterEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-dragLeaveEvent"><strong>dragLeaveEvent</strong></a>(self, event: PySide2.QtGui.QDragLeaveEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-dragLeaveEvent">dragLeaveEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtGui.QDragLeaveEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-dragMoveEvent"><strong>dragMoveEvent</strong></a>(self, event: PySide2.QtGui.QDragMoveEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-dragMoveEvent">dragMoveEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtGui.QDragMoveEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-dropEvent"><strong>dropEvent</strong></a>(self, event: PySide2.QtGui.QDropEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-dropEvent">dropEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtGui.QDropEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-effectiveWinId"><strong>effectiveWinId</strong></a>(self) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-effectiveWinId">effectiveWinId</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-ensurePolished"><strong>ensurePolished</strong></a>(self) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-ensurePolished">ensurePolished</a>(self)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-enterEvent"><strong>enterEvent</strong></a>(self, event: PySide2.QtCore.QEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-enterEvent">enterEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtCore.QEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-event"><strong>event</strong></a>(self, event: PySide2.QtCore.QEvent) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-event">event</a>(self,&nbsp;event:&nbsp;PySide2.QtCore.QEvent)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-focusInEvent"><strong>focusInEvent</strong></a>(self, event: PySide2.QtGui.QFocusEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-focusInEvent">focusInEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtGui.QFocusEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-focusNextChild"><strong>focusNextChild</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-focusNextChild">focusNextChild</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-focusNextPrevChild"><strong>focusNextPrevChild</strong></a>(self, next: bool) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-focusNextPrevChild">focusNextPrevChild</a>(self,&nbsp;next:&nbsp;bool)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-focusOutEvent"><strong>focusOutEvent</strong></a>(self, event: PySide2.QtGui.QFocusEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-focusOutEvent">focusOutEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtGui.QFocusEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-focusPolicy"><strong>focusPolicy</strong></a>(self) -&gt; PySide2.QtCore.Qt.FocusPolicy</dt><dd><tt><a href="#LandscapeSystem-focusPolicy">focusPolicy</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.Qt.FocusPolicy</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-focusPreviousChild"><strong>focusPreviousChild</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-focusPreviousChild">focusPreviousChild</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-focusProxy"><strong>focusProxy</strong></a>(self) -&gt; PySide2.QtWidgets.QWidget</dt><dd><tt><a href="#LandscapeSystem-focusProxy">focusProxy</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a></tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-focusWidget"><strong>focusWidget</strong></a>(self) -&gt; PySide2.QtWidgets.QWidget</dt><dd><tt><a href="#LandscapeSystem-focusWidget">focusWidget</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a></tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-font"><strong>font</strong></a>(self) -&gt; PySide2.QtGui.QFont</dt><dd><tt><a href="#LandscapeSystem-font">font</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtGui.QFont</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-fontInfo"><strong>fontInfo</strong></a>(self) -&gt; PySide2.QtGui.QFontInfo</dt><dd><tt><a href="#LandscapeSystem-fontInfo">fontInfo</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtGui.QFontInfo</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-fontMetrics"><strong>fontMetrics</strong></a>(self) -&gt; PySide2.QtGui.QFontMetrics</dt><dd><tt><a href="#LandscapeSystem-fontMetrics">fontMetrics</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtGui.QFontMetrics</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-foregroundRole"><strong>foregroundRole</strong></a>(self) -&gt; PySide2.QtGui.QPalette.ColorRole</dt><dd><tt><a href="#LandscapeSystem-foregroundRole">foregroundRole</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtGui.QPalette.ColorRole</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-frameGeometry"><strong>frameGeometry</strong></a>(self) -&gt; PySide2.QtCore.QRect</dt><dd><tt><a href="#LandscapeSystem-frameGeometry">frameGeometry</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.QRect</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-frameSize"><strong>frameSize</strong></a>(self) -&gt; PySide2.QtCore.QSize</dt><dd><tt><a href="#LandscapeSystem-frameSize">frameSize</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.QSize</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-geometry"><strong>geometry</strong></a>(self) -&gt; PySide2.QtCore.QRect</dt><dd><tt><a href="#LandscapeSystem-geometry">geometry</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.QRect</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-getContentsMargins"><strong>getContentsMargins</strong></a>(self) -&gt; typing.Tuple[int, int, int, int]</dt><dd><tt><a href="#LandscapeSystem-getContentsMargins">getContentsMargins</a>(self)&nbsp;-&gt;&nbsp;typing.Tuple[int,&nbsp;int,&nbsp;int,&nbsp;int]</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-grab"><strong>grab</strong></a>(self, rectangle: PySide2.QtCore.QRect = PySide2.QtCore.QRect(0, 0, -1, -1)) -&gt; PySide2.QtGui.QPixmap</dt><dd><tt><a href="#LandscapeSystem-grab">grab</a>(self,&nbsp;rectangle:&nbsp;PySide2.QtCore.QRect&nbsp;=&nbsp;PySide2.QtCore.QRect(0,&nbsp;0,&nbsp;-1,&nbsp;-1))&nbsp;-&gt;&nbsp;PySide2.QtGui.QPixmap</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-grabGesture"><strong>grabGesture</strong></a>(self, type: PySide2.QtCore.Qt.GestureType, flags: PySide2.QtCore.Qt.GestureFlags = Default(Qt.GestureFlags)) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-grabGesture">grabGesture</a>(self,&nbsp;type:&nbsp;PySide2.QtCore.Qt.GestureType,&nbsp;flags:&nbsp;PySide2.QtCore.Qt.GestureFlags&nbsp;=&nbsp;Default(Qt.GestureFlags))&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-grabKeyboard"><strong>grabKeyboard</strong></a>(self) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-grabKeyboard">grabKeyboard</a>(self)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-grabMouse"><strong>grabMouse</strong></a>(...)</dt><dd><tt><a href="#LandscapeSystem-grabMouse">grabMouse</a>(self)&nbsp;-&gt;&nbsp;None<br>
+<a href="#LandscapeSystem-grabMouse">grabMouse</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtGui.QCursor)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-grabShortcut"><strong>grabShortcut</strong></a>(self, key: PySide2.QtGui.QKeySequence, context: PySide2.QtCore.Qt.ShortcutContext = PySide2.QtCore.Qt.ShortcutContext.WindowShortcut) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-grabShortcut">grabShortcut</a>(self,&nbsp;key:&nbsp;PySide2.QtGui.QKeySequence,&nbsp;context:&nbsp;PySide2.QtCore.Qt.ShortcutContext&nbsp;=&nbsp;PySide2.QtCore.Qt.ShortcutContext.WindowShortcut)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-graphicsEffect"><strong>graphicsEffect</strong></a>(self) -&gt; PySide2.QtWidgets.QGraphicsEffect</dt><dd><tt><a href="#LandscapeSystem-graphicsEffect">graphicsEffect</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtWidgets.QGraphicsEffect</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-graphicsProxyWidget"><strong>graphicsProxyWidget</strong></a>(self) -&gt; PySide2.QtWidgets.QGraphicsProxyWidget</dt><dd><tt><a href="#LandscapeSystem-graphicsProxyWidget">graphicsProxyWidget</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtWidgets.QGraphicsProxyWidget</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-hasFocus"><strong>hasFocus</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-hasFocus">hasFocus</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-hasHeightForWidth"><strong>hasHeightForWidth</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-hasHeightForWidth">hasHeightForWidth</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-hasMouseTracking"><strong>hasMouseTracking</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-hasMouseTracking">hasMouseTracking</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-hasTabletTracking"><strong>hasTabletTracking</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-hasTabletTracking">hasTabletTracking</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-height"><strong>height</strong></a>(self) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-height">height</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-heightForWidth"><strong>heightForWidth</strong></a>(self, arg__1: int) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-heightForWidth">heightForWidth</a>(self,&nbsp;arg__1:&nbsp;int)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-hide"><strong>hide</strong></a>(self) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-hide">hide</a>(self)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-hideEvent"><strong>hideEvent</strong></a>(self, event: PySide2.QtGui.QHideEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-hideEvent">hideEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtGui.QHideEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-initPainter"><strong>initPainter</strong></a>(self, painter: PySide2.QtGui.QPainter) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-initPainter">initPainter</a>(self,&nbsp;painter:&nbsp;PySide2.QtGui.QPainter)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-inputMethodEvent"><strong>inputMethodEvent</strong></a>(self, event: PySide2.QtGui.QInputMethodEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-inputMethodEvent">inputMethodEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtGui.QInputMethodEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-inputMethodHints"><strong>inputMethodHints</strong></a>(self) -&gt; PySide2.QtCore.Qt.InputMethodHints</dt><dd><tt><a href="#LandscapeSystem-inputMethodHints">inputMethodHints</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.Qt.InputMethodHints</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-inputMethodQuery"><strong>inputMethodQuery</strong></a>(self, arg__1: PySide2.QtCore.Qt.InputMethodQuery) -&gt; typing.Any</dt><dd><tt><a href="#LandscapeSystem-inputMethodQuery">inputMethodQuery</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtCore.Qt.InputMethodQuery)&nbsp;-&gt;&nbsp;typing.Any</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-insertAction"><strong>insertAction</strong></a>(self, before: PySide2.QtWidgets.QAction, action: PySide2.QtWidgets.QAction) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-insertAction">insertAction</a>(self,&nbsp;before:&nbsp;PySide2.QtWidgets.QAction,&nbsp;action:&nbsp;PySide2.QtWidgets.QAction)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-insertActions"><strong>insertActions</strong></a>(self, before: PySide2.QtWidgets.QAction, actions: typing.Sequence[PySide2.QtWidgets.QAction]) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-insertActions">insertActions</a>(self,&nbsp;before:&nbsp;PySide2.QtWidgets.QAction,&nbsp;actions:&nbsp;typing.Sequence[PySide2.QtWidgets.QAction])&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-internalWinId"><strong>internalWinId</strong></a>(self) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-internalWinId">internalWinId</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-isActiveWindow"><strong>isActiveWindow</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-isActiveWindow">isActiveWindow</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-isAncestorOf"><strong>isAncestorOf</strong></a>(self, child: PySide2.QtWidgets.QWidget) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-isAncestorOf">isAncestorOf</a>(self,&nbsp;child:&nbsp;PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a>)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-isEnabled"><strong>isEnabled</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-isEnabled">isEnabled</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-isEnabledTo"><strong>isEnabledTo</strong></a>(self, arg__1: PySide2.QtWidgets.QWidget) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-isEnabledTo">isEnabledTo</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a>)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-isEnabledToTLW"><strong>isEnabledToTLW</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-isEnabledToTLW">isEnabledToTLW</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-isFullScreen"><strong>isFullScreen</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-isFullScreen">isFullScreen</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-isHidden"><strong>isHidden</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-isHidden">isHidden</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-isLeftToRight"><strong>isLeftToRight</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-isLeftToRight">isLeftToRight</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-isMaximized"><strong>isMaximized</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-isMaximized">isMaximized</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-isMinimized"><strong>isMinimized</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-isMinimized">isMinimized</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-isModal"><strong>isModal</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-isModal">isModal</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-isRightToLeft"><strong>isRightToLeft</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-isRightToLeft">isRightToLeft</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-isTopLevel"><strong>isTopLevel</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-isTopLevel">isTopLevel</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-isVisible"><strong>isVisible</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-isVisible">isVisible</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-isVisibleTo"><strong>isVisibleTo</strong></a>(self, arg__1: PySide2.QtWidgets.QWidget) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-isVisibleTo">isVisibleTo</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a>)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-isWindow"><strong>isWindow</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-isWindow">isWindow</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-isWindowModified"><strong>isWindowModified</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-isWindowModified">isWindowModified</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-keyPressEvent"><strong>keyPressEvent</strong></a>(self, event: PySide2.QtGui.QKeyEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-keyPressEvent">keyPressEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtGui.QKeyEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-keyReleaseEvent"><strong>keyReleaseEvent</strong></a>(self, event: PySide2.QtGui.QKeyEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-keyReleaseEvent">keyReleaseEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtGui.QKeyEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-layout"><strong>layout</strong></a>(self) -&gt; PySide2.QtWidgets.QLayout</dt><dd><tt><a href="#LandscapeSystem-layout">layout</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtWidgets.QLayout</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-layoutDirection"><strong>layoutDirection</strong></a>(self) -&gt; PySide2.QtCore.Qt.LayoutDirection</dt><dd><tt><a href="#LandscapeSystem-layoutDirection">layoutDirection</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.Qt.LayoutDirection</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-leaveEvent"><strong>leaveEvent</strong></a>(self, event: PySide2.QtCore.QEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-leaveEvent">leaveEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtCore.QEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-locale"><strong>locale</strong></a>(self) -&gt; PySide2.QtCore.QLocale</dt><dd><tt><a href="#LandscapeSystem-locale">locale</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.QLocale</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-lower"><strong>lower</strong></a>(self) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-lower">lower</a>(self)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-mapFrom"><strong>mapFrom</strong></a>(self, arg__1: PySide2.QtWidgets.QWidget, arg__2: PySide2.QtCore.QPoint) -&gt; PySide2.QtCore.QPoint</dt><dd><tt><a href="#LandscapeSystem-mapFrom">mapFrom</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a>,&nbsp;arg__2:&nbsp;PySide2.QtCore.QPoint)&nbsp;-&gt;&nbsp;PySide2.QtCore.QPoint</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-mapFromGlobal"><strong>mapFromGlobal</strong></a>(self, arg__1: PySide2.QtCore.QPoint) -&gt; PySide2.QtCore.QPoint</dt><dd><tt><a href="#LandscapeSystem-mapFromGlobal">mapFromGlobal</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtCore.QPoint)&nbsp;-&gt;&nbsp;PySide2.QtCore.QPoint</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-mapFromParent"><strong>mapFromParent</strong></a>(self, arg__1: PySide2.QtCore.QPoint) -&gt; PySide2.QtCore.QPoint</dt><dd><tt><a href="#LandscapeSystem-mapFromParent">mapFromParent</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtCore.QPoint)&nbsp;-&gt;&nbsp;PySide2.QtCore.QPoint</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-mapTo"><strong>mapTo</strong></a>(self, arg__1: PySide2.QtWidgets.QWidget, arg__2: PySide2.QtCore.QPoint) -&gt; PySide2.QtCore.QPoint</dt><dd><tt><a href="#LandscapeSystem-mapTo">mapTo</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a>,&nbsp;arg__2:&nbsp;PySide2.QtCore.QPoint)&nbsp;-&gt;&nbsp;PySide2.QtCore.QPoint</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-mapToGlobal"><strong>mapToGlobal</strong></a>(self, arg__1: PySide2.QtCore.QPoint) -&gt; PySide2.QtCore.QPoint</dt><dd><tt><a href="#LandscapeSystem-mapToGlobal">mapToGlobal</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtCore.QPoint)&nbsp;-&gt;&nbsp;PySide2.QtCore.QPoint</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-mapToParent"><strong>mapToParent</strong></a>(self, arg__1: PySide2.QtCore.QPoint) -&gt; PySide2.QtCore.QPoint</dt><dd><tt><a href="#LandscapeSystem-mapToParent">mapToParent</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtCore.QPoint)&nbsp;-&gt;&nbsp;PySide2.QtCore.QPoint</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-mask"><strong>mask</strong></a>(self) -&gt; PySide2.QtGui.QRegion</dt><dd><tt><a href="#LandscapeSystem-mask">mask</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtGui.QRegion</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-maximumHeight"><strong>maximumHeight</strong></a>(self) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-maximumHeight">maximumHeight</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-maximumSize"><strong>maximumSize</strong></a>(self) -&gt; PySide2.QtCore.QSize</dt><dd><tt><a href="#LandscapeSystem-maximumSize">maximumSize</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.QSize</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-maximumWidth"><strong>maximumWidth</strong></a>(self) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-maximumWidth">maximumWidth</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-metric"><strong>metric</strong></a>(self, arg__1: PySide2.QtGui.QPaintDevice.PaintDeviceMetric) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-metric">metric</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtGui.QPaintDevice.PaintDeviceMetric)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-minimumHeight"><strong>minimumHeight</strong></a>(self) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-minimumHeight">minimumHeight</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-minimumSize"><strong>minimumSize</strong></a>(self) -&gt; PySide2.QtCore.QSize</dt><dd><tt><a href="#LandscapeSystem-minimumSize">minimumSize</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.QSize</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-minimumSizeHint"><strong>minimumSizeHint</strong></a>(self) -&gt; PySide2.QtCore.QSize</dt><dd><tt><a href="#LandscapeSystem-minimumSizeHint">minimumSizeHint</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.QSize</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-minimumWidth"><strong>minimumWidth</strong></a>(self) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-minimumWidth">minimumWidth</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-mouseDoubleClickEvent"><strong>mouseDoubleClickEvent</strong></a>(self, event: PySide2.QtGui.QMouseEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-mouseDoubleClickEvent">mouseDoubleClickEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtGui.QMouseEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-mouseMoveEvent"><strong>mouseMoveEvent</strong></a>(self, event: PySide2.QtGui.QMouseEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-mouseMoveEvent">mouseMoveEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtGui.QMouseEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-mousePressEvent"><strong>mousePressEvent</strong></a>(self, event: PySide2.QtGui.QMouseEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-mousePressEvent">mousePressEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtGui.QMouseEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-mouseReleaseEvent"><strong>mouseReleaseEvent</strong></a>(self, event: PySide2.QtGui.QMouseEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-mouseReleaseEvent">mouseReleaseEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtGui.QMouseEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-move"><strong>move</strong></a>(...)</dt><dd><tt><a href="#LandscapeSystem-move">move</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtCore.QPoint)&nbsp;-&gt;&nbsp;None<br>
+<a href="#LandscapeSystem-move">move</a>(self,&nbsp;x:&nbsp;int,&nbsp;y:&nbsp;int)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-moveEvent"><strong>moveEvent</strong></a>(self, event: PySide2.QtGui.QMoveEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-moveEvent">moveEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtGui.QMoveEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-nativeEvent"><strong>nativeEvent</strong></a>(self, eventType: PySide2.QtCore.QByteArray, message: int) -&gt; typing.Tuple[bool, int]</dt><dd><tt><a href="#LandscapeSystem-nativeEvent">nativeEvent</a>(self,&nbsp;eventType:&nbsp;PySide2.QtCore.QByteArray,&nbsp;message:&nbsp;int)&nbsp;-&gt;&nbsp;typing.Tuple[bool,&nbsp;int]</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-nativeParentWidget"><strong>nativeParentWidget</strong></a>(self) -&gt; PySide2.QtWidgets.QWidget</dt><dd><tt><a href="#LandscapeSystem-nativeParentWidget">nativeParentWidget</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a></tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-nextInFocusChain"><strong>nextInFocusChain</strong></a>(self) -&gt; PySide2.QtWidgets.QWidget</dt><dd><tt><a href="#LandscapeSystem-nextInFocusChain">nextInFocusChain</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a></tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-normalGeometry"><strong>normalGeometry</strong></a>(self) -&gt; PySide2.QtCore.QRect</dt><dd><tt><a href="#LandscapeSystem-normalGeometry">normalGeometry</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.QRect</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-overrideWindowFlags"><strong>overrideWindowFlags</strong></a>(self, type: PySide2.QtCore.Qt.WindowFlags) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-overrideWindowFlags">overrideWindowFlags</a>(self,&nbsp;type:&nbsp;PySide2.QtCore.Qt.WindowFlags)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-overrideWindowState"><strong>overrideWindowState</strong></a>(self, state: PySide2.QtCore.Qt.WindowStates) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-overrideWindowState">overrideWindowState</a>(self,&nbsp;state:&nbsp;PySide2.QtCore.Qt.WindowStates)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-paintEngine"><strong>paintEngine</strong></a>(self) -&gt; PySide2.QtGui.QPaintEngine</dt><dd><tt><a href="#LandscapeSystem-paintEngine">paintEngine</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtGui.QPaintEngine</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-paintEvent"><strong>paintEvent</strong></a>(self, event: PySide2.QtGui.QPaintEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-paintEvent">paintEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtGui.QPaintEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-palette"><strong>palette</strong></a>(self) -&gt; PySide2.QtGui.QPalette</dt><dd><tt><a href="#LandscapeSystem-palette">palette</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtGui.QPalette</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-parentWidget"><strong>parentWidget</strong></a>(self) -&gt; PySide2.QtWidgets.QWidget</dt><dd><tt><a href="#LandscapeSystem-parentWidget">parentWidget</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a></tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-pos"><strong>pos</strong></a>(self) -&gt; PySide2.QtCore.QPoint</dt><dd><tt><a href="#LandscapeSystem-pos">pos</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.QPoint</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-previousInFocusChain"><strong>previousInFocusChain</strong></a>(self) -&gt; PySide2.QtWidgets.QWidget</dt><dd><tt><a href="#LandscapeSystem-previousInFocusChain">previousInFocusChain</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a></tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-raise_"><strong>raise_</strong></a>(self) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-raise_">raise_</a>(self)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-rect"><strong>rect</strong></a>(self) -&gt; PySide2.QtCore.QRect</dt><dd><tt><a href="#LandscapeSystem-rect">rect</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.QRect</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-redirected"><strong>redirected</strong></a>(self, offset: PySide2.QtCore.QPoint) -&gt; PySide2.QtGui.QPaintDevice</dt><dd><tt><a href="#LandscapeSystem-redirected">redirected</a>(self,&nbsp;offset:&nbsp;PySide2.QtCore.QPoint)&nbsp;-&gt;&nbsp;PySide2.QtGui.QPaintDevice</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-releaseKeyboard"><strong>releaseKeyboard</strong></a>(self) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-releaseKeyboard">releaseKeyboard</a>(self)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-releaseMouse"><strong>releaseMouse</strong></a>(self) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-releaseMouse">releaseMouse</a>(self)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-releaseShortcut"><strong>releaseShortcut</strong></a>(self, id: int) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-releaseShortcut">releaseShortcut</a>(self,&nbsp;id:&nbsp;int)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-removeAction"><strong>removeAction</strong></a>(self, action: PySide2.QtWidgets.QAction) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-removeAction">removeAction</a>(self,&nbsp;action:&nbsp;PySide2.QtWidgets.QAction)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-render"><strong>render</strong></a>(...)</dt><dd><tt><a href="#LandscapeSystem-render">render</a>(self,&nbsp;painter:&nbsp;PySide2.QtGui.QPainter,&nbsp;targetOffset:&nbsp;PySide2.QtCore.QPoint,&nbsp;sourceRegion:&nbsp;PySide2.QtGui.QRegion&nbsp;=&nbsp;Default(QRegion),&nbsp;renderFlags:&nbsp;PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a>.RenderFlags&nbsp;=&nbsp;Instance(<a href="PySide2.QtWidgets.html#QWidget">QWidget</a>.<a href="#LandscapeSystem-RenderFlags">RenderFlags</a>(<a href="PySide2.QtWidgets.html#QWidget">QWidget</a>.DrawWindowBackground&nbsp;|&nbsp;<a href="PySide2.QtWidgets.html#QWidget">QWidget</a>.DrawChildren)))&nbsp;-&gt;&nbsp;None<br>
+<a href="#LandscapeSystem-render">render</a>(self,&nbsp;target:&nbsp;PySide2.QtGui.QPaintDevice,&nbsp;targetOffset:&nbsp;PySide2.QtCore.QPoint&nbsp;=&nbsp;Default(QPoint),&nbsp;sourceRegion:&nbsp;PySide2.QtGui.QRegion&nbsp;=&nbsp;Default(QRegion),&nbsp;renderFlags:&nbsp;PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a>.RenderFlags&nbsp;=&nbsp;Instance(<a href="PySide2.QtWidgets.html#QWidget">QWidget</a>.<a href="#LandscapeSystem-RenderFlags">RenderFlags</a>(<a href="PySide2.QtWidgets.html#QWidget">QWidget</a>.DrawWindowBackground&nbsp;|&nbsp;<a href="PySide2.QtWidgets.html#QWidget">QWidget</a>.DrawChildren)))&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-repaint"><strong>repaint</strong></a>(...)</dt><dd><tt><a href="#LandscapeSystem-repaint">repaint</a>(self)&nbsp;-&gt;&nbsp;None<br>
+<a href="#LandscapeSystem-repaint">repaint</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtCore.QRect)&nbsp;-&gt;&nbsp;None<br>
+<a href="#LandscapeSystem-repaint">repaint</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtGui.QRegion)&nbsp;-&gt;&nbsp;None<br>
+<a href="#LandscapeSystem-repaint">repaint</a>(self,&nbsp;x:&nbsp;int,&nbsp;y:&nbsp;int,&nbsp;w:&nbsp;int,&nbsp;h:&nbsp;int)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-resize"><strong>resize</strong></a>(...)</dt><dd><tt><a href="#LandscapeSystem-resize">resize</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtCore.QSize)&nbsp;-&gt;&nbsp;None<br>
+<a href="#LandscapeSystem-resize">resize</a>(self,&nbsp;w:&nbsp;int,&nbsp;h:&nbsp;int)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-resizeEvent"><strong>resizeEvent</strong></a>(self, event: PySide2.QtGui.QResizeEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-resizeEvent">resizeEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtGui.QResizeEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-restoreGeometry"><strong>restoreGeometry</strong></a>(self, geometry: PySide2.QtCore.QByteArray) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-restoreGeometry">restoreGeometry</a>(self,&nbsp;geometry:&nbsp;PySide2.QtCore.QByteArray)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-saveGeometry"><strong>saveGeometry</strong></a>(self) -&gt; PySide2.QtCore.QByteArray</dt><dd><tt><a href="#LandscapeSystem-saveGeometry">saveGeometry</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.QByteArray</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-screen"><strong>screen</strong></a>(self) -&gt; PySide2.QtGui.QScreen</dt><dd><tt><a href="#LandscapeSystem-screen">screen</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtGui.QScreen</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-scroll"><strong>scroll</strong></a>(...)</dt><dd><tt><a href="#LandscapeSystem-scroll">scroll</a>(self,&nbsp;dx:&nbsp;int,&nbsp;dy:&nbsp;int)&nbsp;-&gt;&nbsp;None<br>
+<a href="#LandscapeSystem-scroll">scroll</a>(self,&nbsp;dx:&nbsp;int,&nbsp;dy:&nbsp;int,&nbsp;arg__3:&nbsp;PySide2.QtCore.QRect)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setAcceptDrops"><strong>setAcceptDrops</strong></a>(self, on: bool) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setAcceptDrops">setAcceptDrops</a>(self,&nbsp;on:&nbsp;bool)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setAccessibleDescription"><strong>setAccessibleDescription</strong></a>(self, description: str) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setAccessibleDescription">setAccessibleDescription</a>(self,&nbsp;description:&nbsp;str)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setAccessibleName"><strong>setAccessibleName</strong></a>(self, name: str) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setAccessibleName">setAccessibleName</a>(self,&nbsp;name:&nbsp;str)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setAttribute"><strong>setAttribute</strong></a>(self, arg__1: PySide2.QtCore.Qt.WidgetAttribute, on: bool = True) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setAttribute">setAttribute</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtCore.Qt.WidgetAttribute,&nbsp;on:&nbsp;bool&nbsp;=&nbsp;True)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setAutoFillBackground"><strong>setAutoFillBackground</strong></a>(self, enabled: bool) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setAutoFillBackground">setAutoFillBackground</a>(self,&nbsp;enabled:&nbsp;bool)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setBackgroundRole"><strong>setBackgroundRole</strong></a>(self, arg__1: PySide2.QtGui.QPalette.ColorRole) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setBackgroundRole">setBackgroundRole</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtGui.QPalette.ColorRole)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setBaseSize"><strong>setBaseSize</strong></a>(...)</dt><dd><tt><a href="#LandscapeSystem-setBaseSize">setBaseSize</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtCore.QSize)&nbsp;-&gt;&nbsp;None<br>
+<a href="#LandscapeSystem-setBaseSize">setBaseSize</a>(self,&nbsp;basew:&nbsp;int,&nbsp;baseh:&nbsp;int)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setContentsMargins"><strong>setContentsMargins</strong></a>(...)</dt><dd><tt><a href="#LandscapeSystem-setContentsMargins">setContentsMargins</a>(self,&nbsp;left:&nbsp;int,&nbsp;top:&nbsp;int,&nbsp;right:&nbsp;int,&nbsp;bottom:&nbsp;int)&nbsp;-&gt;&nbsp;None<br>
+<a href="#LandscapeSystem-setContentsMargins">setContentsMargins</a>(self,&nbsp;margins:&nbsp;PySide2.QtCore.QMargins)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setContextMenuPolicy"><strong>setContextMenuPolicy</strong></a>(self, policy: PySide2.QtCore.Qt.ContextMenuPolicy) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setContextMenuPolicy">setContextMenuPolicy</a>(self,&nbsp;policy:&nbsp;PySide2.QtCore.Qt.ContextMenuPolicy)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setCursor"><strong>setCursor</strong></a>(self, arg__1: PySide2.QtGui.QCursor) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setCursor">setCursor</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtGui.QCursor)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setDisabled"><strong>setDisabled</strong></a>(self, arg__1: bool) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setDisabled">setDisabled</a>(self,&nbsp;arg__1:&nbsp;bool)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setEnabled"><strong>setEnabled</strong></a>(self, arg__1: bool) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setEnabled">setEnabled</a>(self,&nbsp;arg__1:&nbsp;bool)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setFixedHeight"><strong>setFixedHeight</strong></a>(self, h: int) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setFixedHeight">setFixedHeight</a>(self,&nbsp;h:&nbsp;int)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setFixedSize"><strong>setFixedSize</strong></a>(...)</dt><dd><tt><a href="#LandscapeSystem-setFixedSize">setFixedSize</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtCore.QSize)&nbsp;-&gt;&nbsp;None<br>
+<a href="#LandscapeSystem-setFixedSize">setFixedSize</a>(self,&nbsp;w:&nbsp;int,&nbsp;h:&nbsp;int)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setFixedWidth"><strong>setFixedWidth</strong></a>(self, w: int) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setFixedWidth">setFixedWidth</a>(self,&nbsp;w:&nbsp;int)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setFocus"><strong>setFocus</strong></a>(...)</dt><dd><tt><a href="#LandscapeSystem-setFocus">setFocus</a>(self)&nbsp;-&gt;&nbsp;None<br>
+<a href="#LandscapeSystem-setFocus">setFocus</a>(self,&nbsp;reason:&nbsp;PySide2.QtCore.Qt.FocusReason)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setFocusPolicy"><strong>setFocusPolicy</strong></a>(self, policy: PySide2.QtCore.Qt.FocusPolicy) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setFocusPolicy">setFocusPolicy</a>(self,&nbsp;policy:&nbsp;PySide2.QtCore.Qt.FocusPolicy)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setFocusProxy"><strong>setFocusProxy</strong></a>(self, arg__1: PySide2.QtWidgets.QWidget) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setFocusProxy">setFocusProxy</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a>)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setFont"><strong>setFont</strong></a>(self, arg__1: PySide2.QtGui.QFont) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setFont">setFont</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtGui.QFont)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setForegroundRole"><strong>setForegroundRole</strong></a>(self, arg__1: PySide2.QtGui.QPalette.ColorRole) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setForegroundRole">setForegroundRole</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtGui.QPalette.ColorRole)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setGeometry"><strong>setGeometry</strong></a>(...)</dt><dd><tt><a href="#LandscapeSystem-setGeometry">setGeometry</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtCore.QRect)&nbsp;-&gt;&nbsp;None<br>
+<a href="#LandscapeSystem-setGeometry">setGeometry</a>(self,&nbsp;x:&nbsp;int,&nbsp;y:&nbsp;int,&nbsp;w:&nbsp;int,&nbsp;h:&nbsp;int)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setGraphicsEffect"><strong>setGraphicsEffect</strong></a>(self, effect: PySide2.QtWidgets.QGraphicsEffect) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setGraphicsEffect">setGraphicsEffect</a>(self,&nbsp;effect:&nbsp;PySide2.QtWidgets.QGraphicsEffect)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setHidden"><strong>setHidden</strong></a>(self, hidden: bool) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setHidden">setHidden</a>(self,&nbsp;hidden:&nbsp;bool)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setInputMethodHints"><strong>setInputMethodHints</strong></a>(self, hints: PySide2.QtCore.Qt.InputMethodHints) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setInputMethodHints">setInputMethodHints</a>(self,&nbsp;hints:&nbsp;PySide2.QtCore.Qt.InputMethodHints)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setLayout"><strong>setLayout</strong></a>(self, arg__1: PySide2.QtWidgets.QLayout) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setLayout">setLayout</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtWidgets.QLayout)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setLayoutDirection"><strong>setLayoutDirection</strong></a>(self, direction: PySide2.QtCore.Qt.LayoutDirection) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setLayoutDirection">setLayoutDirection</a>(self,&nbsp;direction:&nbsp;PySide2.QtCore.Qt.LayoutDirection)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setLocale"><strong>setLocale</strong></a>(self, locale: PySide2.QtCore.QLocale) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setLocale">setLocale</a>(self,&nbsp;locale:&nbsp;PySide2.QtCore.QLocale)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setMask"><strong>setMask</strong></a>(...)</dt><dd><tt><a href="#LandscapeSystem-setMask">setMask</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtGui.QBitmap)&nbsp;-&gt;&nbsp;None<br>
+<a href="#LandscapeSystem-setMask">setMask</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtGui.QRegion)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setMaximumHeight"><strong>setMaximumHeight</strong></a>(self, maxh: int) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setMaximumHeight">setMaximumHeight</a>(self,&nbsp;maxh:&nbsp;int)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setMaximumSize"><strong>setMaximumSize</strong></a>(...)</dt><dd><tt><a href="#LandscapeSystem-setMaximumSize">setMaximumSize</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtCore.QSize)&nbsp;-&gt;&nbsp;None<br>
+<a href="#LandscapeSystem-setMaximumSize">setMaximumSize</a>(self,&nbsp;maxw:&nbsp;int,&nbsp;maxh:&nbsp;int)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setMaximumWidth"><strong>setMaximumWidth</strong></a>(self, maxw: int) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setMaximumWidth">setMaximumWidth</a>(self,&nbsp;maxw:&nbsp;int)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setMinimumHeight"><strong>setMinimumHeight</strong></a>(self, minh: int) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setMinimumHeight">setMinimumHeight</a>(self,&nbsp;minh:&nbsp;int)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setMinimumSize"><strong>setMinimumSize</strong></a>(...)</dt><dd><tt><a href="#LandscapeSystem-setMinimumSize">setMinimumSize</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtCore.QSize)&nbsp;-&gt;&nbsp;None<br>
+<a href="#LandscapeSystem-setMinimumSize">setMinimumSize</a>(self,&nbsp;minw:&nbsp;int,&nbsp;minh:&nbsp;int)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setMinimumWidth"><strong>setMinimumWidth</strong></a>(self, minw: int) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setMinimumWidth">setMinimumWidth</a>(self,&nbsp;minw:&nbsp;int)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setMouseTracking"><strong>setMouseTracking</strong></a>(self, enable: bool) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setMouseTracking">setMouseTracking</a>(self,&nbsp;enable:&nbsp;bool)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setPalette"><strong>setPalette</strong></a>(self, arg__1: PySide2.QtGui.QPalette) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setPalette">setPalette</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtGui.QPalette)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setParent"><strong>setParent</strong></a>(...)</dt><dd><tt><a href="#LandscapeSystem-setParent">setParent</a>(self,&nbsp;parent:&nbsp;PySide2.QtCore.QObject)&nbsp;-&gt;&nbsp;None<br>
+<a href="#LandscapeSystem-setParent">setParent</a>(self,&nbsp;parent:&nbsp;PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a>)&nbsp;-&gt;&nbsp;None<br>
+<a href="#LandscapeSystem-setParent">setParent</a>(self,&nbsp;parent:&nbsp;PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a>,&nbsp;f:&nbsp;PySide2.QtCore.Qt.WindowFlags)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setShortcutAutoRepeat"><strong>setShortcutAutoRepeat</strong></a>(self, id: int, enable: bool = True) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setShortcutAutoRepeat">setShortcutAutoRepeat</a>(self,&nbsp;id:&nbsp;int,&nbsp;enable:&nbsp;bool&nbsp;=&nbsp;True)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setShortcutEnabled"><strong>setShortcutEnabled</strong></a>(self, id: int, enable: bool = True) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setShortcutEnabled">setShortcutEnabled</a>(self,&nbsp;id:&nbsp;int,&nbsp;enable:&nbsp;bool&nbsp;=&nbsp;True)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setSizeIncrement"><strong>setSizeIncrement</strong></a>(...)</dt><dd><tt><a href="#LandscapeSystem-setSizeIncrement">setSizeIncrement</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtCore.QSize)&nbsp;-&gt;&nbsp;None<br>
+<a href="#LandscapeSystem-setSizeIncrement">setSizeIncrement</a>(self,&nbsp;w:&nbsp;int,&nbsp;h:&nbsp;int)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setSizePolicy"><strong>setSizePolicy</strong></a>(...)</dt><dd><tt><a href="#LandscapeSystem-setSizePolicy">setSizePolicy</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtWidgets.QSizePolicy)&nbsp;-&gt;&nbsp;None<br>
+<a href="#LandscapeSystem-setSizePolicy">setSizePolicy</a>(self,&nbsp;horizontal:&nbsp;PySide2.QtWidgets.QSizePolicy.Policy,&nbsp;vertical:&nbsp;PySide2.QtWidgets.QSizePolicy.Policy)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setStatusTip"><strong>setStatusTip</strong></a>(self, arg__1: str) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setStatusTip">setStatusTip</a>(self,&nbsp;arg__1:&nbsp;str)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setStyle"><strong>setStyle</strong></a>(self, arg__1: PySide2.QtWidgets.QStyle) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setStyle">setStyle</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtWidgets.QStyle)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setStyleSheet"><strong>setStyleSheet</strong></a>(self, styleSheet: str) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setStyleSheet">setStyleSheet</a>(self,&nbsp;styleSheet:&nbsp;str)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setTabletTracking"><strong>setTabletTracking</strong></a>(self, enable: bool) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setTabletTracking">setTabletTracking</a>(self,&nbsp;enable:&nbsp;bool)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setToolTip"><strong>setToolTip</strong></a>(self, arg__1: str) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setToolTip">setToolTip</a>(self,&nbsp;arg__1:&nbsp;str)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setToolTipDuration"><strong>setToolTipDuration</strong></a>(self, msec: int) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setToolTipDuration">setToolTipDuration</a>(self,&nbsp;msec:&nbsp;int)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setUpdatesEnabled"><strong>setUpdatesEnabled</strong></a>(self, enable: bool) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setUpdatesEnabled">setUpdatesEnabled</a>(self,&nbsp;enable:&nbsp;bool)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setVisible"><strong>setVisible</strong></a>(self, visible: bool) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setVisible">setVisible</a>(self,&nbsp;visible:&nbsp;bool)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setWhatsThis"><strong>setWhatsThis</strong></a>(self, arg__1: str) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setWhatsThis">setWhatsThis</a>(self,&nbsp;arg__1:&nbsp;str)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setWindowFilePath"><strong>setWindowFilePath</strong></a>(self, filePath: str) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setWindowFilePath">setWindowFilePath</a>(self,&nbsp;filePath:&nbsp;str)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setWindowFlag"><strong>setWindowFlag</strong></a>(self, arg__1: PySide2.QtCore.Qt.WindowType, on: bool = True) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setWindowFlag">setWindowFlag</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtCore.Qt.WindowType,&nbsp;on:&nbsp;bool&nbsp;=&nbsp;True)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setWindowFlags"><strong>setWindowFlags</strong></a>(self, type: PySide2.QtCore.Qt.WindowFlags) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setWindowFlags">setWindowFlags</a>(self,&nbsp;type:&nbsp;PySide2.QtCore.Qt.WindowFlags)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setWindowIcon"><strong>setWindowIcon</strong></a>(self, icon: PySide2.QtGui.QIcon) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setWindowIcon">setWindowIcon</a>(self,&nbsp;icon:&nbsp;PySide2.QtGui.QIcon)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setWindowIconText"><strong>setWindowIconText</strong></a>(self, arg__1: str) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setWindowIconText">setWindowIconText</a>(self,&nbsp;arg__1:&nbsp;str)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setWindowModality"><strong>setWindowModality</strong></a>(self, windowModality: PySide2.QtCore.Qt.WindowModality) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setWindowModality">setWindowModality</a>(self,&nbsp;windowModality:&nbsp;PySide2.QtCore.Qt.WindowModality)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setWindowModified"><strong>setWindowModified</strong></a>(self, arg__1: bool) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setWindowModified">setWindowModified</a>(self,&nbsp;arg__1:&nbsp;bool)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setWindowOpacity"><strong>setWindowOpacity</strong></a>(self, level: float) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setWindowOpacity">setWindowOpacity</a>(self,&nbsp;level:&nbsp;float)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setWindowRole"><strong>setWindowRole</strong></a>(self, arg__1: str) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setWindowRole">setWindowRole</a>(self,&nbsp;arg__1:&nbsp;str)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setWindowState"><strong>setWindowState</strong></a>(self, state: PySide2.QtCore.Qt.WindowStates) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setWindowState">setWindowState</a>(self,&nbsp;state:&nbsp;PySide2.QtCore.Qt.WindowStates)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setWindowTitle"><strong>setWindowTitle</strong></a>(self, arg__1: str) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setWindowTitle">setWindowTitle</a>(self,&nbsp;arg__1:&nbsp;str)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-sharedPainter"><strong>sharedPainter</strong></a>(self) -&gt; PySide2.QtGui.QPainter</dt><dd><tt><a href="#LandscapeSystem-sharedPainter">sharedPainter</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtGui.QPainter</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-show"><strong>show</strong></a>(self) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-show">show</a>(self)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-showEvent"><strong>showEvent</strong></a>(self, event: PySide2.QtGui.QShowEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-showEvent">showEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtGui.QShowEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-showFullScreen"><strong>showFullScreen</strong></a>(self) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-showFullScreen">showFullScreen</a>(self)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-showMaximized"><strong>showMaximized</strong></a>(self) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-showMaximized">showMaximized</a>(self)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-showMinimized"><strong>showMinimized</strong></a>(self) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-showMinimized">showMinimized</a>(self)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-showNormal"><strong>showNormal</strong></a>(self) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-showNormal">showNormal</a>(self)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-size"><strong>size</strong></a>(self) -&gt; PySide2.QtCore.QSize</dt><dd><tt><a href="#LandscapeSystem-size">size</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.QSize</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-sizeHint"><strong>sizeHint</strong></a>(self) -&gt; PySide2.QtCore.QSize</dt><dd><tt><a href="#LandscapeSystem-sizeHint">sizeHint</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.QSize</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-sizeIncrement"><strong>sizeIncrement</strong></a>(self) -&gt; PySide2.QtCore.QSize</dt><dd><tt><a href="#LandscapeSystem-sizeIncrement">sizeIncrement</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.QSize</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-sizePolicy"><strong>sizePolicy</strong></a>(self) -&gt; PySide2.QtWidgets.QSizePolicy</dt><dd><tt><a href="#LandscapeSystem-sizePolicy">sizePolicy</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtWidgets.QSizePolicy</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-stackUnder"><strong>stackUnder</strong></a>(self, arg__1: PySide2.QtWidgets.QWidget) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-stackUnder">stackUnder</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a>)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-statusTip"><strong>statusTip</strong></a>(self) -&gt; str</dt><dd><tt><a href="#LandscapeSystem-statusTip">statusTip</a>(self)&nbsp;-&gt;&nbsp;str</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-style"><strong>style</strong></a>(self) -&gt; PySide2.QtWidgets.QStyle</dt><dd><tt><a href="#LandscapeSystem-style">style</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtWidgets.QStyle</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-styleSheet"><strong>styleSheet</strong></a>(self) -&gt; str</dt><dd><tt><a href="#LandscapeSystem-styleSheet">styleSheet</a>(self)&nbsp;-&gt;&nbsp;str</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-tabletEvent"><strong>tabletEvent</strong></a>(self, event: PySide2.QtGui.QTabletEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-tabletEvent">tabletEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtGui.QTabletEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-testAttribute"><strong>testAttribute</strong></a>(self, arg__1: PySide2.QtCore.Qt.WidgetAttribute) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-testAttribute">testAttribute</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtCore.Qt.WidgetAttribute)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-toolTip"><strong>toolTip</strong></a>(self) -&gt; str</dt><dd><tt><a href="#LandscapeSystem-toolTip">toolTip</a>(self)&nbsp;-&gt;&nbsp;str</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-toolTipDuration"><strong>toolTipDuration</strong></a>(self) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-toolTipDuration">toolTipDuration</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-topLevelWidget"><strong>topLevelWidget</strong></a>(self) -&gt; PySide2.QtWidgets.QWidget</dt><dd><tt><a href="#LandscapeSystem-topLevelWidget">topLevelWidget</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a></tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-underMouse"><strong>underMouse</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-underMouse">underMouse</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-ungrabGesture"><strong>ungrabGesture</strong></a>(self, type: PySide2.QtCore.Qt.GestureType) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-ungrabGesture">ungrabGesture</a>(self,&nbsp;type:&nbsp;PySide2.QtCore.Qt.GestureType)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-unsetCursor"><strong>unsetCursor</strong></a>(self) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-unsetCursor">unsetCursor</a>(self)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-unsetLayoutDirection"><strong>unsetLayoutDirection</strong></a>(self) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-unsetLayoutDirection">unsetLayoutDirection</a>(self)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-unsetLocale"><strong>unsetLocale</strong></a>(self) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-unsetLocale">unsetLocale</a>(self)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-update"><strong>update</strong></a>(...)</dt><dd><tt><a href="#LandscapeSystem-update">update</a>(self)&nbsp;-&gt;&nbsp;None<br>
+<a href="#LandscapeSystem-update">update</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtCore.QRect)&nbsp;-&gt;&nbsp;None<br>
+<a href="#LandscapeSystem-update">update</a>(self,&nbsp;arg__1:&nbsp;PySide2.QtGui.QRegion)&nbsp;-&gt;&nbsp;None<br>
+<a href="#LandscapeSystem-update">update</a>(self,&nbsp;x:&nbsp;int,&nbsp;y:&nbsp;int,&nbsp;w:&nbsp;int,&nbsp;h:&nbsp;int)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-updateGeometry"><strong>updateGeometry</strong></a>(self) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-updateGeometry">updateGeometry</a>(self)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-updateMicroFocus"><strong>updateMicroFocus</strong></a>(self) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-updateMicroFocus">updateMicroFocus</a>(self)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-updatesEnabled"><strong>updatesEnabled</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-updatesEnabled">updatesEnabled</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-visibleRegion"><strong>visibleRegion</strong></a>(self) -&gt; PySide2.QtGui.QRegion</dt><dd><tt><a href="#LandscapeSystem-visibleRegion">visibleRegion</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtGui.QRegion</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-whatsThis"><strong>whatsThis</strong></a>(self) -&gt; str</dt><dd><tt><a href="#LandscapeSystem-whatsThis">whatsThis</a>(self)&nbsp;-&gt;&nbsp;str</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-wheelEvent"><strong>wheelEvent</strong></a>(self, event: PySide2.QtGui.QWheelEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-wheelEvent">wheelEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtGui.QWheelEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-width"><strong>width</strong></a>(self) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-width">width</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-winId"><strong>winId</strong></a>(self) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-winId">winId</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-window"><strong>window</strong></a>(self) -&gt; PySide2.QtWidgets.QWidget</dt><dd><tt><a href="#LandscapeSystem-window">window</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a></tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-windowFilePath"><strong>windowFilePath</strong></a>(self) -&gt; str</dt><dd><tt><a href="#LandscapeSystem-windowFilePath">windowFilePath</a>(self)&nbsp;-&gt;&nbsp;str</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-windowFlags"><strong>windowFlags</strong></a>(self) -&gt; PySide2.QtCore.Qt.WindowFlags</dt><dd><tt><a href="#LandscapeSystem-windowFlags">windowFlags</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.Qt.WindowFlags</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-windowHandle"><strong>windowHandle</strong></a>(self) -&gt; PySide2.QtGui.QWindow</dt><dd><tt><a href="#LandscapeSystem-windowHandle">windowHandle</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtGui.QWindow</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-windowIcon"><strong>windowIcon</strong></a>(self) -&gt; PySide2.QtGui.QIcon</dt><dd><tt><a href="#LandscapeSystem-windowIcon">windowIcon</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtGui.QIcon</tt></dd></dl>
+
+<strong>windowIconChanged</strong> = &lt;PySide2.QtCore.Signal object&gt;
+<dl><dt><a name="LandscapeSystem-windowIconText"><strong>windowIconText</strong></a>(self) -&gt; str</dt><dd><tt><a href="#LandscapeSystem-windowIconText">windowIconText</a>(self)&nbsp;-&gt;&nbsp;str</tt></dd></dl>
+
+<strong>windowIconTextChanged</strong> = &lt;PySide2.QtCore.Signal object&gt;
+<dl><dt><a name="LandscapeSystem-windowModality"><strong>windowModality</strong></a>(self) -&gt; PySide2.QtCore.Qt.WindowModality</dt><dd><tt><a href="#LandscapeSystem-windowModality">windowModality</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.Qt.WindowModality</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-windowOpacity"><strong>windowOpacity</strong></a>(self) -&gt; float</dt><dd><tt><a href="#LandscapeSystem-windowOpacity">windowOpacity</a>(self)&nbsp;-&gt;&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-windowRole"><strong>windowRole</strong></a>(self) -&gt; str</dt><dd><tt><a href="#LandscapeSystem-windowRole">windowRole</a>(self)&nbsp;-&gt;&nbsp;str</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-windowState"><strong>windowState</strong></a>(self) -&gt; PySide2.QtCore.Qt.WindowStates</dt><dd><tt><a href="#LandscapeSystem-windowState">windowState</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.Qt.WindowStates</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-windowTitle"><strong>windowTitle</strong></a>(self) -&gt; str</dt><dd><tt><a href="#LandscapeSystem-windowTitle">windowTitle</a>(self)&nbsp;-&gt;&nbsp;str</tt></dd></dl>
+
+<strong>windowTitleChanged</strong> = &lt;PySide2.QtCore.Signal object&gt;
+<dl><dt><a name="LandscapeSystem-windowType"><strong>windowType</strong></a>(self) -&gt; PySide2.QtCore.Qt.WindowType</dt><dd><tt><a href="#LandscapeSystem-windowType">windowType</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.Qt.WindowType</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-x"><strong>x</strong></a>(self) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-x">x</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-y"><strong>y</strong></a>(self) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-y">y</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="PySide2.QtWidgets.html#QWidget">PySide2.QtWidgets.QWidget</a>:<br>
+<dl><dt><a name="LandscapeSystem-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from Shiboken.ObjectType</font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-createWindowContainer"><strong>createWindowContainer</strong></a>(window: PySide2.QtGui.QWindow, parent: typing.Union[PySide2.QtWidgets.QWidget, NoneType] = None, flags: PySide2.QtCore.Qt.WindowFlags = Default(Qt.WindowFlags)) -&gt; PySide2.QtWidgets.QWidget</dt><dd><tt><a href="#LandscapeSystem-createWindowContainer">createWindowContainer</a>(window:&nbsp;PySide2.QtGui.QWindow,&nbsp;parent:&nbsp;typing.Union[PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a>,&nbsp;NoneType]&nbsp;=&nbsp;None,&nbsp;flags:&nbsp;PySide2.QtCore.Qt.WindowFlags&nbsp;=&nbsp;Default(Qt.WindowFlags))&nbsp;-&gt;&nbsp;PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a></tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-find"><strong>find</strong></a>(arg__1: int) -&gt; PySide2.QtWidgets.QWidget</dt><dd><tt><a href="#LandscapeSystem-find">find</a>(arg__1:&nbsp;int)&nbsp;-&gt;&nbsp;PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a></tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-keyboardGrabber"><strong>keyboardGrabber</strong></a>() -&gt; PySide2.QtWidgets.QWidget</dt><dd><tt><a href="#LandscapeSystem-keyboardGrabber">keyboardGrabber</a>()&nbsp;-&gt;&nbsp;PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a></tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-mouseGrabber"><strong>mouseGrabber</strong></a>() -&gt; PySide2.QtWidgets.QWidget</dt><dd><tt><a href="#LandscapeSystem-mouseGrabber">mouseGrabber</a>()&nbsp;-&gt;&nbsp;PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a></tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setTabOrder"><strong>setTabOrder</strong></a>(arg__1: PySide2.QtWidgets.QWidget, arg__2: PySide2.QtWidgets.QWidget) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setTabOrder">setTabOrder</a>(arg__1:&nbsp;PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a>,&nbsp;arg__2:&nbsp;PySide2.QtWidgets.<a href="PySide2.QtWidgets.html#QWidget">QWidget</a>)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="PySide2.QtWidgets.html#QWidget">PySide2.QtWidgets.QWidget</a>:<br>
+<dl><dt><strong>DrawChildren</strong> = PySide2.QtWidgets.QWidget.RenderFlag.DrawChildren</dl>
+
+<dl><dt><strong>DrawWindowBackground</strong> = PySide2.QtWidgets.QWidget.RenderFlag.DrawWindowBackground</dl>
+
+<dl><dt><strong>IgnoreMask</strong> = PySide2.QtWidgets.QWidget.RenderFlag.IgnoreMask</dl>
+
+<dl><dt><strong>RenderFlag</strong> = &lt;class 'PySide2.QtWidgets.QWidget.RenderFlag'&gt;</dl>
+
+<dl><dt><strong>RenderFlags</strong> = &lt;class 'PySide2.QtWidgets.QWidget.RenderFlags'&gt;</dl>
+
+<hr>
+Methods inherited from <a href="PySide2.QtCore.html#QObject">PySide2.QtCore.QObject</a>:<br>
+<dl><dt><a name="LandscapeSystem-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-blockSignals"><strong>blockSignals</strong></a>(self, b: bool) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-blockSignals">blockSignals</a>(self,&nbsp;b:&nbsp;bool)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-childEvent"><strong>childEvent</strong></a>(self, event: PySide2.QtCore.QChildEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-childEvent">childEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtCore.QChildEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-children"><strong>children</strong></a>(self) -&gt; typing.List[PySide2.QtCore.QObject]</dt><dd><tt><a href="#LandscapeSystem-children">children</a>(self)&nbsp;-&gt;&nbsp;typing.List[PySide2.QtCore.QObject]</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-connectNotify"><strong>connectNotify</strong></a>(self, signal: PySide2.QtCore.QMetaMethod) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-connectNotify">connectNotify</a>(self,&nbsp;signal:&nbsp;PySide2.QtCore.QMetaMethod)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-customEvent"><strong>customEvent</strong></a>(self, event: PySide2.QtCore.QEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-customEvent">customEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtCore.QEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-deleteLater"><strong>deleteLater</strong></a>(self) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-deleteLater">deleteLater</a>(self)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<strong>destroyed</strong> = &lt;PySide2.QtCore.Signal object&gt;
+<dl><dt><a name="LandscapeSystem-disconnectNotify"><strong>disconnectNotify</strong></a>(self, signal: PySide2.QtCore.QMetaMethod) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-disconnectNotify">disconnectNotify</a>(self,&nbsp;signal:&nbsp;PySide2.QtCore.QMetaMethod)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-dumpObjectInfo"><strong>dumpObjectInfo</strong></a>(self) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-dumpObjectInfo">dumpObjectInfo</a>(self)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-dumpObjectTree"><strong>dumpObjectTree</strong></a>(self) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-dumpObjectTree">dumpObjectTree</a>(self)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-dynamicPropertyNames"><strong>dynamicPropertyNames</strong></a>(self) -&gt; typing.List[PySide2.QtCore.QByteArray]</dt><dd><tt><a href="#LandscapeSystem-dynamicPropertyNames">dynamicPropertyNames</a>(self)&nbsp;-&gt;&nbsp;typing.List[PySide2.QtCore.QByteArray]</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-emit"><strong>emit</strong></a>(self, arg__1: bytes, *args: None) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-emit">emit</a>(self,&nbsp;arg__1:&nbsp;bytes,&nbsp;*args:&nbsp;None)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-eventFilter"><strong>eventFilter</strong></a>(self, watched: PySide2.QtCore.QObject, event: PySide2.QtCore.QEvent) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-eventFilter">eventFilter</a>(self,&nbsp;watched:&nbsp;PySide2.QtCore.QObject,&nbsp;event:&nbsp;PySide2.QtCore.QEvent)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-findChild"><strong>findChild</strong></a>(self, arg__1: type, arg__2: str = '') -&gt; object</dt><dd><tt><a href="#LandscapeSystem-findChild">findChild</a>(self,&nbsp;arg__1:&nbsp;type,&nbsp;arg__2:&nbsp;str&nbsp;=&nbsp;'')&nbsp;-&gt;&nbsp;object</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-findChildren"><strong>findChildren</strong></a>(...)</dt><dd><tt><a href="#LandscapeSystem-findChildren">findChildren</a>(self,&nbsp;arg__1:&nbsp;type,&nbsp;arg__2:&nbsp;PySide2.QtCore.QRegExp)&nbsp;-&gt;&nbsp;typing.Iterable<br>
+<a href="#LandscapeSystem-findChildren">findChildren</a>(self,&nbsp;arg__1:&nbsp;type,&nbsp;arg__2:&nbsp;PySide2.QtCore.QRegularExpression)&nbsp;-&gt;&nbsp;typing.Iterable<br>
+<a href="#LandscapeSystem-findChildren">findChildren</a>(self,&nbsp;arg__1:&nbsp;type,&nbsp;arg__2:&nbsp;str&nbsp;=&nbsp;'')&nbsp;-&gt;&nbsp;typing.Iterable</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-inherits"><strong>inherits</strong></a>(self, classname: bytes) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-inherits">inherits</a>(self,&nbsp;classname:&nbsp;bytes)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-installEventFilter"><strong>installEventFilter</strong></a>(self, filterObj: PySide2.QtCore.QObject) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-installEventFilter">installEventFilter</a>(self,&nbsp;filterObj:&nbsp;PySide2.QtCore.QObject)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-isSignalConnected"><strong>isSignalConnected</strong></a>(self, signal: PySide2.QtCore.QMetaMethod) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-isSignalConnected">isSignalConnected</a>(self,&nbsp;signal:&nbsp;PySide2.QtCore.QMetaMethod)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-isWidgetType"><strong>isWidgetType</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-isWidgetType">isWidgetType</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-isWindowType"><strong>isWindowType</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-isWindowType">isWindowType</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-killTimer"><strong>killTimer</strong></a>(self, id: int) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-killTimer">killTimer</a>(self,&nbsp;id:&nbsp;int)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-metaObject"><strong>metaObject</strong></a>(self) -&gt; PySide2.QtCore.QMetaObject</dt><dd><tt><a href="#LandscapeSystem-metaObject">metaObject</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.QMetaObject</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-moveToThread"><strong>moveToThread</strong></a>(self, thread: PySide2.QtCore.QThread) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-moveToThread">moveToThread</a>(self,&nbsp;thread:&nbsp;PySide2.QtCore.QThread)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-objectName"><strong>objectName</strong></a>(self) -&gt; str</dt><dd><tt><a href="#LandscapeSystem-objectName">objectName</a>(self)&nbsp;-&gt;&nbsp;str</tt></dd></dl>
+
+<strong>objectNameChanged</strong> = &lt;PySide2.QtCore.Signal object&gt;
+<dl><dt><a name="LandscapeSystem-parent"><strong>parent</strong></a>(self) -&gt; PySide2.QtCore.QObject</dt><dd><tt><a href="#LandscapeSystem-parent">parent</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.QObject</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-property"><strong>property</strong></a>(self, name: bytes) -&gt; typing.Any</dt><dd><tt><a href="#LandscapeSystem-property">property</a>(self,&nbsp;name:&nbsp;bytes)&nbsp;-&gt;&nbsp;typing.Any</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-receivers"><strong>receivers</strong></a>(self, signal: bytes) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-receivers">receivers</a>(self,&nbsp;signal:&nbsp;bytes)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-removeEventFilter"><strong>removeEventFilter</strong></a>(self, obj: PySide2.QtCore.QObject) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-removeEventFilter">removeEventFilter</a>(self,&nbsp;obj:&nbsp;PySide2.QtCore.QObject)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-sender"><strong>sender</strong></a>(self) -&gt; PySide2.QtCore.QObject</dt><dd><tt><a href="#LandscapeSystem-sender">sender</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.QObject</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-senderSignalIndex"><strong>senderSignalIndex</strong></a>(self) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-senderSignalIndex">senderSignalIndex</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setObjectName"><strong>setObjectName</strong></a>(self, name: str) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-setObjectName">setObjectName</a>(self,&nbsp;name:&nbsp;str)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-setProperty"><strong>setProperty</strong></a>(self, name: bytes, value: typing.Any) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-setProperty">setProperty</a>(self,&nbsp;name:&nbsp;bytes,&nbsp;value:&nbsp;typing.Any)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-signalsBlocked"><strong>signalsBlocked</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-signalsBlocked">signalsBlocked</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-startTimer"><strong>startTimer</strong></a>(self, interval: int, timerType: PySide2.QtCore.Qt.TimerType = PySide2.QtCore.Qt.TimerType.CoarseTimer) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-startTimer">startTimer</a>(self,&nbsp;interval:&nbsp;int,&nbsp;timerType:&nbsp;PySide2.QtCore.Qt.TimerType&nbsp;=&nbsp;PySide2.QtCore.Qt.TimerType.CoarseTimer)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-thread"><strong>thread</strong></a>(self) -&gt; PySide2.QtCore.QThread</dt><dd><tt><a href="#LandscapeSystem-thread">thread</a>(self)&nbsp;-&gt;&nbsp;PySide2.QtCore.QThread</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-timerEvent"><strong>timerEvent</strong></a>(self, event: PySide2.QtCore.QTimerEvent) -&gt; None</dt><dd><tt><a href="#LandscapeSystem-timerEvent">timerEvent</a>(self,&nbsp;event:&nbsp;PySide2.QtCore.QTimerEvent)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-tr"><strong>tr</strong></a>(self, arg__1: bytes, arg__2: bytes = b'', arg__3: int = -1) -&gt; str</dt><dd><tt><a href="#LandscapeSystem-tr">tr</a>(self,&nbsp;arg__1:&nbsp;bytes,&nbsp;arg__2:&nbsp;bytes&nbsp;=&nbsp;b'',&nbsp;arg__3:&nbsp;int&nbsp;=&nbsp;-1)&nbsp;-&gt;&nbsp;str</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="PySide2.QtCore.html#QObject">PySide2.QtCore.QObject</a>:<br>
+<dl><dt><a name="LandscapeSystem-connect"><strong>connect</strong></a>(...)</dt><dd><tt><a href="#LandscapeSystem-connect">connect</a>(arg__1:&nbsp;PySide2.QtCore.QObject,&nbsp;arg__2:&nbsp;bytes,&nbsp;arg__3:&nbsp;typing.Callable,&nbsp;type:&nbsp;PySide2.QtCore.Qt.ConnectionType&nbsp;=&nbsp;PySide2.QtCore.Qt.ConnectionType.AutoConnection)&nbsp;-&gt;&nbsp;bool<br>
+<a href="#LandscapeSystem-connect">connect</a>(self,&nbsp;arg__1:&nbsp;bytes,&nbsp;arg__2:&nbsp;typing.Callable,&nbsp;type:&nbsp;PySide2.QtCore.Qt.ConnectionType&nbsp;=&nbsp;PySide2.QtCore.Qt.ConnectionType.AutoConnection)&nbsp;-&gt;&nbsp;bool<br>
+<a href="#LandscapeSystem-connect">connect</a>(self,&nbsp;arg__1:&nbsp;bytes,&nbsp;arg__2:&nbsp;PySide2.QtCore.QObject,&nbsp;arg__3:&nbsp;bytes,&nbsp;type:&nbsp;PySide2.QtCore.Qt.ConnectionType&nbsp;=&nbsp;PySide2.QtCore.Qt.ConnectionType.AutoConnection)&nbsp;-&gt;&nbsp;bool<br>
+<a href="#LandscapeSystem-connect">connect</a>(self,&nbsp;sender:&nbsp;PySide2.QtCore.QObject,&nbsp;signal:&nbsp;bytes,&nbsp;member:&nbsp;bytes,&nbsp;type:&nbsp;PySide2.QtCore.Qt.ConnectionType&nbsp;=&nbsp;PySide2.QtCore.Qt.ConnectionType.AutoConnection)&nbsp;-&gt;&nbsp;PySide2.QtCore.QMetaObject.Connection<br>
+<a href="#LandscapeSystem-connect">connect</a>(sender:&nbsp;PySide2.QtCore.QObject,&nbsp;signal:&nbsp;PySide2.QtCore.QMetaMethod,&nbsp;receiver:&nbsp;PySide2.QtCore.QObject,&nbsp;method:&nbsp;PySide2.QtCore.QMetaMethod,&nbsp;type:&nbsp;PySide2.QtCore.Qt.ConnectionType&nbsp;=&nbsp;PySide2.QtCore.Qt.ConnectionType.AutoConnection)&nbsp;-&gt;&nbsp;PySide2.QtCore.QMetaObject.Connection<br>
+<a href="#LandscapeSystem-connect">connect</a>(sender:&nbsp;PySide2.QtCore.QObject,&nbsp;signal:&nbsp;bytes,&nbsp;receiver:&nbsp;PySide2.QtCore.QObject,&nbsp;member:&nbsp;bytes,&nbsp;type:&nbsp;PySide2.QtCore.Qt.ConnectionType&nbsp;=&nbsp;PySide2.QtCore.Qt.ConnectionType.AutoConnection)&nbsp;-&gt;&nbsp;PySide2.QtCore.QMetaObject.Connection</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-disconnect"><strong>disconnect</strong></a>(...)</dt><dd><tt><a href="#LandscapeSystem-disconnect">disconnect</a>(arg__1:&nbsp;PySide2.QtCore.QMetaObject.Connection)&nbsp;-&gt;&nbsp;bool<br>
+<a href="#LandscapeSystem-disconnect">disconnect</a>(arg__1:&nbsp;PySide2.QtCore.QObject,&nbsp;arg__2:&nbsp;bytes,&nbsp;arg__3:&nbsp;typing.Callable)&nbsp;-&gt;&nbsp;bool<br>
+<a href="#LandscapeSystem-disconnect">disconnect</a>(self,&nbsp;arg__1:&nbsp;bytes,&nbsp;arg__2:&nbsp;typing.Callable)&nbsp;-&gt;&nbsp;bool<br>
+<a href="#LandscapeSystem-disconnect">disconnect</a>(self,&nbsp;receiver:&nbsp;PySide2.QtCore.QObject,&nbsp;member:&nbsp;typing.Union[bytes,&nbsp;NoneType]&nbsp;=&nbsp;None)&nbsp;-&gt;&nbsp;bool<br>
+<a href="#LandscapeSystem-disconnect">disconnect</a>(self,&nbsp;signal:&nbsp;bytes,&nbsp;receiver:&nbsp;PySide2.QtCore.QObject,&nbsp;member:&nbsp;bytes)&nbsp;-&gt;&nbsp;bool<br>
+<a href="#LandscapeSystem-disconnect">disconnect</a>(sender:&nbsp;PySide2.QtCore.QObject,&nbsp;signal:&nbsp;PySide2.QtCore.QMetaMethod,&nbsp;receiver:&nbsp;PySide2.QtCore.QObject,&nbsp;member:&nbsp;PySide2.QtCore.QMetaMethod)&nbsp;-&gt;&nbsp;bool<br>
+<a href="#LandscapeSystem-disconnect">disconnect</a>(sender:&nbsp;PySide2.QtCore.QObject,&nbsp;signal:&nbsp;bytes,&nbsp;receiver:&nbsp;PySide2.QtCore.QObject,&nbsp;member:&nbsp;bytes)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-registerUserData"><strong>registerUserData</strong></a>() -&gt; int</dt><dd><tt><a href="#LandscapeSystem-registerUserData">registerUserData</a>()&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="PySide2.QtGui.html#QPaintDevice">PySide2.QtGui.QPaintDevice</a>:<br>
+<dl><dt><a name="LandscapeSystem-colorCount"><strong>colorCount</strong></a>(self) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-colorCount">colorCount</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-depth"><strong>depth</strong></a>(self) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-depth">depth</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-devicePixelRatio"><strong>devicePixelRatio</strong></a>(self) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-devicePixelRatio">devicePixelRatio</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-devicePixelRatioF"><strong>devicePixelRatioF</strong></a>(self) -&gt; float</dt><dd><tt><a href="#LandscapeSystem-devicePixelRatioF">devicePixelRatioF</a>(self)&nbsp;-&gt;&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-heightMM"><strong>heightMM</strong></a>(self) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-heightMM">heightMM</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-logicalDpiX"><strong>logicalDpiX</strong></a>(self) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-logicalDpiX">logicalDpiX</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-logicalDpiY"><strong>logicalDpiY</strong></a>(self) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-logicalDpiY">logicalDpiY</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-paintingActive"><strong>paintingActive</strong></a>(self) -&gt; bool</dt><dd><tt><a href="#LandscapeSystem-paintingActive">paintingActive</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-physicalDpiX"><strong>physicalDpiX</strong></a>(self) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-physicalDpiX">physicalDpiX</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-physicalDpiY"><strong>physicalDpiY</strong></a>(self) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-physicalDpiY">physicalDpiY</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="LandscapeSystem-widthMM"><strong>widthMM</strong></a>(self) -&gt; int</dt><dd><tt><a href="#LandscapeSystem-widthMM">widthMM</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="PySide2.QtGui.html#QPaintDevice">PySide2.QtGui.QPaintDevice</a>:<br>
+<dl><dt><a name="LandscapeSystem-devicePixelRatioFScale"><strong>devicePixelRatioFScale</strong></a>() -&gt; float</dt><dd><tt><a href="#LandscapeSystem-devicePixelRatioFScale">devicePixelRatioFScale</a>()&nbsp;-&gt;&nbsp;float</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="PySide2.QtGui.html#QPaintDevice">PySide2.QtGui.QPaintDevice</a>:<br>
+<dl><dt><strong>painters</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="PySide2.QtGui.html#QPaintDevice">PySide2.QtGui.QPaintDevice</a>:<br>
+<dl><dt><strong>PaintDeviceMetric</strong> = &lt;class 'PySide2.QtGui.QPaintDevice.PaintDeviceMetric'&gt;</dl>
+
+<dl><dt><strong>PdmDepth</strong> = PySide2.QtGui.QPaintDevice.PaintDeviceMetric.PdmDepth</dl>
+
+<dl><dt><strong>PdmDevicePixelRatio</strong> = PySide2.QtGui.QPaintDevice.PaintDeviceMetric.PdmDevicePixelRatio</dl>
+
+<dl><dt><strong>PdmDevicePixelRatioScaled</strong> = PySide2.QtGui.QPaintDevice.PaintDeviceMetric.PdmDevicePixelRatioScaled</dl>
+
+<dl><dt><strong>PdmDpiX</strong> = PySide2.QtGui.QPaintDevice.PaintDeviceMetric.PdmDpiX</dl>
+
+<dl><dt><strong>PdmDpiY</strong> = PySide2.QtGui.QPaintDevice.PaintDeviceMetric.PdmDpiY</dl>
+
+<dl><dt><strong>PdmHeight</strong> = PySide2.QtGui.QPaintDevice.PaintDeviceMetric.PdmHeight</dl>
+
+<dl><dt><strong>PdmHeightMM</strong> = PySide2.QtGui.QPaintDevice.PaintDeviceMetric.PdmHeightMM</dl>
+
+<dl><dt><strong>PdmNumColors</strong> = PySide2.QtGui.QPaintDevice.PaintDeviceMetric.PdmNumColors</dl>
+
+<dl><dt><strong>PdmPhysicalDpiX</strong> = PySide2.QtGui.QPaintDevice.PaintDeviceMetric.PdmPhysicalDpiX</dl>
+
+<dl><dt><strong>PdmPhysicalDpiY</strong> = PySide2.QtGui.QPaintDevice.PaintDeviceMetric.PdmPhysicalDpiY</dl>
+
+<dl><dt><strong>PdmWidth</strong> = PySide2.QtGui.QPaintDevice.PaintDeviceMetric.PdmWidth</dl>
+
+<dl><dt><strong>PdmWidthMM</strong> = PySide2.QtGui.QPaintDevice.PaintDeviceMetric.PdmWidthMM</dl>
+
+<hr>
+Data descriptors inherited from Shiboken.Object:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-deleteDock"><strong>deleteDock</strong></a>(name='LandscapeSystemDock')</dt><dd><tt>Info:&nbsp;delete&nbsp;the&nbsp;dock&nbsp;ptr</tt></dd></dl>
+ <dl><dt><a name="-getDock"><strong>getDock</strong></a>(name='LandscapeSystemDock')</dt><dd><tt>Info:&nbsp;get&nbsp;the&nbsp;dock&nbsp;ptr&nbsp;of&nbsp;the&nbsp;window</tt></dd></dl>
+ <dl><dt><a name="-getMayaMainWindow"><strong>getMayaMainWindow</strong></a>()</dt><dd><tt>Info:&nbsp;get&nbsp;a&nbsp;ptr&nbsp;of&nbsp;the&nbsp;Mainwindow&nbsp;of&nbsp;Maya</tt></dd></dl>
+ <dl><dt><a name="-workingDir"><strong>workingDir</strong></a>()</dt><dd><tt>Info:&nbsp;User&nbsp;chooses&nbsp;the&nbsp;working&nbsp;dir,&nbsp;and&nbsp;add&nbsp;it&nbsp;into&nbsp;sys.path.<br>
+prepare&nbsp;the&nbsp;working&nbsp;dir&nbsp;for&nbsp;the&nbsp;next&nbsp;steps&nbsp;like&nbsp;importing&nbsp;files.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>PROJECTDIR</strong> = 'D:/Autodesk/Final Project'<br>
+<strong>WORKINGDIR</strong> = 'D:/Autodesk/Final Project/src'</td></tr></table>
+</body></html>

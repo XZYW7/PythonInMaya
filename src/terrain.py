@@ -9,7 +9,6 @@
 import maya.cmds as cmds
 import random
 import math 
-
 def setTree(terrainShape,treeNames,treeNumbers,x,z,isAngle,isAvoidBounding,chooseArea,*others):
   '''
     Info: this is the function to set the trees to the ground
