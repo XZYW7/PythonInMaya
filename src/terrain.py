@@ -175,10 +175,10 @@ def boundingCheck(boundBox,posSize,*others):
           break
   return isBounding
 
-def generate(terrain, treeList, chooseArea):
+def generate(terrain, treeList, treeNumbers, chooseArea):
   terrainShape = terrain
   treeNames = treeList    # the name of each tree
-  treeNumbers=[15,10]     # the number of trees
+  treeNumbers=treeNumbers     # the number of trees
   isAngle = False    # Whether to tilt at an Angle
   isAvoidBounding = False   # Prevent intersection collision box option
   x=200

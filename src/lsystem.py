@@ -5,6 +5,7 @@ import maya.cmds as cmds
 import math 
 from maya.api import OpenMaya
 from maya.api.OpenMaya import MVector as vec
+import pymel.core as pm
 import random
 class leave:
     leaveType = []
@@ -36,6 +37,10 @@ class leave:
     def drawLeave(self, chooseType = 0):
         curve = cmds.curve( p= self.leaveType[chooseType])
         self.leave = cmds.planarSrf(curve)
+
+        leaveShape = pm.PyNode(self.leave[0]).getShape()
+        cmds.defaultNavigation(connectToExisting=True, destination=leaveShape+'.instObjGroups[0]', source='leaveColor')
+
         cmds.delete(curve)
         cmds.setAttr(self.leave[0]+'.scale', 0.05,1.0,0.05)
 class status:
@@ -76,7 +81,7 @@ class Lsystem:
         '''
         print("Lsystem Initialization")
         # Initialize
-        self.axiom = "FFFA"
+        self.axiom = "BBBA"
         # self.addRule('F', 'F[F\\F][F/F][F&F][F^F]F')
         # self.addRule('F', 'FF')
         #self.addRule('F', '"F[\\F][/F]')
@@ -109,15 +114,20 @@ class Lsystem:
     
     def createBranch(self, pos, dir):
         branch = cmds.polyCylinder(axis=dir, r=self.width, height=self.stepLength)
+
+        branchShape = pm.PyNode(branch[0]).getShape()
+        cmds.defaultNavigation(connectToExisting=True, destination=branchShape+'.instObjGroups[0]', source='trunkColor')
+
+
         cmds.move(pos[0] + 0.5 * self.stepLength * dir*vec(1.0,0.0,0.0), pos[1]+ 0.5 * self.stepLength * dir*vec(0.0,1.0,0.0), pos[2]+ 0.5 * self.stepLength * dir*vec(0.0,0.0,1.0))
         return branch[0]
 
-    def drawModel(self):
+    def drawModel(self,leaveType = 0):
         statusStack = []
         branchList = []
         currentStatus = status(vec(0.0, 0.0, 0.0))
         for i in self.lstring:
-            if i == "F":
+            if i == "F" or i == "B":
 
                 # calculate current orientation status by Quaternion
                 dir = currentStatus.dir.rotateBy(currentStatus.rotation)
@@ -129,7 +139,7 @@ class Lsystem:
                 currentStatus.pos = currentStatus.pos + dir * self.stepLength
             elif i == "L":
                 l = leave()#cmds.polySphere(r = self.stepLength)
-                l.drawLeave(0)
+                l.drawLeave(leaveType)
                 v = vec(0.0,0.0,0.32)
                 #axis = vec(0.0,0.0,1.0)
                 #radians = random.random() * math.pi / 2.0 

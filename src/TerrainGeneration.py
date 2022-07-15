@@ -106,7 +106,7 @@ def AreaSelection(MaskImageFile, f, w=200, h=200):
     pixels = img.load()
     width, height = img.size
     
-    if f==1 and (w!=width or h!=height):
+    if (w!=width or h!=height):
         print("the image does not meet the requirements")
     
     chooseArea=[]

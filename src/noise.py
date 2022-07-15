@@ -1,3 +1,6 @@
+'''
+    This code uses other people's implementation of perlin noise
+'''
 import numpy
 #import cv2
 
