@@ -91,7 +91,7 @@ class LandscapeSystem(QtWidgets.QWidget):
         if not dock:
             parent.show()
 
-        self.ocean = cmds.polyCube(d = 50, w=50, h=0.01)
+        self.ocean = cmds.polyCube(d = 150, w=150, h=0.01)
         self.terrain = []
         cmds.setAttr(self.ocean[0] + '.translateY', 1/2)
     def buildUI(self):
@@ -118,7 +118,7 @@ class LandscapeSystem(QtWidgets.QWidget):
         self.absHeight = QtWidgets.QSlider(QtCore.Qt.Horizontal)
         self.absHeight.setMinimum(0)
         self.absHeight.setMaximum(25)
-        self.absHeight.setValue(1)
+        self.absHeight.setValue(7)
         self.absHeight.sliderReleased.connect(self.generateTerrain)
         layout.addWidget(self.absHeight, 1, 0, 1, 2)
 
@@ -146,6 +146,11 @@ class LandscapeSystem(QtWidgets.QWidget):
         distributeBtn.clicked.connect(self.distribute)
         layout.addWidget(distributeBtn, 4, 1, 1, 1)
 
+
+        # Clear
+        clearBtn = QtWidgets.QPushButton('Clear')
+        clearBtn.clicked.connect(self.clear)
+        layout.addWidget(clearBtn,5,0,1,2)
     def chooseNoise(self):
         self.flag = 0
         self.generateTerrain()
@@ -184,27 +189,29 @@ class LandscapeSystem(QtWidgets.QWidget):
         print(self.region)
 
     def buildTree(self):
-        tree1 = ls.Lsystem('tree1')
-        tree1.ruleSet = {}
-        tree1.addRule('A', '"[&FFFA]++++[&FFFA]++++[&FFFA]')
-        tree1.ruleIter()
-        tree1.drawModel()
-        print(tree1.Tree)
+        self.tree1 = ls.Lsystem('tree1')
+        self.tree1.ruleSet = {}
+        self.tree1.addRule('A', '"[&FFFLA]++++[&FFFLA]++++[&FFFLA]')
+        self.tree1.ruleIter()
+        self.tree1.drawModel()
+        print(self.tree1.Tree)
 
         self.treeList = []
-        self.treeList.append(tree1.Tree)
+        self.treeList.append(self.tree1.Tree)
         print(self.treeList)
 
-        tree2 = ls.Lsystem('tree2') 
-        tree2.ruleSet = {}
-        tree2.addRule('A', '"[&FFFA]++++[&FFFA]')
-        #tree2.addRule('F', '"F[\\F][/F]')
-        #tree2.addRule('F', 'F[\\FA]')
-        #tree2.addRule('F', 'F[/FA]')  
-        tree2.ruleIter()
-        tree2.drawModel()
+        self.tree2 = ls.Lsystem('tree2')
+        self.tree2.widthRate = 0.8
+        self.tree2.iterations = 5
+        self.tree2.ruleSet = {}
+        self.tree2.addRule('A', '"[&FFFA]++++[&FFFA]++++[&FFFA]')
+        self.tree2.addRule('F', '"FF')
+        self.tree2.addRule('F', 'F[/F]')
+        self.tree2.addRule('F', 'F[\F]')
+        self.tree2.ruleIter()
+        self.tree2.drawModel()
 
-        self.treeList.append(tree2.Tree)
+        self.treeList.append(self.tree2.Tree)
         print(self.terrain)
         print(self.treeList)
     def distribute(self):
@@ -212,7 +219,11 @@ class LandscapeSystem(QtWidgets.QWidget):
         print('wocaonima')
         terrain.generate(self.terrain[0], self.treeList, self.region)
 
-
+        cmds.delete(self.tree1.Tree)
+        cmds.delete(self.tree2.Tree)
+    def clear(self):
+        cmds.select(all=True)
+        cmds.delete()
 if __name__ == "__main__":
     cmds.select(all=True)
     cmds.delete()

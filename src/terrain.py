@@ -78,7 +78,7 @@ def setTree(terrainShape,treeNames,treeNumbers,x,z,isAngle,isAvoidBounding,choos
           continue
         else:
           boundBox.append([posSize[0],posSize[3],posSize[2],posSize[5]])
-
+      cmds.refresh()
       currentIndex+=1
       i+=1
 
@@ -178,10 +178,10 @@ def boundingCheck(boundBox,posSize,*others):
 def generate(terrain, treeList, chooseArea):
   terrainShape = terrain
   treeNames = treeList    # the name of each tree
-  treeNumbers=[5,5]     # the number of trees
-  isAngle=False    # Whether to tilt at an Angle
-  isAvoidBounding=False   # Prevent intersection collision box option
-  x=60
-  z=66
+  treeNumbers=[15,10]     # the number of trees
+  isAngle = False    # Whether to tilt at an Angle
+  isAvoidBounding = False   # Prevent intersection collision box option
+  x=200
+  z=200
   print('startGenerate')
   setTree(terrainShape,treeNames,treeNumbers,x,z,isAngle,isAvoidBounding,chooseArea)

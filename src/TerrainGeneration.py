@@ -37,7 +37,7 @@ def HeightMapTerrain(HeightMapImageFile, maxHeight):
         exit()
     
 
-    terrain = cmds.polyPlane( axis=[0,1,0], w=50, h=50, sx=width-1, sy=height-1)
+    terrain = cmds.polyPlane( axis=[0,1,0], w=100, h=100, sx=width-1, sy=height-1)
 
     # change the vertex position of the plan according tot he terrainData
     for i in range(height):
@@ -76,7 +76,7 @@ def NoiseMapTerrain(maxHeight):
     width=200
     smoothness = 2
     sharpness = 6.0
-    terrain = cmds.polyPlane( axis=[0,1,0], w=50, h=50, sx=width-1, sy=height-1)
+    terrain = cmds.polyPlane( axis=[0,1,0], w=100, h=100, sx=width-1, sy=height-1)
     Elevation(terrain[0], width, height, sharpness, maxHeight)    
     cmds.polyAverageVertex(iterations = smoothness)
     cmds.polySmooth()
